@@ -54,6 +54,9 @@
                                                     <label class="label" for="imagen">Imagen Noticia</label>
                                                     <input class="form-control btn-primary form-control-lg @error('imagen') is-invalid @enderror" type="file" name="imagen" id="imagen" accept="image/*" value="{{ old('imagen') }}">
                                                 </div>
+                                                <div class="p-5">
+                                                    <h1 class="fs-1">ESTO ES MI PRIMER COMMIT</h1>
+                                                </div>
                                                 @error('imagen')
                                                         <div class="alert alert-danger">{!! $errors->first('imagen', '<small>:message</small>') !!}</div>
                                                 @enderror

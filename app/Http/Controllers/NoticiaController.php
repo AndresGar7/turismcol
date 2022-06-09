@@ -3,11 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Models\Noticia;
-use Illuminate\Auth\Events\Validated;
 use Illuminate\Http\Request;
+use Illuminate\Auth\Events\Validated;
+use Illuminate\Support\Facades\Storage;
 use App\Http\Requests\CreateProjectRequest;
 use App\Http\Requests\UpdateProjectRequest;
-use Illuminate\Support\Facades\Storage;
+use Intervention\Image\Facades\Image;
 
 class NoticiaController extends Controller
 {
@@ -104,6 +105,17 @@ class NoticiaController extends Controller
 
         ]);
 
+         //!-----------------------------------------------------------------------------
+        // Esto se utiliza para optimizar el tamaño de las imagenes que se van a mostrar de las noticias.
+        $image = Image::make(Storage::get($imagen))
+        ->widen(600)
+        ->limitColors(255)
+        ->encode();
+
+        Storage::put($imagen, (string) $image);
+
+        //!-----------------------------------------------------------------------------
+
         // var_dump(request()->file('imagen')->store('public/img/noticias'));
 
         return redirect()->route('noticias.admin');
@@ -148,6 +160,17 @@ class NoticiaController extends Controller
                 'resumen' => $resumen,
                 'url_img' => $url_imagen
             ]);
+
+             //!-----------------------------------------------------------------------------
+            // Esto se utiliza para optimizar el tamaño de las imagenes que se van a mostrar de las noticias.
+            $image = Image::make(Storage::get($imagen))
+                ->widen(600)
+                ->limitColors(255)
+                ->encode();
+    
+            Storage::put($imagen, (string) $image);
+             //!-----------------------------------------------------------------------------
+
         }else{
             $noticia->update([
                 'title' => $titulo,
@@ -156,6 +179,7 @@ class NoticiaController extends Controller
                 'resumen' => $resumen
             ]);
         }
+
 
         return redirect()->route('noticias.showAdmin', $noticia);
 

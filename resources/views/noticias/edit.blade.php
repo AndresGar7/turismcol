@@ -31,7 +31,7 @@
                             <label for="imagen">Imagen de la noticia</label>
                             <div class="cont-img mx-auto">
                                 <div class="row d-flex">
-                                    <img src="{{ asset($noticia->url_img) }}" style="width:50rem; height: 20rem;" id="imgPrevizual" style="height: 15rem; width: 20rem; margin:auto;" class="pt-4 px-4" alt="{{ asset($noticia->url_img) }}">
+                                    <img src="{{ asset($noticia->url_img) }}" style="height: 18rem; object-fit:cover;" id="imgPrevizual" style="height: 15rem; width: 20rem; margin:auto;" class="pt-4 px-4" alt="{{ asset($noticia->url_img) }}">
                                 </div>
                             </div>
                             <div class="card-body">

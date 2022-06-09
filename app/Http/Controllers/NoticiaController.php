@@ -6,6 +6,8 @@ use App\Models\Noticia;
 use Illuminate\Auth\Events\Validated;
 use Illuminate\Http\Request;
 use App\Http\Requests\CreateProjectRequest;
+use App\Http\Requests\UpdateProjectRequest;
+use Illuminate\Support\Facades\Storage;
 
 class NoticiaController extends Controller
 {
@@ -123,41 +125,37 @@ class NoticiaController extends Controller
 
 
     // SE ENCARGA DE ACTUALIZAR LOS DATOS DE LA NOTICIA EN LA BBDD
-    public function update(Noticia $noticia){
-
-
-        request()->validate([
-            'titulo' => 'required',
-            'descripcion' => 'required',
-            'imagen' => 'required|image'
-        ],
-        [
-            'titulo.required' => 'El campo del titulo es obligatorio',
-            'descripcion.required' => 'El campo descripcion es obligatorio',
-            'imagen.required' => 'La noticia debe de contener una imagen',
-            'imagen.image' => 'El archivo debe de ser JPG o PNG'
-        ]);
+    public function update(Noticia $noticia, UpdateProjectRequest $request){
 
         $titulo = trim(request('titulo'));
         $url = str_replace(' ','-',$titulo);
         $descripcion = trim(request('descripcion')) ;
         $resumen = substr($descripcion, 0, 70);
 
-        
+        if(request()->file('imagen')){
 
-        $imagen = request()->file('imagen')->store('public/img/noticias');
-
-        $url_imagen = str_replace('public','storage',$imagen);
-
-        // $noticia->update(array_filter(request()->validate()));
-        
-        $noticia->update([
-            'title' => $titulo,
-            'url' => $url,
-            'description' => $descripcion,
-            'resumen' => $resumen,
-            'url_img' => $url_imagen
-        ]);
+            $img_publica = str_replace('storage','public',$noticia->url_img);
+            Storage::delete($img_publica);
+            
+            
+            $imagen = request()->file('imagen')->store('public/img/noticias');
+            $url_imagen = str_replace('public','storage',$imagen);
+            // return [$noticia->url_img, $url_imagen = str_replace('public','storage',$imagen)];
+            $noticia->update([
+                'title' => $titulo,
+                'url' => $url,
+                'description' => $descripcion,
+                'resumen' => $resumen,
+                'url_img' => $url_imagen
+            ]);
+        }else{
+            $noticia->update([
+                'title' => $titulo,
+                'url' => $url,
+                'description' => $descripcion,
+                'resumen' => $resumen
+            ]);
+        }
 
         return redirect()->route('noticias.showAdmin', $noticia);
 
@@ -165,6 +163,8 @@ class NoticiaController extends Controller
 
     public function destroy(Noticia $noticia)
     {
+        $img_publica = str_replace('storage','public',$noticia->url_img);
+        Storage::delete($img_publica);
         $noticia->delete();
 
         return redirect()->route('noticias.admin', $noticia);   

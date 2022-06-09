@@ -24,7 +24,22 @@ class UpdateProjectRequest extends FormRequest
     public function rules()
     {
         return [
-            
+            'titulo' => 'required',
+            'descripcion' => 'required',
+            'imagen' => [ 
+                $this->route('noticia') ?  '' : 'required',
+                'image'
+            ],
+        ];
+    }
+
+    public function messages()
+    {
+        return [
+            'titulo.required' => 'El campo del titulo es obligatorio',
+            'descripcion.required' => 'El campo descripcion es obligatorio',
+            'imagen.required' => 'La noticia debe de contener una imagen',
+            'imagen.image' => 'El archivo debe de ser JPG o PNG'
         ];
     }
 }

@@ -25,7 +25,7 @@
                         <div class="col-lg-6 col-md-6 col-sm-12">
                             <div class="cont-img mx-auto">
                                 <div class="row d-flex">
-                                    <img class="img-fluid" style="height: 20rem;" src="{{ asset($noticia->url_img) }}" alt="{{ $noticia->url_img }}">
+                                    <img class="img-fluid" style="width:50rem; height: 20rem;" src="{{ asset($noticia->url_img) }}" alt="{{ $noticia->url_img }}">
                                 </div>
                             </div>
                             <p><small><strong>Creado hace: </strong>{{ $noticia->updated_at->diffForHumans() }}</small></p>

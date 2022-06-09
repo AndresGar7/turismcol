@@ -47,7 +47,7 @@
                                             <div class="cont-img mx-auto mt-4">
                                                 <label class="form-label" for="imagen">Imagen Noticia</label>
                                                 <div class="row d-flex">
-                                                    <img src="{{ asset('img/sinImagen.png') }}" id="imgPrevizual" style="height: 15rem; width: 20rem; margin:auto;" class="pt-4 px-4" alt="calima">
+                                                    <img src="{{ asset('img/sinImagen.png') }}" style="width:50rem; height: 20rem;" id="imgPrevizual" style="height: 15rem; width: 20rem; margin:auto;" class="pt-4 px-4" alt="calima">
                                                 </div>
                                             </div>
                                             <div class="card-body">
@@ -93,7 +93,8 @@
 
         leer_img.onload = () => {
             if(leer_img.readyState == 2){
-                id_img.src = leer_img.result;
+                id_img.src = leer_img.result,
+                id_img.alt = leer_img.result;
             }
         }
         leer_img.readAsDataURL(event.target.files[0]);

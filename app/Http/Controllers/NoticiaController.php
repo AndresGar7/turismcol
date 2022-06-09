@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Noticia;
 use Illuminate\Auth\Events\Validated;
 use Illuminate\Http\Request;
+use App\Http\Requests\CreateProjectRequest;
 
 class NoticiaController extends Controller
 {
@@ -65,18 +66,14 @@ class NoticiaController extends Controller
     }
 
     // SE ENCARGA DE CREAR LAS NUEVAS NOTICIAS Y GUARDARLAS EN LA BBDD
-    public function store()
+    public function store(CreateProjectRequest $request)
     {
 
         // Esta parte se encarga de validar los campos del formulario para subir una nueva noticia
 
         // return request()->file('imagen')->store('');
         
-        request()->validate([
-            'titulo' => 'required',
-            'descripcion' => 'required|min:70',
-            'imagen' => 'required|image'
-        ],
+        request()->validate(
         [
             'titulo.required' => 'El campo del titulo es obligatorio',
             'descripcion.required' => 'El campo descripcion es obligatorio',
@@ -98,6 +95,7 @@ class NoticiaController extends Controller
 
             'title' => $titulo,
             'url' => $url,
+            
             'resumen' => $resumen,
             'description' => $descripcion,
             'url_img' => $url_imagen

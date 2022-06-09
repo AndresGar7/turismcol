@@ -17,7 +17,8 @@ class Noticia extends Model
         'title',
         'resumen',
         'description',
-        'url'
+        'url',
+        'url_img'
     ];
     
     // MANERA DE PASAR Y ACEPTAR TODOS LAS VARIABLES QUE PASA EL CONTROLADOR PARA GUARDAR EN LA DB

@@ -16,9 +16,11 @@ class CreateNoticiasTable extends Migration
         Schema::create('noticias', function (Blueprint $table) {
             $table->id();
             $table->string('title');
+            $table->enum('importancia',['pri','sec']);
             $table->string('url')->unique();
             $table->string('resumen');
             $table->string('description');
+            $table->string('url_img');
             $table->timestamps();
         });
     }

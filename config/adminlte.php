@@ -294,6 +294,7 @@ return [
             'text' => 'Administracion Noticias',
             'route' => 'noticias.admin',
             'icon' => 'fas fa-fw fa-newspaper',
+            'active' => ['noticias*'],
         ]
         // [
         //     'text'    => 'multilevel',

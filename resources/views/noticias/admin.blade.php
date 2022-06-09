@@ -22,52 +22,59 @@
                         </div>
                         <div class="card-body">
                                 <div class="row p-2 mb-3">
-                                    <div class="col-4">
-                                        <a href="{{ route('noticias.create') }}" class="btn btn-primary fw-bold fs-4">Nueva Noticia</a>
+                                    <div class="col-lg21 col-sm-12">
+                                        <a href="{{ route('noticias.create') }}" class="btn btn-primary fw-bold fs-6">Nueva Noticia</a>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-lg-12 col-sm-12">
-                                        <table id="noticias" class="table table-bordered table-hover shadow display nowrap" style="width:100%">
-                                            <thead class="bg-success text-center">
-                                                <tr>
-                                                    <th class="text-dark">Noticia#</th>
-                                                    <th>Titulo Noticia</th>
-                                                    <th>Resumen</th>
-                                                    <th>Fecha Creación</th>
-                                                    <th>Fecha Actualización</th>
-                                                    <th>Operación</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                @forelse ($noticias as $noticia)
+                                        <div class="table-responsive">
+                                            <table id="noticias" class="table table-bordered table-hover shadow display nowrap" style="width:100%">
+                                                <thead class="bg-success text-center">
                                                     <tr>
-                                                        <td class="text-center">{{ $noticia->id }}</td>
-                                                        <td>{{ $noticia->title }}</td>
-                                                        <td><small>{{ $noticia->resumen }}</small></td>
-                                                        <td class="text-center">{{ $noticia->created_at->format('d-m-Y') }}</td>
-                                                        <td class="text-center">{{ $noticia->updated_at->format('d-m-Y') }}</td>
-                                                        <td class="text-center">
-                                                            <a class="btn btn-info btn-lg align-center" href="{{ route('noticias.showAdmin', $noticia) }}">Ver</a>
-                                                        </td>
+                                                        <th class="text-dark">Noticia#</th>
+                                                        <th>Titulo Noticia</th>
+                                                        <th>Resumen</th>
+                                                        <th>Fecha Creación</th>
+                                                        <th>Fecha Actualización</th>
+                                                        <th>Operación</th>
                                                     </tr>
-                                                @empty
+                                                </thead>
+                                                <tbody>
+                                                    @forelse ($noticias as $noticia)
+                                                    @php
+                                                        $title_modificado = $noticia->title;
+                                                        $title_modificado = substr($title_modificado, 0, 30);
+                                                        $title_modificado = $title_modificado . '...';
+                                                    @endphp
+                                                        <tr>
+                                                            <td class="text-center">{{ $noticia->id }}</td>
+                                                            <td><div class="p">{{ $title_modificado }}</td></div>
+                                                            <td><textarea class="form-control" name="res" id="res" cols="30" rows="2" disabled>{{ $noticia->resumen }}</textarea></td>
+                                                            <td class="text-center">{{ $noticia->created_at->format('d-m-Y') }}</td>
+                                                            <td class="text-center">{{ $noticia->updated_at->format('d-m-Y') }}</td>
+                                                            <td class="text-center">
+                                                                <a class="btn btn-outline-dark btn-lg align-center" href="{{ route('noticias.showAdmin', $noticia) }}">Ver</a>
+                                                            </td>
+                                                        </tr>
+                                                    @empty
+                                                        <tr>
+                                                            <td colspan="6" class="text-center">No hay noticias para mostrar</td>
+                                                        </tr>
+                                                    @endforelse
+                                                </tbody>
+                                                <tfoot class="bg-success">
                                                     <tr>
-                                                        <td colspan="6" class="text-center">No hay noticias para mostrar</td>
+                                                        <th class="text-dark">Noticia#</th>
+                                                        <th>Titulo Noticia</th>
+                                                        <th>Resumen</th>
+                                                        <th>Fecha Creación</th>
+                                                        <th>Fecha Actualización</th>
+                                                        <th>Operación</th>
                                                     </tr>
-                                                @endforelse
-                                            </tbody>
-                                            <tfoot class="bg-success">
-                                                <tr>
-                                                    <th class="text-dark">Noticia#</th>
-                                                    <th>Titulo Noticia</th>
-                                                    <th>Resumen</th>
-                                                    <th>Fecha Creación</th>
-                                                    <th>Fecha Actualización</th>
-                                                    <th>Operación</th>
-                                                </tr>
-                                            </tfoot>
-                                        </table>
+                                                </tfoot>
+                                            </table>
+                                        </div>
                                     </div>
                                 </div>
                             

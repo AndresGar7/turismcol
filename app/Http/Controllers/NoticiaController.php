@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 
 class NoticiaController extends Controller
 {
+    
     // SE ENCARGA DE MOSTRAR LAS NOTICIAS EN LA PARTE PRINCIPAL DE LA PAGINA
     public function index()
     {   
@@ -89,16 +90,21 @@ class NoticiaController extends Controller
         $descripcion = trim(request('descripcion'));
         $resumen = substr($descripcion, 0, 70);
 
+        $imagen = request()->file('imagen')->store('public/img/noticias');
+
+        $url_imagen = str_replace('public','storage',$imagen) ;
+        
         Noticia::create([
 
             'title' => $titulo,
             'url' => $url,
             'resumen' => $resumen,
             'description' => $descripcion,
+            'url_img' => $url_imagen
 
         ]);
 
-        request()->file('imagen')->store('public/img/noticias');
+        // var_dump(request()->file('imagen')->store('public/img/noticias'));
 
         return redirect()->route('noticias.admin');
 
@@ -124,21 +130,35 @@ class NoticiaController extends Controller
 
         request()->validate([
             'titulo' => 'required',
-            'descripcion' => 'required'
+            'descripcion' => 'required',
+            'imagen' => 'required|image'
         ],
         [
             'titulo.required' => 'El campo del titulo es obligatorio',
-            'descripcion.required' => 'El campo descripcion es obligatorio'
+            'descripcion.required' => 'El campo descripcion es obligatorio',
+            'imagen.required' => 'La noticia debe de contener una imagen',
+            'imagen.image' => 'El archivo debe de ser JPG o PNG'
         ]);
 
         $titulo = trim(request('titulo'));
         $url = str_replace(' ','-',$titulo);
         $descripcion = trim(request('descripcion')) ;
+        $resumen = substr($descripcion, 0, 70);
+
+        
+
+        $imagen = request()->file('imagen')->store('public/img/noticias');
+
+        $url_imagen = str_replace('public','storage',$imagen);
+
+        // $noticia->update(array_filter(request()->validate()));
         
         $noticia->update([
             'title' => $titulo,
             'url' => $url,
             'description' => $descripcion,
+            'resumen' => $resumen,
+            'url_img' => $url_imagen
         ]);
 
         return redirect()->route('noticias.showAdmin', $noticia);

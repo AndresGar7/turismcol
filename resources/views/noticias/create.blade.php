@@ -44,15 +44,15 @@
                                                 @enderror
                                             </div>
                                     <div class="col-lg-6 col-md-6 col-sm-12">
-                                            <div class="cont-img mx-auto">
+                                            <div class="cont-img mx-auto mt-4">
+                                                <label class="form-label" for="imagen">Imagen Noticia</label>
                                                 <div class="row d-flex">
-                                                    <img src="{{ asset('img/sinImagen.png') }}" style="height: 15rem; width: 20rem; margin:auto;" class="pt-4 px-4" alt="calima">
+                                                    <img src="{{ asset('img/sinImagen.png') }}" id="imgPrevizual" style="height: 15rem; width: 20rem; margin:auto;" class="pt-4 px-4" alt="calima">
                                                 </div>
                                             </div>
                                             <div class="card-body">
                                                 <div class="form-group">
-                                                    <label class="label" for="imagen">Imagen Noticia</label>
-                                                    <input class="form-control btn-primary form-control-lg @error('imagen') is-invalid @enderror" type="file" name="imagen" id="imagen" accept="image/*" value="{{ old('imagen') }}">
+                                                    <input class="form-control btn-primary form-control-lg @error('imagen') is-invalid @enderror" type="file" onchange="vista_priliminar(event)" name="imagen" id="imagen" accept="image/*" value="{{ old('imagen') }}">
                                                 </div>
                                                 @error('imagen')
                                                         <div class="alert alert-danger">{!! $errors->first('imagen', '<small>:message</small>') !!}</div>
@@ -83,9 +83,22 @@
 @stop
 
 @section('js')
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 {{-- <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.17/dist/sweetalert2.all.min.js"></script> --}}
 <script src="{{ asset('js/sweetalert2.all.min.js') }}"></script>
 <script>
+    let vista_priliminar = (event) =>{
+        let leer_img = new FileReader();
+        let id_img  = document.getElementById('imgPrevizual');
+
+        leer_img.onload = () => {
+            if(leer_img.readyState == 2){
+                id_img.src = leer_img.result;
+            }
+        }
+        leer_img.readAsDataURL(event.target.files[0]);
+    }
+
     function cancelar(){
         Swal.fire({
                 title: 'Esta seguro?',
@@ -94,7 +107,7 @@
                 showCancelButton: true,
                 cancelButtonText: 'Cancelar',
                 cancelButtonAriaLabel: 'Cancelar',
-                cancelButtonColor: '#d33',
+                cancelButtonColor: '#d33',  
                 confirmButtonColor: '#3085d6',
                 confirmButtonText: 'Si, deseo salir!',
                 allowOutsideClick: false

@@ -73,14 +73,14 @@ class NoticiaController extends Controller
 
         // return request()->file('imagen')->store('');
         
-        request()->validate(
-        [
-            'titulo.required' => 'El campo del titulo es obligatorio',
-            'descripcion.required' => 'El campo descripcion es obligatorio',
-            'descripcion.min' => 'Debe ingresar como minimo 70 caracteres acerca de la noticia' ,
-            'imagen.required' => 'La noticia debe de contener una imagen',
-            'imagen.image' => 'El archivo debe de ser JPG o PNG'
-        ]);
+        // request()->validate(
+        // [
+        //     'titulo.required' => 'El campo del titulo es obligatorio',
+        //     'descripcion.required' => 'El campo descripcion es obligatorio',
+        //     'descripcion.min' => 'Debe ingresar como minimo 70 caracteres acerca de la noticia' ,
+        //     'imagen.required' => 'La noticia debe de contener una imagen',
+        //     'imagen.image' => 'El archivo debe de ser JPG o PNG'
+        // ]);
 
         $titulo = trim(request('titulo'));
         $url = str_replace(' ','-',$titulo);

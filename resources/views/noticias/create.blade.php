@@ -29,20 +29,27 @@
                                 <div class="row">
                                     <div class="col-lg-6 col-md-6 col-sm-12 pt-4 px-4">
                                             <div class="form-group">
-                                                    <label class="form-label" for="titulo">Titulo de la Noticia </label>                                       
-                                                    <input type="text" class="form-control form-control-lg @error('titulo') is-invalid @enderror"" name="titulo" id="titulo" value="{{ old('titulo') }}">
-                                                </div>
-                                                @error('titulo')
-                                                    <div class="alert alert-danger">{!! $errors->first('titulo', '<small>:message</small>') !!}</div>
-                                                @enderror
-                                                <div class="form-group">
-                                                    <label class="form-label" for="descripcion">Descripcion de la Noticia </label>
-                                                    <textarea class="form-control form-control-lg @error('descripcion') is-invalid @enderror" style="line-height: 1.08vw"  rows="13" cols="50" name="descripcion" id="descripcion">{{ old('descripcion') }}</textarea>
-                                                </div> 
-                                                @error('descripcion')
-                                                    <div class="alert alert-danger">{!! $errors->first('descripcion', '<small>:message</small>') !!}</div>
-                                                @enderror
+                                                <label class="form-label" for="titulo">Titulo de la Noticia </label>                                       
+                                                <input type="text" maxlength="70" class="form-control form-control-lg @error('titulo') is-invalid @enderror"" name="titulo" id="titulo" value="{{ old('titulo') }}">
                                             </div>
+                                        @error('titulo')
+                                            <div class="alert alert-danger">{!! $errors->first('titulo', '<small>:message</small>') !!}</div>
+                                        @enderror
+                                            {{-- <div class="form-group">
+                                                <label class="form-label" for="url">Url de la Noticia </label>                                       
+                                                <input type="text" maxlength="70" class="form-control form-control-lg @error('url') is-invalid @enderror"" name="url" id="url" value="{{ old('url') }}">
+                                            </div>
+                                        @error('url')
+                                            <div class="alert alert-danger">{!! $errors->first('url', '<small>:message</small>') !!}</div>
+                                        @enderror --}}
+                                            <div class="form-group">
+                                                <label class="form-label" for="descripcion">Descripcion de la Noticia </label>
+                                                <textarea class="form-control form-control-lg @error('descripcion') is-invalid @enderror" style="line-height: 1.08vw"  rows="13" cols="50" name="descripcion" id="descripcion">{{ old('descripcion') }}</textarea>
+                                            </div> 
+                                        @error('descripcion')
+                                            <div class="alert alert-danger">{!! $errors->first('descripcion', '<small>:message</small>') !!}</div>
+                                        @enderror
+                                    </div>
                                     <div class="col-lg-6 col-md-6 col-sm-12">
                                             <div class="cont-img mx-auto mt-4">
                                                 <label class="form-label" for="imagen">Imagen Noticia</label>

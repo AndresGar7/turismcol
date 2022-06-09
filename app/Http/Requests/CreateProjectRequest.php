@@ -24,7 +24,7 @@ class CreateProjectRequest extends FormRequest
     public function rules()
     {
         return [
-            'titulo' => 'required',
+            'titulo' => 'required|unique:noticias,title',
             'descripcion' => 'required|min:70',
             'imagen' => 'required|image'
         ];
@@ -34,6 +34,7 @@ class CreateProjectRequest extends FormRequest
     {
         return [
             'titulo.required' => 'El campo del titulo es obligatorio',
+            'titulo.unique' => 'El campo del titulo no se puede repetir',
             'descripcion.required' => 'El campo descripcion es obligatorio',
             'descripcion.min' => 'Debe ingresar como minimo 70 caracteres acerca de la noticia' ,
             'imagen.required' => 'La noticia debe de contener una imagen',

@@ -30,7 +30,6 @@
                             </div>
                             <div class="row">
                                 <p class="mt-2"><small><strong>Creado hace: </strong>{{ $noticia->updated_at->diffForHumans() }}</small></p>
-                                Aqui va el check para que quede de principal noticia.
                             </div>
                         </div>
                     </div>

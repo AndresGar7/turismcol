@@ -41,6 +41,18 @@
                                 @error('imagen')
                                         <div class="alert alert-danger">{!! $errors->first('imagen', '<small>:message</small>') !!}</div>
                                 @enderror
+                                <div class="row">
+                                    <div class="col-lg-6">
+                                        <div class="form-group">
+                                            <label class="form-label" for="importancia">Prioridad:</label>
+                                            <select class="form-select" name="importancia" id="importanica"  {{ ($cantidad == 2 && $noticia->importancia == 'sec') ? 'Disabled' : '' }}>
+                                                <option  selected value="{{ $noticia->importancia }}">{{ $noticia->importancia == 'pri' ? 'Principal' : 'Secundario'}}</option>
+                                                <option value="sec">Secundario</option>
+                                                <option value="pri">Principal</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>

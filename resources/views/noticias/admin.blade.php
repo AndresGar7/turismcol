@@ -37,6 +37,7 @@
                                                         <th>Resumen</th>
                                                         <th>Fecha Creación</th>
                                                         <th>Fecha Actualización</th>
+                                                        <th>Prioridad</th>
                                                         <th>Operación</th>
                                                     </tr>
                                                 </thead>
@@ -47,12 +48,13 @@
                                                         $title_modificado = substr($title_modificado, 0, 30);
                                                         $title_modificado = $title_modificado . '...';
                                                     @endphp
-                                                        <tr>
+                                                        <tr class="{{ ($noticia->importancia == 'pri') ? 'table-warning' : ''}}">
                                                             <td class="text-center">{{ $noticia->id }}</td>
-                                                            <td><div class="p">{{ $title_modificado }}</td></div>
-                                                            <td><textarea class="form-control" name="res" id="res" cols="30" rows="2" disabled>{{ $noticia->resumen }}</textarea></td>
+                                                            <td><div class="p">{{ $title_modificado }}</div></td>
+                                                            <td><textarea class="form-control" name="res" id="res" cols="50" rows="2" disabled>{{ $noticia->resumen }}</textarea></td>
                                                             <td class="text-center">{{ $noticia->created_at->format('d-m-Y') }}</td>
                                                             <td class="text-center">{{ $noticia->updated_at->format('d-m-Y') }}</td>
+                                                            <td class="text-center">{{ ($noticia->importancia == 'pri' ? 'Principal' : 'Secundaria') }}</td>
                                                             <td class="text-center">
                                                                 <a class="btn btn-outline-dark btn-lg align-center" href="{{ route('noticias.showAdmin', $noticia) }}">Ver</a>
                                                             </td>
@@ -70,6 +72,7 @@
                                                         <th>Resumen</th>
                                                         <th>Fecha Creación</th>
                                                         <th>Fecha Actualización</th>
+                                                        <th>Prioridad</th>
                                                         <th>Operación</th>
                                                     </tr>
                                                 </tfoot>

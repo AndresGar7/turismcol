@@ -125,11 +125,14 @@ class NoticiaController extends Controller
 
     // SE ENCARGA DE MOSTRAR LA VISTA PARA EDITAR LA NOTICIA
     public function edit(Noticia $noticia)
-    {
+    {   
+
+        $cantidad = Noticia::where('importancia','=', 'pri')->count();
 
         return view('noticias.edit', [
 
-            'noticia' => $noticia
+            'noticia' => $noticia,
+            'cantidad' => $cantidad,
 
         ]);
 
@@ -143,6 +146,8 @@ class NoticiaController extends Controller
         $url = str_replace(' ','-',$titulo);
         $descripcion = trim(request('descripcion')) ;
         $resumen = substr($descripcion, 0, 70);
+
+        
 
         if(request()->file('imagen')){
 
@@ -158,7 +163,8 @@ class NoticiaController extends Controller
                 'url' => $url,
                 'description' => $descripcion,
                 'resumen' => $resumen,
-                'url_img' => $url_imagen
+                'url_img' => $url_imagen,
+                'importancia' => $request->importancia
             ]);
 
              //!-----------------------------------------------------------------------------
@@ -176,7 +182,8 @@ class NoticiaController extends Controller
                 'title' => $titulo,
                 'url' => $url,
                 'description' => $descripcion,
-                'resumen' => $resumen
+                'resumen' => $resumen,
+                'importancia' => $request->importancia
             ]);
         }
 

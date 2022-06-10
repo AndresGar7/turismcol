@@ -24,11 +24,14 @@
                         </div>
                         <div class="col-lg-6 col-md-6 col-sm-12">
                             <div class="cont-img mx-auto">
-                                <div class="row d-flex">
+                                <div class="row">
                                     <img class="img-fluid" style="height: 20rem; object-fit:cover;" src="{{ asset($noticia->url_img) }}" alt="{{ $noticia->url_img }}">
                                 </div>
                             </div>
-                            <p><small><strong>Creado hace: </strong>{{ $noticia->updated_at->diffForHumans() }}</small></p>
+                            <div class="row">
+                                <p class="mt-2"><small><strong>Creado hace: </strong>{{ $noticia->updated_at->diffForHumans() }}</small></p>
+                                Aqui va el check para que quede de principal noticia.
+                            </div>
                         </div>
                     </div>
                 </div>

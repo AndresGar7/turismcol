@@ -74,96 +74,96 @@ function traerFotos (dato){
 //     }   
 // }
 
-// //FUNCION ENCARGADA DE REALIZAR LA CONEXION  CON EL ARCHIVO JSON QUE CONTIENE LAS NOTICIAS
-// function traerDatos(){
-//     var xhttp = new XMLHttpRequest();
+//FUNCION ENCARGADA DE REALIZAR LA CONEXION  CON EL ARCHIVO JSON QUE CONTIENE LAS NOTICIAS
+function traerDatos(){
+    var xhttp = new XMLHttpRequest();
 
-//     xhttp.onreadystatechange = function () {
-//         if(this.readyState == 4 && this.status == 200){
-//             mostrarDatos(this);
-//         }
-//     };
-//     xhttp.open("GET","../json/noticias.json", true);
-//     xhttp.send(null);
-// }
+    xhttp.onreadystatechange = function () {
+        if(this.readyState == 4 && this.status == 200){
+            mostrarDatos(this);
+        }
+    };
+    xhttp.open("GET","../json/noticias.json", true);
+    xhttp.send(null);
+}
 
-// //FUNCION ENCARGADA DE MOSTRAR LAS NOTICIAS EN LA PAGINA
-// function mostrarDatos(json){
-//     let datos = JSON.parse(json.responseText);
-//     let indice1 = '1';
-//     let indice2 = '0';
-//     let cantidad = 0;
+//FUNCION ENCARGADA DE MOSTRAR LAS NOTICIAS EN LA PAGINA
+function mostrarDatos(json){
+    let datos = JSON.parse(json.responseText);
+    let indice1 = '1';
+    let indice2 = '0';
+    let cantidad = 0;
     
 
-//     for(let item1  of datos){
+    for(let item1  of datos){
         
-//         if(item1.prioridad == '1'){
-//             let res =  document.querySelector('#fondoNoticia'+indice1);
-//             res.innerHTML = '';
+        if(item1.prioridad == '1'){
+            let res =  document.querySelector('#fondoNoticia'+indice1);
+            res.innerHTML = '';
             
-//             res.innerHTML += `
-//                 <div class="iniNoticia" id="noticia${indice1}">
-//                     <img src="../img/noticia${indice1}.jpg" alt="${item1.nameImagen}">
-//                     <div class="subir" id="subir${indice1}">
-//                         <h3>${item1.titulo}</h3>
-//                         <div class="fechaNoticia">
-//                             ${item1.fecha}
-//                         </div>
-//                         <div class="contenidoNoticia-primaria">
-//                             ${item1.resumen}
-//                         </div>
-//                     </div>
-//                 </div>
-//                 <div class="leerMas" id="leerMas${indice1}">
-//                     LEER MAS >
-//                 </div>
-//             `;
-//             indice1++;           
-//         }        
-//     }
+            res.innerHTML += `
+                <div class="iniNoticia" id="noticia${indice1}">
+                    <img src="../img/noticia${indice1}.jpg" alt="${item1.nameImagen}">
+                    <div class="subir" id="subir${indice1}">
+                        <h3>${item1.titulo}</h3>
+                        <div class="fechaNoticia">
+                            ${item1.fecha}
+                        </div>
+                        <div class="contenidoNoticia-primaria">
+                            ${item1.resumen}
+                        </div>
+                    </div>
+                </div>
+                <div class="leerMas" id="leerMas${indice1}">
+                    LEER MAS >
+                </div>
+            `;
+            indice1++;           
+        }        
+    }
 
-//     indice2 =  indice1;
+    indice2 =  indice1;
 
-//     for(let item of datos){
-//         if(item.prioridad == '2'){
-//             cantidad++;
-//         }
-//     }
+    for(let item of datos){
+        if(item.prioridad == '2'){
+            cantidad++;
+        }
+    }
 
-//     for( var i = 1; i < cantidad+1; i++){
-//         let res = document.querySelector('#notSecundarias');
+    for( var i = 1; i < cantidad+1; i++){
+        let res = document.querySelector('#notSecundarias');
 
-//         res.innerHTML += `<a href="#" class="cajaAltaNoticia" onmouseover="moverTitulo('${indice1}')" onmouseout="regresarTitulo('${indice1}')" id="fondoNoticia${indice1}"></a>`;
-//         indice1++;
-//     }   
+        res.innerHTML += `<a href="#" class="cajaAltaNoticia" onmouseover="moverTitulo('${indice1}')" onmouseout="regresarTitulo('${indice1}')" id="fondoNoticia${indice1}"></a>`;
+        indice1++;
+    }   
 
-//     for(let item2 of datos){
+    for(let item2 of datos){
 
-//         if(item2.prioridad == '2'){
-//             let res2 = document.querySelector('#fondoNoticia'+indice2);
-//             res2.innerHTML = '';
+        if(item2.prioridad == '2'){
+            let res2 = document.querySelector('#fondoNoticia'+indice2);
+            res2.innerHTML = '';
 
-//             res2.innerHTML = `
-//                 <div class="iniNoticia2" id="noticia${indice2}">
-//                     <img src="../img/noticia${indice2}.jpg" alt="${item2.nameImagen}">
-//                     <div class="subir" id="subir${indice2}">
-//                         <h3>${item2.titulo}</h3>
-//                         <div class="fechaNoticia">
-//                             ${item2.fecha}
-//                         </div>
-//                         <div class="contenidoNoticia-secundaria">
-//                             ${item2.resumen}
-//                         </div>
-//                     </div>
-//                 </div>
-//                 <div class="leerMas" id="leerMas${indice2}">
-//                     LEER MAS >
-//                 </div>
-//             `;
-//             indice2++;
-//         }
-//     }
-// }
+            res2.innerHTML = `
+                <div class="iniNoticia2" id="noticia${indice2}">
+                    <img src="../img/noticia${indice2}.jpg" alt="${item2.nameImagen}">
+                    <div class="subir" id="subir${indice2}">
+                        <h3>${item2.titulo}</h3>
+                        <div class="fechaNoticia">
+                            ${item2.fecha}
+                        </div>
+                        <div class="contenidoNoticia-secundaria">
+                            ${item2.resumen}
+                        </div>
+                    </div>
+                </div>
+                <div class="leerMas" id="leerMas${indice2}">
+                    LEER MAS >
+                </div>
+            `;
+            indice2++;
+        }
+    }
+}
 
 // // AL PONER EL CURSOR DEL MOUSE SOBRE EL BLOQUE DE LA NOTICIA ACTIVARA VARIAS EFECTOS VISUALES 
 // // PARA INDICAR QUE SE ESTA SELECCIONANDO ESE BLOQUE O NOTICIA EN ESPECIFICO

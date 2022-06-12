@@ -16,10 +16,10 @@ class NoticiaController extends Controller
     // SE ENCARGA DE MOSTRAR LAS NOTICIAS EN LA PARTE PRINCIPAL DE LA PAGINA
     public function index()
     {   
-
-        $noticias = Noticia::orderBy('created_at','DESC')->paginate(2);
+        $noticiasPri =  Noticia::where('importancia','=','pri')->get();
+        $noticias = Noticia::orderBy('created_at','DESC')->paginate(6);
         
-        return view('noticias.index', compact('noticias'));
+        return view('noticias.index', compact(['noticias','noticiasPri']));
     }
 
     // SI SE ESCOGE ALGUNA NOTICIA MUESTRA LA INFORMACION EN UNA PAGINA NUEVA DE LA PAGINA PRINCIPAL
@@ -108,7 +108,7 @@ class NoticiaController extends Controller
          //!-----------------------------------------------------------------------------
         // Esto se utiliza para optimizar el tamaño de las imagenes que se van a mostrar de las noticias.
         $image = Image::make(Storage::get($imagen))
-        ->widen(600)
+        ->resize(400, 300)
         ->limitColors(255)
         ->encode();
 
@@ -170,7 +170,7 @@ class NoticiaController extends Controller
              //!-----------------------------------------------------------------------------
             // Esto se utiliza para optimizar el tamaño de las imagenes que se van a mostrar de las noticias.
             $image = Image::make(Storage::get($imagen))
-                ->widen(600)
+                ->resize(400, 300)
                 ->limitColors(255)
                 ->encode();
     

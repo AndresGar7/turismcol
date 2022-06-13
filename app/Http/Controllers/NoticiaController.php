@@ -17,7 +17,7 @@ class NoticiaController extends Controller
     public function index()
     {   
         $noticiasPri =  Noticia::where('importancia','=','pri')->get();
-        $noticias = Noticia::orderBy('created_at','DESC')->paginate(6);
+        $noticias = Noticia::where('importancia','sec')->paginate(6);
         
         return view('noticias.index', compact(['noticias','noticiasPri']));
     }
@@ -92,23 +92,28 @@ class NoticiaController extends Controller
 
         $imagen = request()->file('imagen')->store('public/img/noticias');
 
+        $name_img = $request->file('imagen')->store('public/img/noticias');
+        $name_img = str_replace('public/img/noticias/','', $name_img);
+        $ext_img= substr($name_img, -4);
+        $name_img = str_replace($ext_img ,'', $name_img);
+
         $url_imagen = str_replace('public','storage',$imagen) ;
         
         Noticia::create([
 
             'title' => $titulo,
             'url' => $url,
-            
             'resumen' => $resumen,
             'description' => $descripcion,
-            'url_img' => $url_imagen
+            'url_img' => $url_imagen,
+            'name_img' => $name_img
 
         ]);
 
          //!-----------------------------------------------------------------------------
         // Esto se utiliza para optimizar el tamaño de las imagenes que se van a mostrar de las noticias.
         $image = Image::make(Storage::get($imagen))
-        ->resize(400, 300)
+        ->resize(600, 500)
         ->limitColors(255)
         ->encode();
 
@@ -156,6 +161,12 @@ class NoticiaController extends Controller
             
             
             $imagen = request()->file('imagen')->store('public/img/noticias');
+
+            $name_img = $request->file('imagen')->store('public/img/noticias');
+            $name_img = str_replace('public/img/noticias/','', $name_img);
+            $ext_img= substr($name_img, -4);
+            $name_img = str_replace($ext_img ,'', $name_img);
+            
             $url_imagen = str_replace('public','storage',$imagen);
             // return [$noticia->url_img, $url_imagen = str_replace('public','storage',$imagen)];
             $noticia->update([
@@ -164,13 +175,14 @@ class NoticiaController extends Controller
                 'description' => $descripcion,
                 'resumen' => $resumen,
                 'url_img' => $url_imagen,
+                'name_img' => $name_img,
                 'importancia' => $request->importancia
             ]);
 
              //!-----------------------------------------------------------------------------
             // Esto se utiliza para optimizar el tamaño de las imagenes que se van a mostrar de las noticias.
             $image = Image::make(Storage::get($imagen))
-                ->resize(400, 300)
+                ->resize(600, 500)
                 ->limitColors(255)
                 ->encode();
     

@@ -20,6 +20,7 @@ class CreateNoticiasTable extends Migration
             $table->string('resumen');
             $table->text('description');
             $table->string('url_img');
+            $table->string('name_img');
             $table->enum('importancia',['pri','sec']);
             $table->timestamps();
         });

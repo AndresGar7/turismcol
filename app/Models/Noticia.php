@@ -19,6 +19,7 @@ class Noticia extends Model
         'description',
         'url',
         'url_img',
+        'name_img',
         'importancia'
     ];
     

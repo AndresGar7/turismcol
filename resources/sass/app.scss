@@ -92,7 +92,13 @@ a {
     font-family: Coolvetica;
     letter-spacing: 2px;
 }
-
+.title{
+    color: white;
+    font-size: 4vw;
+    font-weight: bold;
+    font-family: Coolvetica;
+    letter-spacing: 2px;
+}
 .buscar {
     position: absolute;
     margin-top: -18vw;
@@ -277,18 +283,14 @@ opacity: 1;
 }
 
 .card-principal-up{
-    width: 90%;
-    z-index: 3;
+    width: 85%;
+    z-index: 100;
 }
 
 .card-principal-down{
-    width: 90%;
+    width: 85%;
     margin-top: 15vw;
-    z-index: 3;
-}
-
-.noticias_secundarias{
-    margin-top: 35vw;
+    z-index: 100;
 }
 
 .decoracion{
@@ -301,6 +303,12 @@ opacity: 1;
     background-color: #12b886;
     opacity: 0.4;
     border-radius: 2vw;
+}
+.noticias_secundarias{
+    margin-top: 35vw;
+}
+.card-secundario{
+    width: 80%;
 }
 
 @media screen and (max-width: 1440px) {
@@ -694,7 +702,14 @@ opacity: 1;
         font-size: 6.5vw;
     }
     .msg-bienvenida-noticias{
-        font-size: 8vw;
+        font-size: 10vw;
+    }
+    .title{
+        color: white;
+        font-size: 10vw;
+        font-weight: bold;
+        font-family: Coolvetica;
+        letter-spacing: 2px;
     }
     .bajar-cont-card {
         margin-top: 50vw;
@@ -849,10 +864,6 @@ opacity: 1;
         z-index: 3;
     }
 
-    .noticias_secundarias{
-        margin-top: 220vw;
-    }
-
     .decoracion{
         position: absolute;
         z-index: 1;
@@ -862,6 +873,13 @@ opacity: 1;
         height: 200px;
         background-color: #12b886;
         opacity: 0.4;
+    }
+    .noticias_secundarias{
+        margin-top: 220vw;
+        // width: 94%;
+    }
+    .card-secundario{
+        width: 80%;
     }
 }
 

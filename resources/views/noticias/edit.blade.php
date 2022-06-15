@@ -50,6 +50,9 @@
                                                 <option value="sec">Secundario</option>
                                                 <option value="pri">Principal</option>
                                             </select>
+                                            @if ($cantidad == 2 && $noticia->importancia == 'sec')
+                                                <input type="text" name="importancia_sinver" id="importancia_sinver" value="{{ $noticia->importancia }}" hidden>
+                                            @endif
                                         </div>
                                     </div>
                                 </div>

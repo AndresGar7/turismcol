@@ -92,8 +92,8 @@ class NoticiaController extends Controller
 
         $imagen = request()->file('imagen')->store('public/img/noticias');
 
-        $name_img = $request->file('imagen')->store('public/img/noticias');
-        $name_img = str_replace('public/img/noticias/','', $name_img);
+        // $name_img = $request->file('imagen')->store('public/img/noticias');
+        $name_img = str_replace('public/img/noticias/','', $imagen);
         $ext_img= substr($name_img, -4);
         $name_img = str_replace($ext_img ,'', $name_img);
 
@@ -114,7 +114,6 @@ class NoticiaController extends Controller
         // Esto se utiliza para optimizar el tamaño de las imagenes que se van a mostrar de las noticias.
         $image = Image::make(Storage::get($imagen))
         ->resize(600, 500)
-        ->limitColors(255)
         ->encode();
 
         Storage::put($imagen, (string) $image);
@@ -162,8 +161,8 @@ class NoticiaController extends Controller
             
             $imagen = request()->file('imagen')->store('public/img/noticias');
 
-            $name_img = $request->file('imagen')->store('public/img/noticias');
-            $name_img = str_replace('public/img/noticias/','', $name_img);
+            // $name_img = $request->file('imagen')->store('public/img/noticias');
+            $name_img = str_replace('public/img/noticias/','', $imagen);
             $ext_img= substr($name_img, -4);
             $name_img = str_replace($ext_img ,'', $name_img);
             
@@ -183,19 +182,19 @@ class NoticiaController extends Controller
             // Esto se utiliza para optimizar el tamaño de las imagenes que se van a mostrar de las noticias.
             $image = Image::make(Storage::get($imagen))
                 ->resize(600, 500)
-                ->limitColors(255)
                 ->encode();
     
             Storage::put($imagen, (string) $image);
              //!-----------------------------------------------------------------------------
 
         }else{
+
             $noticia->update([
                 'title' => $titulo,
                 'url' => $url,
                 'description' => $descripcion,
                 'resumen' => $resumen,
-                'importancia' => $request->importancia
+                'importancia' => $request->importancia_sinver
             ]);
         }
 

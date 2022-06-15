@@ -16,10 +16,10 @@ class NoticiaController extends Controller
     // SE ENCARGA DE MOSTRAR LAS NOTICIAS EN LA PARTE PRINCIPAL DE LA PAGINA
     public function index()
     {   
-
-        $noticias = Noticia::orderBy('created_at','DESC')->paginate(2);
+        $noticiasPri =  Noticia::where('importancia','=','pri')->get();
+        $noticias = Noticia::where('importancia','sec')->paginate(6);
         
-        return view('noticias.index', compact('noticias'));
+        return view('noticias.index', compact(['noticias','noticiasPri']));
     }
 
     // SI SE ESCOGE ALGUNA NOTICIA MUESTRA LA INFORMACION EN UNA PAGINA NUEVA DE LA PAGINA PRINCIPAL
@@ -92,24 +92,28 @@ class NoticiaController extends Controller
 
         $imagen = request()->file('imagen')->store('public/img/noticias');
 
+        // $name_img = $request->file('imagen')->store('public/img/noticias');
+        $name_img = str_replace('public/img/noticias/','', $imagen);
+        $ext_img= substr($name_img, -4);
+        $name_img = str_replace($ext_img ,'', $name_img);
+
         $url_imagen = str_replace('public','storage',$imagen) ;
         
         Noticia::create([
 
             'title' => $titulo,
             'url' => $url,
-            
             'resumen' => $resumen,
             'description' => $descripcion,
-            'url_img' => $url_imagen
+            'url_img' => $url_imagen,
+            'name_img' => $name_img
 
         ]);
 
          //!-----------------------------------------------------------------------------
         // Esto se utiliza para optimizar el tamaño de las imagenes que se van a mostrar de las noticias.
         $image = Image::make(Storage::get($imagen))
-        ->widen(600)
-        ->limitColors(255)
+        ->resize(600, 500)
         ->encode();
 
         Storage::put($imagen, (string) $image);
@@ -125,11 +129,14 @@ class NoticiaController extends Controller
 
     // SE ENCARGA DE MOSTRAR LA VISTA PARA EDITAR LA NOTICIA
     public function edit(Noticia $noticia)
-    {
+    {   
+
+        $cantidad = Noticia::where('importancia','=', 'pri')->count();
 
         return view('noticias.edit', [
 
-            'noticia' => $noticia
+            'noticia' => $noticia,
+            'cantidad' => $cantidad,
 
         ]);
 
@@ -144,6 +151,8 @@ class NoticiaController extends Controller
         $descripcion = trim(request('descripcion')) ;
         $resumen = substr($descripcion, 0, 70);
 
+        
+
         if(request()->file('imagen')){
 
             $img_publica = str_replace('storage','public',$noticia->url_img);
@@ -151,6 +160,12 @@ class NoticiaController extends Controller
             
             
             $imagen = request()->file('imagen')->store('public/img/noticias');
+
+            // $name_img = $request->file('imagen')->store('public/img/noticias');
+            $name_img = str_replace('public/img/noticias/','', $imagen);
+            $ext_img= substr($name_img, -4);
+            $name_img = str_replace($ext_img ,'', $name_img);
+            
             $url_imagen = str_replace('public','storage',$imagen);
             // return [$noticia->url_img, $url_imagen = str_replace('public','storage',$imagen)];
             $noticia->update([
@@ -158,25 +173,28 @@ class NoticiaController extends Controller
                 'url' => $url,
                 'description' => $descripcion,
                 'resumen' => $resumen,
-                'url_img' => $url_imagen
+                'url_img' => $url_imagen,
+                'name_img' => $name_img,
+                'importancia' => $request->importancia
             ]);
 
              //!-----------------------------------------------------------------------------
             // Esto se utiliza para optimizar el tamaño de las imagenes que se van a mostrar de las noticias.
             $image = Image::make(Storage::get($imagen))
-                ->widen(600)
-                ->limitColors(255)
+                ->resize(600, 500)
                 ->encode();
     
             Storage::put($imagen, (string) $image);
              //!-----------------------------------------------------------------------------
 
         }else{
+
             $noticia->update([
                 'title' => $titulo,
                 'url' => $url,
                 'description' => $descripcion,
-                'resumen' => $resumen
+                'resumen' => $resumen,
+                'importancia' => $request->importancia_sinver
             ]);
         }
 

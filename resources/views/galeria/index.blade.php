@@ -7,7 +7,7 @@
         <img src="{{ asset('/img/guatape1.jpg') }}" alt="Fondo Pueblo Guatape" class="d-block" width="100%" height="auto" style="z-index: 1;">
         <div class="container">
             <div class="bienvenida">
-                <h2 class="display-5 sombra-title msg-bienvenida text-center">Imagenes de algunos de los mejores lugares de nuestra Colombia</h2>
+                <h2 class="sombra-title msg-bienvenida text-center">Imagenes de algunos de los mejores lugares de nuestra Colombia</h2>
             </div>
         </div>
     </div>

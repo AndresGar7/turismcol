@@ -8,7 +8,7 @@
 @stop
 
 @section('content')
-    <p>Apenas estamos cambiando todo....</p>
+    <p>Ya vamos terminando la parte de  las noticias</p>
 @stop
 
 @section('css')

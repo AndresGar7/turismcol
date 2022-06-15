@@ -17,7 +17,7 @@ class NoticiaController extends Controller
     public function index()
     {   
         $noticiasPri =  Noticia::where('importancia','=','pri')->get();
-        $noticias = Noticia::where('importancia','sec')->paginate(6);
+        $noticias = Noticia::where('importancia','sec')->simplePaginate(6);
         
         return view('noticias.index', compact(['noticias','noticiasPri']));
     }

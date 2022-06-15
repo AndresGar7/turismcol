@@ -82,7 +82,11 @@
             @empty
                 <h2>No hay noticias para mostrar</h2>
             @endforelse
-                {{ $noticias->links() }}
+            <div class="form-group mb-5">
+                <div class="text-center">
+                    {{ $noticias->links() }}
+                </div>
+            </div>
         </div>
     </div>
 </div>

@@ -45,14 +45,14 @@
                                     <div class="col-lg-6">
                                         <div class="form-group">
                                             <label class="form-label" for="importancia">Prioridad:</label>
-                                            <select class="form-select" name="importancia" id="importanica"  {{ ($cantidad == 2 && $noticia->importancia == 'sec') ? 'Disabled' : '' }}>
+                                            <select class="form-select" name="importancia" id="importancia"  {{ ($cantidad == 2 && $noticia->importancia == 'sec') ? 'Disabled' : '' }}>
                                                 <option  selected value="{{ $noticia->importancia }}">{{ $noticia->importancia == 'pri' ? 'Principal' : 'Secundario'}}</option>
                                                 <option value="sec">Secundario</option>
                                                 <option value="pri">Principal</option>
                                             </select>
-                                            @if ($cantidad == 2 && $noticia->importancia == 'sec')
+                                            {{-- @if (($cantidad == 2 && $noticia->importancia == 'sec'))
                                                 <input type="text" name="importancia_sinver" id="importancia_sinver" value="{{ $noticia->importancia }}" hidden>
-                                            @endif
+                                            @endif --}}
                                         </div>
                                     </div>
                                 </div>

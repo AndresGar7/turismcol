@@ -270,12 +270,13 @@ return [
         ['header' => 'account_settings'],
         [
             'text' => 'Mi Información',
-            'url'  => 'admin/settings',
+            // 'url'  => 'admin/settings',
             'icon' => 'fas fa-fw fa-user',
+            'active' => ['perfil*'],
             'submenu' => [
                 [
                     'text' => 'Datos',
-                    'url' => '#',
+                    'route' => 'perfil.admin',
                     'icon' => 'fas fa-fw fa-address-card',
                 ],
                 [
@@ -283,13 +284,26 @@ return [
                     'url' => '#',
                     'icon' => 'fas fa-fw fa-lock',
                 ],
-            ],
+            ]
         ],
         [
-            'text' => 'change_password',
-            'url'  => 'admin/settings',
-            'icon' => 'fas fa-fw fa-lock',
+            'text' => 'Mis Proyectos',
+            // 'url' => 'admin/settings',
+            'icon' => 'fas fa-fw fa-folder-open',
+            'submenu' => [
+                [
+                    'text' => 'Creación Proyecto',
+                    'url' => '#',
+                    'icon' => 'fas fa-fw fa-file'
+                ],
+                [
+                    'text' => 'Admin. Proyectos',
+                    'url' => '#',
+                    'icon' => 'fas fa-fw fa-toolbox'
+                ]
+            ]
         ],
+        ['header' => 'ADMIN. PÁGINA'],
         [
             'text' => 'Administracion Noticias',
             'route' => 'noticias.admin',

@@ -59,7 +59,7 @@
                                             </div>
                                             <div class="card-body">
                                                 <div class="form-group">
-                                                    <input class="form-control btn-primary form-control-lg @error('imagen') is-invalid @enderror" type="file" onchange="vista_priliminar(event)" name="imagen" id="imagen" accept="image/*" value="{{ old('imagen') }}">
+                                                    <input class="form-control btn-primary form-control-lg @error('imagen') is-invalid @enderror" type="file" onchange="vista_preliminar(event)" name="imagen" id="imagen" accept="image/*" value="{{ old('imagen') }}">
                                                 </div>
                                                 @error('imagen')
                                                         <div class="alert alert-danger">{!! $errors->first('imagen', '<small>:message</small>') !!}</div>
@@ -94,7 +94,7 @@
 {{-- <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.17/dist/sweetalert2.all.min.js"></script> --}}
 <script src="{{ asset('js/sweetalert2.all.min.js') }}"></script>
 <script>
-    let vista_priliminar = (event) =>{
+    let vista_preliminar = (event) =>{
         let leer_img = new FileReader();
         let id_img  = document.getElementById('imgPrevizual');
 

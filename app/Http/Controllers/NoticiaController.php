@@ -189,12 +189,13 @@ class NoticiaController extends Controller
 
         }else{
 
+
             $noticia->update([
                 'title' => $titulo,
                 'url' => $url,
                 'description' => $descripcion,
                 'resumen' => $resumen,
-                'importancia' => $request->importancia_sinver
+                'importancia' => $request->importancia
             ]);
         }
 

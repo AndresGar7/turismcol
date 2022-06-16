@@ -46,3 +46,7 @@ Route::post('/presupuesto', [App\Http\Controllers\PresupuestoController::class, 
 
 // RUTAS CREADA PARA MOSTRAR EL CONTACTO
 Route::get('/contacto',[App\Http\Controllers\ContactoController::class, 'index'])->name('contacto.index');
+
+// RUTAS CREADAS PARA LA ADMINISTRACION DEL PERFIL REGISTRADO
+Route::get('/perfil/admin', [App\Http\Controllers\PerfilController::class, 'admin'])->name(('perfil.admin'));
+Route::post('/perfil', [\App\Http\Controllers\PerfilController::class, 'store'])->name('perfil.store');

@@ -5,7 +5,7 @@
 @section('content')
     <div class="container bg-dark">
         <div class="row p-5">
-            <h1 class="display-1 text-danger text-center">Pagina no encontrada</h1>
+            <h1 class="display-1 text-danger text-center">Página no encontrada</h1>
         </div>
     </div>
     <div class="container mt-5">

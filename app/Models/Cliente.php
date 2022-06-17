@@ -15,9 +15,11 @@ class Cliente extends Model
 
     protected $fillable = [
         'nombre',
+        'usuario',
         'email',
         'url_img',
         'name_img',
-        'rango'
+        'rango',
+        'sexo'
     ];
 }

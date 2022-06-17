@@ -15,10 +15,15 @@ class CreateClientesTable extends Migration
     {
         Schema::create('clientes', function (Blueprint $table) {
             $table->id();
-            $table->string('usuario')->unique();
+            $table->string('usuario')->unique()->nullable();
             $table->string('email')->unique();
-            $table->string('url_img');
-            $table->string('name_img');
+            $table->string('url_img')->nullable();
+            $table->string('direccion')->nullable();
+            $table->string('cod_postal')->nullable();
+            $table->string('ciudad')->nullable();
+            $table->string('pais')->nullable();
+            $table->string('name_img')->nullable();
+            $table->enum('sexo',['N','F','M'])->nullable();  
             $table->enum('rango',['cli','sop','adm']);  
             $table->timestamps();
         });

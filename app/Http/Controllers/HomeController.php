@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Cliente;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -22,8 +23,10 @@ class HomeController extends Controller
      * @return \Illuminate\Contracts\Support\Renderable
      */
     public function admin()
-    {
-        return view('home');
+    {   
+        $actualizado = Cliente::where('email','=', auth()->user()->email)->count();
+        
+        return view('home', compact('actualizado'));
     }
 
     public function index()

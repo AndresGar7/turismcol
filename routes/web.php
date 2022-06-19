@@ -50,3 +50,4 @@ Route::get('/contacto',[App\Http\Controllers\ContactoController::class, 'index']
 // RUTAS CREADAS PARA LA ADMINISTRACION DEL PERFIL REGISTRADO
 Route::get('/perfil/admin', [App\Http\Controllers\PerfilController::class, 'admin'])->name(('perfil.admin'));
 Route::post('/perfil', [\App\Http\Controllers\PerfilController::class, 'store'])->name('perfil.store');
+Route::patch('/perfil/{usuario}', [App\Http\Controllers\PerfilController    ::class, 'update'])->name('perfil.update');

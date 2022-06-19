@@ -91,7 +91,6 @@
 
 @section('js')
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-{{-- <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.17/dist/sweetalert2.all.min.js"></script> --}}
 <script src="{{ asset('js/sweetalert2.all.min.js') }}"></script>
 <script>
     let vista_preliminar = (event) =>{

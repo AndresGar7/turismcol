@@ -20,6 +20,11 @@ class Cliente extends Model
         'url_img',
         'name_img',
         'rango',
-        'sexo'
+        'sexo',
+        'nombre',
+        'direccion',
+        'ciudad',
+        'cod_postal',
+        'pais'
     ];
 }

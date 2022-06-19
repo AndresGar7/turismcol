@@ -12,7 +12,6 @@
             <div class="card-header">
                 <h3 class="fw-70 mb-0">{{ $noticia->title }}</h3>
             </div>
-
             <form method="POST" action="{{ route('noticias.update', $noticia) }}" enctype="multipart/form-data">
                 @csrf   @method('PATCH')
                 <div class="card-body">

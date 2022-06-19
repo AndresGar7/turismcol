@@ -85,7 +85,7 @@ class NoticiaController extends Controller
         //     'imagen.image' => 'El archivo debe de ser JPG o PNG'
         // ]);
 
-        $titulo = trim(request('titulo'));
+        $titulo = trim(request('titulo')); // QUITA LOS ESPACIOS DE UNA CADENA DE TEXTO
         $url = str_replace(' ','-',$titulo);
         $descripcion = trim(request('descripcion'));
         $resumen = substr($descripcion, 0, 70);

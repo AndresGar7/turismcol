@@ -3,7 +3,9 @@
 namespace App\Models;
 
 use Illuminate\Contracts\Auth\MustVerifyEmail;
+use App\Models\Cliente;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
@@ -44,9 +46,11 @@ class User extends Authenticatable
 
 
     // Funcion para cargar la imagen de perfil cuando el usuario se loguea, se debe de cambiar el nombre de la imagen en la DB
-    public function adminlte_image()
-    {
-        return asset('img/antioquia.png');
+    public function adminlte_image(){
+    // {   storage/img/perfiles/aEx0k99wo0RcoiofRuxGmgenkMInMyZC3ceu6BsM.jpg
+        // return asset('storage/img/perfiles/sin_imagen.png');
+        // $ruta = $this->cliente->url_img ?? 'storage/img/perfiles/sin_imagen.png';
+        return asset($this->cliente->url_img);
     }
     // Funcion que se encargar de mostrar el Rol del usuario que se encuentra logueado, se debe de traer de la DB y no pintar
     public function adminlte_desc()
@@ -60,4 +64,7 @@ class User extends Authenticatable
         return 'profile/username';
     }
 
+    public function cliente (){
+        return $this->hasOne(Cliente::class, 'email','email');
+    }
 }

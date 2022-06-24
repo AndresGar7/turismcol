@@ -16,7 +16,8 @@
             <div class="col-md-8 mx-auto mb-5">
                 <form method="POST"  action="{{  route($funcion, $cliente) }}" enctype="multipart/form-data">
                     @csrf
-                    @if ($cliente != '')
+                   
+                    @if ($cliente !== 0)
                         @method('PATCH')
                     @endif
                     <div class="card card-success shadow-lg">
@@ -25,7 +26,7 @@
                         </div>
                         <div class="card-body box-profile">
                             <div class="text-center">
-                                <img class="profile-user-img img-fluid img-circle" id="imgPrevizual"  src="{{ asset('storage/img/perfiles/sin_imagen.png') }}"  alt="Foto Perfil Usuario">
+                                <img class="profile-user-img img-fluid img-circle" id="imgPrevizual"  src="{{  asset($cliente->url_img) }}"  alt="Foto Perfil Usuario">
                             </div>
                             <h3 class="profile-username text-center">{{ auth()->user()->name }}</h3>
                             <div class="row mt-4">
@@ -42,7 +43,7 @@
                                 <div class="col-md-6 mt-2">
                                     <div class="form-group">    
                                         <label class="form-label" for="usuario">Usuario</label>
-                                        <input class="form-control" type="text" name="usuario" id="usuario" placeholder="Sin Usuario" value="{{ $cliente->usuario == null ? '' : $cliente->usuario}}">
+                                        <input class="form-control" type="text" name="usuario" id="usuario" placeholder="Sin Usuario" value="{{ old('usuario', $cliente !== 0 ? $cliente->usuario : '') }}">
                                     </div>
                                     @error('usuario')
                                         <div class="alert alert-danger">{!! $errors->first('usuario', '<small>:message</small>') !!}</div>
@@ -73,7 +74,7 @@
                                 <div class="col-md-6 mt-2">
                                     <div class="form-group">
                                         <label class="form-label" for="telefono">Teléfono</label>
-                                        <input class="form-control" type="number" name="telefono" id="telefono" placeholder="Teléfono">
+                                        <input class="form-control" type="number" name="telefono" id="telefono" placeholder="Teléfono" value="{{ old('telefono', $cliente !== 0 ? $cliente->telefono : '') }}">
                                     </div>
                                     @error('telefono')
                                         <div class="alert alert-danger">{!! $errors->first('telefono', '<small>:message</small>') !!}</div>
@@ -108,13 +109,13 @@
                                 <div class="col-md-6 mt-2">
                                     <div class="form-group">
                                         <label class="form-label" for="telefono">Dirección</label>
-                                        <input class="form-control" type="text" name="direccion" id="direccion" placeholder="Dirección">
+                                        <input class="form-control" type="text" name="direccion" id="direccion" placeholder="Dirección" value="{{ old('direccion', $cliente !== 0 ? $cliente->direccion : '') }}">
                                     </div>
                                 </div>
                                 <div class="col-md-6 mt-2">
                                     <div class="form-group">
                                         <label class="form-label" for="sexo">Ciudad</label>
-                                        <input class="form-control" type="text" name="ciudad" id="ciudad" placeholder="Ciudad">
+                                        <input class="form-control" type="text" name="ciudad" id="ciudad" placeholder="Ciudad" value="{{ old('ciudad', $cliente !== 0 ? $cliente->ciudad : '') }}">
                                     </div>
                                 </div>
                             </div>
@@ -122,13 +123,13 @@
                                 <div class="col-md-6 mt-2">
                                     <div class="form-group">
                                         <label class="form-label" for="telefono">Código postal</label>
-                                        <input class="form-control" type="text" name="cod_postal" id="cod_postal" placeholder="Cod. Postal">
+                                        <input class="form-control" type="number" name="cod_postal" id="cod_postal" placeholder="Cod. Postal" value="{{ old('cod_postal', $cliente !== 0 ? $cliente->cod_postal : '') }}">
                                     </div>
                                 </div>
                                 <div class="col-md-6 mt-2">
                                     <div class="form-group">
                                         <label class="form-label" for="sexo">País</label>
-                                        <input class="form-control" type="text" name="pais" id="pais" placeholder="País">
+                                        <input class="form-control" type="text" name="pais" id="pais" placeholder="País" value="{{ old('pais', $cliente !== 0 ?  $cliente->pais : '') }}">
                                     </div>
                                 </div>
                             </div>

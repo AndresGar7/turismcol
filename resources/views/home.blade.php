@@ -12,14 +12,14 @@
 @stop
 
 @section('content')
-    @if ($actualizado == 0)
+    @if (!$actualizado->usuario)
         <section class="content">
             <div class="container-fluid">
                 <div class="row mt-5">
                     <div class="col-md-10 mx-auto">
                         <div class="alert alert-warning alert-dismissible">
-                            <h2 class="text-center"><i class="icon fas fa-exclamation-triangle "></i> Gracias por completar tu perfil</h2>
-                            <p class="text-center">Por favor termine de actualizar su perfil  :)</p>
+                            <h2 class="text-center"><i class="icon fas fa-exclamation-triangle "></i> Por favor completar tu perfil!!!.</h2>
+                            <p class="text-center">Para poder mostrar el panel informativo :)</p>
                         </div>
                     </div>
                 </div>

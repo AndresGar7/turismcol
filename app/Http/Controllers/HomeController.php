@@ -24,7 +24,7 @@ class HomeController extends Controller
      */
     public function admin()
     {   
-        $actualizado = Cliente::where('email','=', auth()->user()->email)->count();
+        $actualizado = Cliente::where('email','=', auth()->user()->email)->first();
         
         return view('home', compact('actualizado'));
     }

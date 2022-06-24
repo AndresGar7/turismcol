@@ -28,6 +28,7 @@ Route::get('/galeria', [App\Http\Controllers\GaleriaController::class, 'index'])
 
 
 // RUTAS CREADAS PARA MOSTRAR LAS NOTICIAS EN LA PAGINA WEB PRINCIPAL
+// Route::get('/noticias', [App\Http\Controllers\NoticiaController::class, 'index'])->name('noticias.index')->middleware('is_authorized:cli');
 Route::get('/noticias', [App\Http\Controllers\NoticiaController::class, 'index'])->name('noticias.index');
 
 // RUTAS CREADAS PARA LA ADMINISTRACION DE LAS NOTICIAS

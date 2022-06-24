@@ -11,8 +11,14 @@ use App\Http\Requests\UpdateProjectRequest;
 use Intervention\Image\Facades\Image;
 
 class NoticiaController extends Controller
-{
+{   
     
+    public function __construct()
+    {
+                           //nombre middleware   protege unicamente los metodos que esten een el arreglo
+        $this->middleware('is_authorized:sop,adm', ['only' => ['create']]);
+    }
+
     // SE ENCARGA DE MOSTRAR LAS NOTICIAS EN LA PARTE PRINCIPAL DE LA PAGINA
     public function index()
     {   
@@ -155,10 +161,11 @@ class NoticiaController extends Controller
 
         if(request()->file('imagen')){
 
+            //Primero eliminamos la imagen gurdada dentro del servidor para poder cambiarla por la nueva
             $img_publica = str_replace('storage','public',$noticia->url_img);
             Storage::delete($img_publica);
             
-            
+            //Se guarda la nueva imagen en la carpeta del servidor
             $imagen = request()->file('imagen')->store('public/img/noticias');
 
             // $name_img = $request->file('imagen')->store('public/img/noticias');

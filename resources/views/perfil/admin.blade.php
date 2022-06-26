@@ -16,7 +16,6 @@
             <div class="col-md-8 mx-auto mb-5">
                 <form method="POST"  action="{{  route($funcion, $cliente) }}" enctype="multipart/form-data">
                     @csrf
-                   
                     @if ($cliente !== 0)
                         @method('PATCH')
                     @endif
@@ -44,6 +43,7 @@
                                     <div class="form-group">    
                                         <label class="form-label" for="usuario">Usuario</label>
                                         <input class="form-control" type="text" name="usuario" id="usuario" placeholder="Sin Usuario" value="{{ old('usuario', $cliente !== 0 ? $cliente->usuario : '') }}">
+                                        <input type="hidden" value="{{ $funcion }}" name="modo">
                                     </div>
                                     @error('usuario')
                                         <div class="alert alert-danger">{!! $errors->first('usuario', '<small>:message</small>') !!}</div>

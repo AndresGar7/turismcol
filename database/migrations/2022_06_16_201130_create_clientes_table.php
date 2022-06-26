@@ -26,7 +26,7 @@ class CreateClientesTable extends Migration
             $table->string('url_img')->nullable();
             $table->string('name_img')->nullable();
             $table->enum('sexo',['N','F','M'])->nullable();  
-            $table->enum('rango',['cli','sop','adm']);  
+            $table->enum('rango',['cli','sop','adm'])->default('cli');  
             $table->timestamps();
         });
     }

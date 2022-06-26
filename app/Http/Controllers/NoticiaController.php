@@ -15,8 +15,12 @@ class NoticiaController extends Controller
     
     public function __construct()
     {
-                           //nombre middleware   protege unicamente los metodos que esten een el arreglo
+        //nombre middleware   protege unicamente los metodos que esten een el arreglo
         $this->middleware('is_authorized:sop,adm', ['only' => ['create']]);
+        $this->middleware('is_authorized:sop,adm', ['only' => ['admin']]);
+        $this->middleware('is_authorized:sop,adm', ['only' => ['showAdmin']]);
+        $this->middleware('is_authorized:sop,adm', ['only' => ['show']]);
+        $this->middleware('is_authorized:sop,adm', ['only' => ['edit']]);
     }
 
     // SE ENCARGA DE MOSTRAR LAS NOTICIAS EN LA PARTE PRINCIPAL DE LA PAGINA
@@ -77,19 +81,6 @@ class NoticiaController extends Controller
     // SE ENCARGA DE CREAR LAS NUEVAS NOTICIAS Y GUARDARLAS EN LA BBDD
     public function store(CreateProjectRequest $request)
     {
-
-        // Esta parte se encarga de validar los campos del formulario para subir una nueva noticia
-
-        // return request()->file('imagen')->store('');
-        
-        // request()->validate(
-        // [
-        //     'titulo.required' => 'El campo del titulo es obligatorio',
-        //     'descripcion.required' => 'El campo descripcion es obligatorio',
-        //     'descripcion.min' => 'Debe ingresar como minimo 70 caracteres acerca de la noticia' ,
-        //     'imagen.required' => 'La noticia debe de contener una imagen',
-        //     'imagen.image' => 'El archivo debe de ser JPG o PNG'
-        // ]);
 
         $titulo = trim(request('titulo')); // QUITA LOS ESPACIOS DE UNA CADENA DE TEXTO
         $url = str_replace(' ','-',$titulo);
@@ -211,6 +202,7 @@ class NoticiaController extends Controller
 
     }
 
+    //SE ENCARGA DE ELIMINAR LAS NOTICIAS CREADAS
     public function destroy(Noticia $noticia)
     {
         $img_publica = str_replace('storage','public',$noticia->url_img);

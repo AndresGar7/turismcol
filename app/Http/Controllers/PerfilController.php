@@ -4,32 +4,40 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use App\Models\Cliente;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Auth\Events\Validated;
+use Intervention\Image\Facades\Image;
 use Illuminate\Support\Facades\Storage;
 use App\Http\Requests\CreatePerfilRequest;
-use Intervention\Image\Facades\Image;
 
 class PerfilController extends Controller
 {
     
     public function admin(){
 
-        $usuario = User::where('email','=',auth()->user()->email)->first();
-        
-        $valida_cliente = Cliente::where('email','=',$usuario->email)->count();
+        if(Auth::check()){
 
-        if($valida_cliente > 0){
-            $cliente = Cliente::where('email','=',auth()->user()->email)->first();
-            $funcion = 'perfil.update';
+            $usuario = User::where('email','=',auth()->user()->email)->first();
+            
+            $valida_cliente = Cliente::where('email','=',$usuario->email)->count();
+        
+            if($valida_cliente > 0){
+                $cliente = Cliente::where('email','=',auth()->user()->email)->first();
+                $funcion = 'perfil.update';
+            }else{
+                $cliente = 0;
+                $funcion = 'perfil.store';
+            }
+        
+            return view('perfil.admin', compact('usuario','cliente','funcion'));
+
         }else{
-            $cliente = 0;
-            $funcion = 'perfil.store';
+            return redirect()->route('login');
         }
 
-        return view('perfil.admin', compact('usuario','cliente','funcion'));
-
+        
     }
-
+    
     public function store(CreatePerfilRequest $request){
 
         if($request->usuario){
@@ -99,7 +107,7 @@ class PerfilController extends Controller
             Storage::delete($img_publica);
 
             //Se guarda la nueva imagen en la carpeta del servidor
-            $imagen = request()->file('imagen')->store('public/img/noticias');
+            $imagen = request()->file('imagen')->store('public/img/perfiles');
 
             $name_img = str_replace('public/img/noticias/','', $imagen);
             $ext_img= substr($name_img, -4);

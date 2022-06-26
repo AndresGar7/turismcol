@@ -22,14 +22,20 @@ class CreatePerfilRequest extends FormRequest
      * @return array
      */
     public function rules()
-    {
-        return [
-            'usuario' => 'required|min:5|unique:clientes,usuario',
+    {  
+        $rules = [
             'nombre' => 'required|max:70',
             'imagen' => 'image',
             'email' => 'required',
             'telefono' => 'required|max:13|min:9'
         ];
+
+        if(request()->modo == 'perfil.update'){
+            $rules['usuario'] ='min:5';
+        }else{
+            $rules['usuario'] ='required|min:5|unique:clientes,usuario';
+        }
+        return $rules;
     }
 
     public function messages()

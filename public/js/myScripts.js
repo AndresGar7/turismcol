@@ -15,7 +15,7 @@ $(document).ready(function(){
 
 $(document).ready(function() {
 } );
-$('#example').DataTable();
+// $('#example').DataTable();
 
 // //FUNCION QUE SE ENCARGA DE CAMBIAR LAS FOTOS  Y NOMBRES DE LA GALERIA SEGUN EL DEPARTAMENTO QUE SE SELECCIONE
 

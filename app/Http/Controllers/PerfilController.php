@@ -85,7 +85,7 @@ class PerfilController extends Controller
         //!-----------------------------------------------------------------------------
         // Esto se utiliza para optimizar el tamaño de las imagenes que se van a mostrar de las noticias.
         $image = Image::make(Storage::get($imagen))
-        ->resize(600, 500)
+        ->resize(600, 550)
         ->encode();
 
         Storage::put($imagen, (string) $image);
@@ -102,16 +102,18 @@ class PerfilController extends Controller
         $usuarioo = str_replace(' ','_',$request->usuario);
 
         if(request()->file('imagen')){
+
             //Primero eliminamos la imagen gurdada dentro del servidor para poder cambiarla por la nueva
-            $img_publica = str_replace('storage','public',$usuario->url_img);
-            Storage::delete($img_publica);
+            if($usuario->url_img !== 'storage/img/perfiles/sin_imagen.jpg'){
+                $img_publica = str_replace('storage','public',$usuario->url_img);
+                Storage::delete($img_publica);
+            }
 
             //Se guarda la nueva imagen en la carpeta del servidor
             $imagen = request()->file('imagen')->store('public/img/perfiles');
-
-            $name_img = str_replace('public/img/noticias/','', $imagen);
+            $name_img = str_replace('public/img/perfiles/','', $imagen);
             $ext_img= substr($name_img, -4);
-            $name_img = str_replace($ext_img ,'', $name_img);
+            $name_img = str_replace($ext_img ,'', $name_img);            
             
             $url_imagen = str_replace('public','storage',$imagen);
             
@@ -131,7 +133,7 @@ class PerfilController extends Controller
             //!-----------------------------------------------------------------------------
             // Esto se utiliza para optimizar el tamaño de las imagenes que se van a mostrar de las noticias.
             $image = Image::make(Storage::get($imagen))
-                ->resize(600, 500)
+                ->resize(600, 550)
                 ->encode();
     
             Storage::put($imagen, (string) $image);

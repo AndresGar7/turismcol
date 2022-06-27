@@ -303,12 +303,15 @@ return [
                 ]
             ]
         ],
-        ['header' => 'ADMIN. PÁGINA'],
+        [   'header' => 'ADMIN. PÁGINA',
+            'can' => 'admin-noticias'
+        ],
         [
             'text' => 'Administracion Noticias',
             'route' => 'noticias.admin',
             'icon' => 'fas fa-fw fa-newspaper',
             'active' => ['noticias*'],
+            'can' => 'admin-noticias'
         ]
         // [
         //     'text'    => 'multilevel',

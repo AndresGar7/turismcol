@@ -68,12 +68,14 @@ class RegisterController extends Controller
         Cliente::create([
             'nombre' => $data['name'],
             'email' => $data['email'],
-            'url_img' => 'storage/img/perfiles/sin_imagen.png'
+            'rango' => 'cli',
+            'url_img' => 'storage/img/perfiles/sin_imagen.jpg'
         ]);
 
         return User::create([
             'name' => $data['name'],
             'email' => $data['email'],
+            'rango' => 'cli',
             'password' => Hash::make($data['password']),
         ]);
     }

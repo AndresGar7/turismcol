@@ -264,7 +264,8 @@ return [
         //     'label_color' => 'success',
         // ],
         [ 
-            'text' => 'Home',
+            'text' => 'Inicio',
+            'icon' => 'fas fa-fw fa-house-user',
             'route' => 'home'
         ],
         ['header' => 'account_settings'],
@@ -281,7 +282,7 @@ return [
                 ],
                 [
                     'text' => 'Cambiar contraseña',
-                    'url' => '#',
+                    'route' => 'perfil.changePassword',
                     'icon' => 'fas fa-fw fa-lock',
                 ],
             ]

@@ -5,14 +5,18 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use App\Models\Cliente;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Auth\Events\Validated;
 use Intervention\Image\Facades\Image;
 use Illuminate\Support\Facades\Storage;
 use App\Http\Requests\CreatePerfilRequest;
+use App\Http\Requests\PasswordPerfilRequest;
 
 class PerfilController extends Controller
 {
     
+    public $paso;
+
     public function admin(){
 
         if(Auth::check()){
@@ -156,6 +160,47 @@ class PerfilController extends Controller
         
         return redirect()->route('perfil.admin', $usuario);
 
+    }
+
+    public function changePassword(){
+
+        if(Auth::check()){
+        
+        $paso = 0;
+        $ejemplo = '';
+
+        $usuario = Cliente::where('email','=',auth()->user()->email)->first();
+        return view('perfil.password', compact('usuario','paso','ejemplo'));
+
+        }else{
+            return redirect()->route('login');
+        }
+
+    }
+
+    public function updatePassword(User $usuario,PasswordPerfilRequest $request){
+
+        $usuario->update([
+            'password' => Hash::make($request['contraseña_Nueva'])
+        ]);
+
+        $paso = 1;
+        $usuario = Cliente::where('email','=',auth()->user()->email)->first();
+
+        $ejemplo =  '<script>
+                    Swal.fire({
+                        title: "Excelente",
+                        text: "La contraseña se actulizo correctamente.",
+                        icon: "success",
+                        confirmButtonColor: "#3085d6",
+                        confirmButtonText: "Aceptar!",
+                        allowOutsideClick: false
+                    }); 
+                </script>'; 
+
+        return view('perfil.password', compact('usuario','paso','ejemplo'));
+
+        // return redirect()->route('perfil.changePassword', $usuario);
     }
 
 }

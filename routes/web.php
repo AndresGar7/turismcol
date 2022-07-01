@@ -49,6 +49,9 @@ Route::post('/presupuesto', [App\Http\Controllers\PresupuestoController::class, 
 Route::get('/contacto',[App\Http\Controllers\ContactoController::class, 'index'])->name('contacto.index');
 
 // RUTAS CREADAS PARA LA ADMINISTRACION DEL PERFIL REGISTRADO
-Route::get('/perfil/admin', [App\Http\Controllers\PerfilController::class, 'admin'])->name(('perfil.admin'));
+Route::get('/perfil/admin', [App\Http\Controllers\PerfilController::class, 'admin'])->name('perfil.admin');
 Route::post('/perfil', [\App\Http\Controllers\PerfilController::class, 'store'])->name('perfil.store');
 Route::patch('/perfil/{usuario}', [App\Http\Controllers\PerfilController    ::class, 'update'])->name('perfil.update');
+// RUTAS PARA LA ACTUALIZACION DE LA CONTRASEÑA DEL USUARIO
+Route::get('/perfil/CambioContraseña', [\App\Http\Controllers\PerfilController::class, 'changePassword'])->name('perfil.changePassword');
+Route::patch('/perfil/CambioContraseña/{usuario}', [\App\Http\Controllers\PerfilController::class, 'updatePassword'])->name('perfil.updatePassword');

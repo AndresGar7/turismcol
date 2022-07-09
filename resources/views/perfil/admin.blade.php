@@ -16,10 +16,7 @@
         <div class="row">
             <div class="col-md-8 mx-auto mb-5">
                 <form method="POST"  action="{{  route($funcion, $cliente) }}" enctype="multipart/form-data">
-                    @csrf
-                    @if ($cliente !== 0)
-                        @method('PATCH')
-                    @endif
+                    @csrf @method('PATCH')
                     <div class="card card-success shadow-lg">
                         <div class="card-header">
                             <h2 class="card-title fw-bold fs-3 mt-1">Actualización Perfil</h2>
@@ -28,37 +25,16 @@
                             <div class="text-center">
                                 <img class="profile-user-img img-fluid img-circle" id="imgPrevizual"  src="{{  asset($cliente->url_img) }}"  alt="Foto Perfil Usuario">
                             </div>
-                            <h3 class="profile-username text-center">{{ auth()->user()->name }}</h3>
+                            <h3 class="profile-username text-center">{{ $cliente->nombre }} {{ $cliente->apellidos }}</h3>
                             <div class="row mt-4">
-                                <div class="col-md-6 mt-2">
-                                    <div class="form-group">
-                                        <label class="form-label" for="email">Correo Electrónico</label>
-                                        <input class="form-control" type="text" value="{{ auth()->user()->email }}" disabled>
-                                        <input class="form-control" type="text" name="email" id="email" value="{{ auth()->user()->email}}" hidden>
-                                    </div>
-                                    @error('email')
-                                        <div class="alert alert-danger">{!! $errors->first('email', '<small>:message</small>') !!}</div>
-                                    @enderror
-                                </div>
                                 <div class="col-md-6 mt-2">
                                     <div class="form-group">    
                                         <label class="form-label" for="usuario">Usuario</label>
-                                        <input class="form-control" type="text" name="usuario" id="usuario" placeholder="Sin Usuario" value="{{ old('usuario', $cliente !== 0 ? $cliente->usuario : '') }}">
+                                        <input class="form-control" type="text" name="usuario" id="usuario" value="{{ $usuario->usuario }}" disabled>
                                         <input type="hidden" value="{{ $funcion }}" name="modo">
                                     </div>
                                     @error('usuario')
                                         <div class="alert alert-danger">{!! $errors->first('usuario', '<small>:message</small>') !!}</div>
-                                    @enderror
-                                </div>
-                            </div>
-                            <div class="row mt-4">
-                                <div class="col-md-6 mt-2">
-                                    <div class="form-group">
-                                        <label class="form-label" for="nombre">Nombre Completo</label>
-                                        <input class="form-control" type="text" name="nombre" id="nombre" value="{{ auth()->user()->name }}">
-                                    </div>
-                                    @error('nombre')
-                                        <div class="alert alert-danger">{!! $errors->first('nombre', '<small>:message</small>') !!}</div>
                                     @enderror
                                 </div>
                                 <div class="col-md-6 mt-2">
@@ -68,6 +44,26 @@
                                     </div>
                                     @error('imagen')
                                         <div class="alert alert-danger">{!! $errors->first('imagen', '<small>:message</small>') !!}</div>
+                                    @enderror
+                                </div>
+                            </div>
+                            <div class="row mt-4">
+                                <div class="col-md-6 mt-2">
+                                    <div class="form-group">
+                                        <label class="form-label" for="nombre">Nombres</label>
+                                        <input class="form-control" type="text" name="nombre" id="nombre" value="{{ $cliente->nombre }}">
+                                    </div>
+                                    @error('nombre')
+                                        <div class="alert alert-danger">{!! $errors->first('nombre', '<small>:message</small>') !!}</div>
+                                    @enderror
+                                </div>
+                                <div class="col-md-6 mt-2">
+                                    <div class="form-group">
+                                        <label class="form-label" for="apellidos">Apellidos</label>
+                                        <input class="form-control" type="text" name="apellidos" id="apellidos" value="{{ $cliente->apellidos }}">
+                                    </div>
+                                    @error('apellidos')
+                                        <div class="alert alert-danger">{!! $errors->first('apellidos', '<small>:message</small>') !!}</div>
                                     @enderror
                                 </div>
                             </div>

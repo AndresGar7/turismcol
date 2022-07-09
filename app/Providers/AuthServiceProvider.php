@@ -27,7 +27,7 @@ class AuthServiceProvider extends ServiceProvider
         $this->registerPolicies();
 // 
         Gate::define('admin-noticias',function(User $usuario){
-            return $usuario->rango !== 'cli';
+            return $usuario->rol !== 'user';
         });
     }
 }

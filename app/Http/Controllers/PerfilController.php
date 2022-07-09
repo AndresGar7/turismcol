@@ -22,16 +22,16 @@ class PerfilController extends Controller
         if(Auth::check()){
 
             $usuario = User::where('email','=',auth()->user()->email)->first();
-            
             $valida_cliente = Cliente::where('email','=',$usuario->email)->count();
-        
+            
             if($valida_cliente > 0){
-                $cliente = Cliente::where('email','=',auth()->user()->email)->first();
-                $funcion = 'perfil.update';
+                $cliente = Cliente::where('email','=',auth()->user()->email)
+                ->first();
             }else{
                 $cliente = 0;
-                $funcion = 'perfil.store';
+                // $funcion = 'perfil.store';
             }
+            $funcion = 'perfil.update';
         
             return view('perfil.admin', compact('usuario','cliente','funcion'));
 
@@ -42,112 +42,96 @@ class PerfilController extends Controller
         
     }
     
-    public function store(CreatePerfilRequest $request){
-
-        if($request->usuario){
-            $usuario = trim($request->usuario);
-        }else{
-            $usuario = null;
-        }
-        $nombre = $request->nombre;
-        $email = $request->email;
-        $ciudad = $request->ciudad;
-        $pais = $request->pais;
-        $telefono = $request->telefono;
-        $direccion = $request->direccion;
-        $cod_postal = trim($request->cod_postal);
-        $sexo = $request->sexo;
-
-        if(request()->file('imagen')){
-            $imagen = request()->file('imagen')->store('public/img/perfiles');
-            $name_img = str_replace('public/img/perfiles/','', $imagen);
-            $ext_img= substr($name_img, -4);
-            $name_img = str_replace($ext_img ,'', $name_img);
-            $url_imagen = str_replace('public','storage',$imagen) ;
-        }else{
-            $imagen = null;
-            $name_img = null;
-            $ext_img = null;
-            $url_imagen = null;
-        }
-        
-        Cliente::create([
-            'usuario' => $usuario,
-            'nombre' => $nombre,
-            'email' => $email,
-            'direccion' => $direccion,
-            'ciudad' => $ciudad,
-            'telefono' => $telefono,
-            'pais' => $pais,
-            'direccion' => $direccion,
-            'cod_postal' => $cod_postal,
-            'sexo' => $sexo,
-            'url_img' => $url_imagen,
-            'name_img' => $name_img
-        ]);
-
-        //!-----------------------------------------------------------------------------
-        // Esto se utiliza para optimizar el tamaño de las imagenes que se van a mostrar de las noticias.
-        $image = Image::make(Storage::get($imagen))
-        ->resize(600, 550)
-        ->encode();
-
-        Storage::put($imagen, (string) $image);
-
-        //!-----------------------------------------------------------------------------
-
-        return redirect()->route('perfil.admin');
+    public function store(){    
     }
 
     public function update(Cliente $usuario, CreatePerfilRequest $request){
 
-        // return $request->telefono;
-
-        $usuarioo = str_replace(' ','_',$request->usuario);
+        // $usuarioo = str_replace(' ','_',$request->usuario);
 
         if(request()->file('imagen')){
 
             //Primero eliminamos la imagen gurdada dentro del servidor para poder cambiarla por la nueva
-            if($usuario->url_img !== 'storage/img/perfiles/sin_imagen.jpg'){
+            if($usuario->url_img == 'storage/img/perfiles/sin_imagen.jpg'){
+                
+                //Se guarda la nueva imagen en la carpeta del servidor
+                $imagen = request()->file('imagen')->store('public/img/perfiles');
+                // dd(request()->file('imagen')->store('public/img/perfiles'));
+                $name_img = str_replace('public/img/perfiles/','', $imagen);
+                $ext_img= substr($name_img, -4);
+                $name_img = str_replace($ext_img ,'', $name_img);            
+                
+                $url_imagen = str_replace('public','storage',$imagen);
+
+                $usuario->update([
+                    'nombre' => $request->nombre,
+                    'apellidos' => $request->apellidos,
+                    'direccion' => $request->direccion,
+                    'cod_postal' => $request->cod_postal,
+                    'ciudad' => $request->ciudad,
+                    'telefono' => $request->telefono,
+                    'pais' => $request->pais,
+                    'url_img' => $url_imagen,
+                    'name_img' => $name_img,
+                    'sexo' => $request->sexo
+                ]);
+                //!-----------------------------------------------------------------------------
+                // Esto se utiliza para optimizar el tamaño de las imagenes que se van a mostrar de las noticias.
+                $image = Image::make(Storage::get($imagen))
+                    ->resize(600, 550)
+                    ->encode();
+        
+                Storage::put($imagen, (string) $image);
+                //!-----------------------------------------------------------------------------
+                // $img_publica = str_replace('storage','public',$usuario->url_img);
+                // dd($usuario->url_img);
+            }else{
                 $img_publica = str_replace('storage','public',$usuario->url_img);
                 Storage::delete($img_publica);
+
+                //Se guarda la nueva imagen en la carpeta del servidor
+                $imagen = request()->file('imagen')->store('public/img/perfiles');
+                // dd(request()->file('imagen')->store('public/img/perfiles'));
+                $name_img = str_replace('public/img/perfiles/','', $imagen);
+                $ext_img= substr($name_img, -4);
+                $name_img = str_replace($ext_img ,'', $name_img);            
+                
+                $url_imagen = str_replace('public','storage',$imagen);
+
+                $usuario->update([
+                    'nombre' => $request->nombre,
+                    'apellidos' => $request->apellidos,
+                    'direccion' => $request->direccion,
+                    'cod_postal' => $request->cod_postal,
+                    'ciudad' => $request->ciudad,
+                    'telefono' => $request->telefono,
+                    'pais' => $request->pais,
+                    'url_img' => $url_imagen,
+                    'name_img' => $name_img,
+                    'sexo' => $request->sexo
+                ]);
+                //!-----------------------------------------------------------------------------
+                // Esto se utiliza para optimizar el tamaño de las imagenes que se van a mostrar de las noticias.
+                $image = Image::make(Storage::get($imagen))
+                    ->resize(600, 550)
+                    ->encode();
+        
+                Storage::put($imagen, (string) $image);
+                //!-----------------------------------------------------------------------------
             }
 
-            //Se guarda la nueva imagen en la carpeta del servidor
-            $imagen = request()->file('imagen')->store('public/img/perfiles');
-            $name_img = str_replace('public/img/perfiles/','', $imagen);
-            $ext_img= substr($name_img, -4);
-            $name_img = str_replace($ext_img ,'', $name_img);            
             
-            $url_imagen = str_replace('public','storage',$imagen);
-            
-            $usuario->update([
-                'usuario' => $usuarioo,
-                'nombre' => $request->nombre,
-                'direccion' => $request->direccion,
-                'cod_postal' => $request->cod_postal,
-                'ciudad' => $request->ciudad,
-                'telefono' => $request->telefono,
-                'pais' => $request->pais,
-                'url_img' => $url_imagen,
-                'name_img' => $name_img,
-                'sexo' => $request->sexo
-            ]);
+            // dd($request);
+
     
-            //!-----------------------------------------------------------------------------
-            // Esto se utiliza para optimizar el tamaño de las imagenes que se van a mostrar de las noticias.
-            $image = Image::make(Storage::get($imagen))
-                ->resize(600, 550)
-                ->encode();
-    
-            Storage::put($imagen, (string) $image);
-            //!-----------------------------------------------------------------------------
     
             
         }else{
+
+            // var_dump($request);
             $usuario->update([
-                'usuario' => $usuarioo,
                 'nombre' => $request->nombre,
+                'apellidos' => $request->apellidos,
                 'direccion' => $request->direccion,
                 'cod_postal' => $request->cod_postal,
                 'ciudad' => $request->ciudad,
@@ -162,15 +146,14 @@ class PerfilController extends Controller
 
     }
 
-    public function changePassword(){
+    public function changePassword(User $usuario){
+
+        $paso = 0;
 
         if(Auth::check()){
-        
-        $paso = 0;
-        $ejemplo = '';
 
         $usuario = Cliente::where('email','=',auth()->user()->email)->first();
-        return view('perfil.password', compact('usuario','paso','ejemplo'));
+        return view('perfil.password', compact('usuario','paso'));
 
         }else{
             return redirect()->route('login');
@@ -178,29 +161,17 @@ class PerfilController extends Controller
 
     }
 
-    public function updatePassword(User $usuario,PasswordPerfilRequest $request){
+    public function updaPassword(User $usuario,PasswordPerfilRequest $request){
 
         $usuario->update([
-            'password' => Hash::make($request['contraseña_Nueva'])
+            'password' => Hash::make($request['password_new'])
         ]);
 
-        $paso = 1;
-        $usuario = Cliente::where('email','=',auth()->user()->email)->first();
+        // dd($usuario);
 
-        $ejemplo =  '<script>
-                    Swal.fire({
-                        title: "Excelente",
-                        text: "La contraseña se actulizo correctamente.",
-                        icon: "success",
-                        confirmButtonColor: "#3085d6",
-                        confirmButtonText: "Aceptar!",
-                        allowOutsideClick: false
-                    }); 
-                </script>'; 
+        $usuario = Cliente::where('email','=',auth()->user()->email)->first();  
 
-        return view('perfil.password', compact('usuario','paso','ejemplo'));
-
-        // return redirect()->route('perfil.changePassword', $usuario);
+        return redirect()->route('perfil.changePassword')->with('actualizo', 'ok');;
     }
 
 }

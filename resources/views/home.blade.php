@@ -20,7 +20,7 @@
 @stop
 
 @section('content')
-    @if (!$usuario->usuario)
+    @if (!$usuario->direccion)
         <section class="content">
             <div class="container-fluid">
                 <div class="row mt-5">

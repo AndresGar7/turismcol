@@ -49,11 +49,30 @@ class RegisterController extends Controller
      * @return \Illuminate\Contracts\Validation\Validator
      */
     protected function validator(array $data)
-    {
+    {   
         return Validator::make($data, [
-            'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'name' => ['required', 'string', 'max:30', 'min:3'],
+            'lastName' => ['required', 'string', 'max:50', 'min:3'],
+            'phone' => ['required', 'string', 'max:13', 'min:9'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users_login'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
+        ],
+        [
+            'name.required' => 'El campo nombre es obligatorio.',
+            'name.max'      => 'El campo nombre no debe ser mayor que 15 caracteres.',
+            'name.min'      => 'El campo nombre no debe ser menor que 3 caracteres.',
+            'lastName.required' => 'El campo apellido es obligatorio.',
+            'lastName.max'      => 'El campo apellido no debe ser mayor que 50 caracteres.',
+            'lastName.min'      => 'El campo apellido no debe ser menor que 3 caracteres.',
+            'phone.required' => 'El campo telefono es obligatorio.',
+            'phone.max'      => 'El campo telefono no debe ser mayor que 13 numeros.',
+            'phone.min'      => 'El campo apellido no debe ser menor que 9 numeros.',
+            'email.required' => 'El campo email es obligatorio.',
+            'email.email'   => 'El campo email no es un correo valido.',
+            'email.unique' => 'El campo email ya se encuentra registrado.',
+            'password.required' => 'El campo de contraseña es obligatorio.',
+            'password.min' => 'El campo de contraseña debe contener mas de 8 caracteres.',
+            'password.confirmed' => 'El campo contraseña no coinciden.'
         ]);
     }
 
@@ -65,17 +84,23 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {   
-        Cliente::create([
+        
+        // dd($data['lastName']);
+        $cliente = Cliente::create([
             'nombre' => $data['name'],
+            'apellidos' => $data['lastName'],
             'email' => $data['email'],
-            'rango' => 'cli',
+            'telefono' => $data['phone'],
+            'fec_nac' => Now(),
             'url_img' => 'storage/img/perfiles/sin_imagen.jpg'
         ]);
 
         return User::create([
             'name' => $data['name'],
+            'idUser' => $cliente->idUser,
             'email' => $data['email'],
-            'rango' => 'cli',
+            'usuario' => $data['email'],
+            'rol' => 'user',
             'password' => Hash::make($data['password']),
         ]);
     }

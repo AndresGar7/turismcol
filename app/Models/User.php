@@ -14,13 +14,17 @@ class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
 
+    // protected $table = 'users';
+    protected $table = 'users_login';
+    protected $primaryKey =  'idLogin';
     /**
      * The attributes that are mass assignable.
      *
      * @var array<int, string>
      */
     protected $fillable = [
-        'name',
+        'usuario',
+        'idUser',
         'email',
         'password',
     ];
@@ -51,15 +55,18 @@ class User extends Authenticatable
     }
     // Funcion que se encargar de mostrar el Rol del usuario que se encuentra logueado, se debe de traer de la DB y no pintar
     public function adminlte_desc()
-    {      
-        switch ($this->cliente->rango) {
-            case 'adm':
+    {   
+        
+        // dd($this->user);
+
+        switch ($this->user->rol) {
+            case 'admin':
                 $rango = "Administrador";
                 break;
             case 'sop':
                 $rango = "Soporte";
                 break;
-            case 'cli':
+            case 'user':
                 $rango = "Usuario";
                 break;
         }
@@ -74,7 +81,11 @@ class User extends Authenticatable
     }
     
     // Funcion encargada de relacionar la tabla del  cliente con la de usuario con el campo email
-    public function cliente (){
+    public function cliente(){
         return $this->hasOne(Cliente::class, 'email','email');
+    }
+
+    public function user(){
+        return $this->hasOne(User::class, 'email','email');
     }
 }

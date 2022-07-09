@@ -16,8 +16,7 @@
             <div class="row">
                 <div class="col-md-8 mx-auto mb-5">
                     <form method="POST" action="{{ route('perfil.updatePassword', $usuario) }}">
-                        @csrf 
-                        @method('PATCH')
+                        @csrf @method('PATCH')
                         <div class="card card-success shadow-lg">
                             <div class="card-header">
                                 <h2 class="card-title fw-bold fs-3 mt-1">Actualización Contraseña</h2>
@@ -26,37 +25,36 @@
                                 <div class="row mt-2">
                                     <div class="col-md-6 mx-auto">
                                         <div class="form-group">
-                                            <label class="form-label" for="contraseña">Contraseña Actual</label>
-                                            <input class="form-control form-control-lg @error('contraseña') is-invalid @enderror"" type="text" name="contraseña" id="contraseña" placeholder="Contraseña Actual">
+                                            <label class="form-label" for="password">Contraseña Actual</label>
+                                            <input class="form-control form-control-lg @error('password') is-invalid @enderror"" type="text" name="password" id="password" placeholder="Contraseña Actual">
                                         </div>
-                                        @error('contraseña')
-                                            <div class="alert alert-danger">{!! $errors->first('contraseña', '<small>:message</small>') !!}</div>
+                                        @error('password')
+                                            <div class="alert alert-danger">{!! $errors->first('password', '<small>:message</small>') !!}</div>
                                         @enderror
                                     </div>
                                 </div>
                                 <div class="row mt-2">
                                     <div class="col-md-6 mx-auto">
                                         <div class="form-group">
-                                            <label class="form-label" for="contraseña_Nueva">Contraseña Nueva</label>
-                                            <input class="form-control form-control-lg @error('contraseña_Nueva') is-invalid @enderror" type="text" name="contraseña_Nueva" id="contraseña_Nueva" placeholder="Contraseña Nueva">
+                                            <label class="form-label" for="password_new">Contraseña Nueva</label>
+                                            <input class="form-control form-control-lg @error('password_new') is-invalid @enderror" type="text" name="password_new" id="password_new" placeholder="Contraseña Nueva">
                                         </div>
-                                        @error('contraseña_Nueva')
-                                            <div class="alert alert-danger">{!! $errors->first('contraseña_Nueva', '<small>:message</small>') !!}</div>
+                                        @error('password_new')
+                                            <div class="alert alert-danger">{!! $errors->first('password_new', '<small>:message</small>') !!}</div>
                                         @enderror
                                     </div>
                                 </div>
                                 <div class="row mt-2">
                                     <div class="col-md-6 mx-auto">
                                         <div class="form-group">
-                                            <label class="form-label" for="contraseña_Nueva_confirmation">Confirmar Contraseña</label>
-                                            <input class="form-control form-control-lg @error('contraseña_Nueva') is-invalid @enderror" type="text" name="contraseña_Nueva_confirmation" id="contraseña_Nueva_confirmation" placeholder="Confirmar Contraseña">
+                                            <label class="form-label" for="password_new_confirmation">Confirmar Contraseña</label>
+                                            <input class="form-control form-control-lg @error('password_new') is-invalid @enderror" type="text" name="password_new_confirmation" id="password_new_confirmation" placeholder="Confirmar Contraseña">
                                         </div>
-                                        @error('contraseña_Nueva_confirmation')
-                                            <div class="alert alert-danger">{!! $errors->first('contraseña_Nueva_confirmation', '<small>:message</small>') !!}</div>
+                                        @error('password_new_confirmation')
+                                            <div class="alert alert-danger">{!! $errors->first('password_new_confirmation', '<small>:message</small>') !!}</div>
                                         @enderror
                                     </div>
                                 </div>
-                                {{$paso}}
                             </div>
                             <div class="card-footer">
                                 <div class="d-flex justify-content-center">
@@ -71,10 +69,6 @@
         </div>
     </section>
 @stop
-
-@php
-    echo $ejemplo;
-@endphp
 
 @section('css')
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
@@ -108,5 +102,16 @@
             }
         })
     }
+
+    @if (session('actualizo'))
+        Swal.fire({
+                    title: "Excelente",
+                    text: "La contraseña se actulizo correctamente.",
+                    icon: "success",
+                    confirmButtonColor: "#3085d6",
+                    confirmButtonText: "Aceptar!",
+                    allowOutsideClick: false
+                })
+    @endif
 </script>
 @stop

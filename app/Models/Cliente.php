@@ -9,20 +9,21 @@ class Cliente extends Model
 {
     use HasFactory;
 
-    protected $table = 'clientes';
+    protected $table = 'users_data';
+    protected $primaryKey = 'idUser';
     
 
     // MANERA DE PASAR AL MODELO DE LA TABLA QUE VALORES QUIERE QUE SE GUARDEN EN LA DB -> FORMA MANUAL
 
     protected $fillable = [
         'nombre',
-        'usuario',
+        'apellidos',
         'email',
         'url_img',
         'name_img',
-        'rango',
+        'rol',
+        'fec_nac',
         'sexo',
-        'nombre',
         'direccion',
         'telefono',
         'ciudad',

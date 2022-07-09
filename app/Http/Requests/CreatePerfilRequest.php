@@ -23,18 +23,21 @@ class CreatePerfilRequest extends FormRequest
      */
     public function rules()
     {  
+
         $rules = [
             'nombre' => 'required|max:70',
             'imagen' => 'image',
-            'email' => 'required',
-            'telefono' => 'required|max:13|min:9'
+            'usuario' => 'required',
+            'telefono' => 'required|max:13|min:9',
+            'apellidos' => 'required|max:50|min:3'
         ];
-
+        
         if(request()->modo == 'perfil.update'){
             $rules['usuario'] ='min:5';
         }else{
-            $rules['usuario'] ='required|min:5|unique:clientes,usuario';
+            $rules['usuario'] ='required|min:5|unique:user_login,usuario';
         }
+        // var_dump($rules);
         return $rules;
     }
 

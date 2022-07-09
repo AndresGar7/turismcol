@@ -3,9 +3,12 @@
 return [
 
     'full_name'                   => 'Nombre completo',
+    'last_name'                   => 'Apellidos',
+    'name'                        => 'Nombre',
     'email'                       => 'Email',
     'password'                    => 'Contraseña',
     'retype_password'             => 'Confirmar la contraseña',
+    'Phone_Number'                => 'Telefono',
     'remember_me'                 => 'Recordarme',
     'register'                    => 'Registrarse',
     'register_a_new_membership'   => 'Crear una nueva cuenta',

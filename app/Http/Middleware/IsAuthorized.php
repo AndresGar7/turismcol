@@ -17,9 +17,9 @@ class IsAuthorized
      */
     public function handle(Request $request, Closure $next, ... $roles)
     {
-        // dd($roles);
         foreach($roles as $role){
-            if(Auth::user()->cliente->rango === $role){
+            // dd(Auth::user()->user['rol']);
+            if(Auth::user()->user->rol === $role){
                 return $next($request);
             }
         }

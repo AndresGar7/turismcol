@@ -142,7 +142,7 @@ class PerfilController extends Controller
         }
         
         
-        return redirect()->route('perfil.admin', $usuario);
+        return redirect()->route('perfil.admin', $usuario)->with('actualizoPerfil', 'ok');
 
     }
 
@@ -171,7 +171,7 @@ class PerfilController extends Controller
 
         $usuario = Cliente::where('email','=',auth()->user()->email)->first();  
 
-        return redirect()->route('perfil.changePassword')->with('actualizo', 'ok');;
+        return redirect()->route('perfil.changePassword')->with('actualizo', 'ok');
     }
 
 }

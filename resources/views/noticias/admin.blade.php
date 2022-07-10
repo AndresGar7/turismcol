@@ -44,12 +44,12 @@
                                                 <tbody>
                                                     @forelse ($noticias as $noticia)
                                                     @php
-                                                        $title_modificado = $noticia->title;
+                                                        $title_modificado = $noticia->titulo;
                                                         $title_modificado = substr($title_modificado, 0, 30);
                                                         $title_modificado = $title_modificado . '...';
                                                     @endphp
                                                         <tr class="{{ ($noticia->importancia == 'pri') ? 'table-warning' : ''}}">
-                                                            <td class="text-center">{{ $noticia->id }}</td>
+                                                            <td class="text-center">{{ $noticia->idNoticia }}</td>
                                                             <td><div class="p">{{ $title_modificado }}</div></td>
                                                             <td><textarea class="form-control" name="res" id="res" cols="50" rows="2" disabled>{{ $noticia->resumen }}</textarea></td>
                                                             <td class="text-center">{{ $noticia->created_at->format('d-m-Y') }}</td>

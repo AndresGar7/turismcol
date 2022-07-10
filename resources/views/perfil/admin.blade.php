@@ -192,5 +192,16 @@
             }
         })
     }
+
+    @if (session('actualizoPerfil'))
+        Swal.fire({
+                    title: "Excelente",
+                    text: "La perfil se actulizo correctamente.",
+                    icon: "success",
+                    confirmButtonColor: "#3085d6",
+                    confirmButtonText: "Aceptar!",
+                    allowOutsideClick: false
+                })
+    @endif
 </script>
 @stop

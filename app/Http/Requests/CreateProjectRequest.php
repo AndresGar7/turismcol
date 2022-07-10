@@ -24,7 +24,7 @@ class CreateProjectRequest extends FormRequest
     public function rules()
     {
         return [
-            'titulo' => 'required|unique:noticias,title',
+            'titulo' => 'required|unique:noticias,titulo',
             'descripcion' => 'required|min:70',
             'imagen' => 'required|image'
         ];

@@ -304,6 +304,24 @@ return [
                 ]
             ]
         ],
+        [
+            'text' => 'Mis Citas',
+            // 'url' => 'admin/settings',
+            'icon' => 'fas fa-fw fa-calendar',
+            // <i class="fa-solid fa-calendar-range"></i>
+            'submenu' => [
+                [
+                    'text' => 'Creación Cita',
+                    'url' => '#',
+                    'icon' => 'fas fa-fw fa-file'
+                ],
+                [
+                    'text' => 'Admin. Citas',
+                    'url' => '#',
+                    'icon' => 'fas fa-fw fa-toolbox'
+                ]
+            ]
+        ],
         [   'header' => 'ADMIN. PÁGINA',
             'can' => 'admin-noticias'
         ],

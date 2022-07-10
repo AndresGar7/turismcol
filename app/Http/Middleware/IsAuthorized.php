@@ -17,12 +17,20 @@ class IsAuthorized
      */
     public function handle(Request $request, Closure $next, ... $roles)
     {
-        foreach($roles as $role){
-            // dd(Auth::user()->user['rol']);
-            if(Auth::user()->user->rol === $role){
-                return $next($request);
+
+        if(Auth::check()){
+
+            foreach($roles as $role){
+                
+                if(Auth::user()->user->rol === $role){
+                    return $next($request);
+                }
             }
+            return abort(403, 'Unauthorized action.');
+
+        }else{
+            return redirect()->route('login');
         }
-        return abort(403, 'Unauthorized action.');
+        
     }
 }

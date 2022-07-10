@@ -10,17 +10,19 @@ class Noticia extends Model
     use HasFactory;
 
     protected $table = 'noticias';
+    protected $primaryKey = 'idNoticia';
 
     // MANERA DE PASAR AL MODELO DE LA TABLA QUE VALORES QUIERE QUE SE GUARDEN EN LA DB -> FORMA MANUAL
 
     protected $fillable = [
-        'title',
+        'titulo',
         'resumen',
-        'description',
+        'texto',
         'url',
         'url_img',
         'name_img',
-        'importancia'
+        'importancia',
+        'idUser'
     ];
     
     // MANERA DE PASAR Y ACEPTAR TODOS LAS VARIABLES QUE PASA EL CONTROLADOR PARA GUARDAR EN LA DB

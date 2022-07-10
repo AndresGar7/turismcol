@@ -6,6 +6,7 @@ use App\Models\Noticia;
 use Illuminate\Http\Request;
 use Illuminate\Auth\Events\Validated;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\CreateProjectRequest;
 use App\Http\Requests\UpdateProjectRequest;
 use Intervention\Image\Facades\Image;
@@ -16,11 +17,11 @@ class NoticiaController extends Controller
     public function __construct()
     {
         //nombre middleware   protege unicamente los metodos que esten een el arreglo
-        $this->middleware('is_authorized:sop,adm', ['only' => ['create']]);
-        $this->middleware('is_authorized:sop,adm', ['only' => ['admin']]);
-        $this->middleware('is_authorized:sop,adm', ['only' => ['showAdmin']]);
-        $this->middleware('is_authorized:sop,adm', ['only' => ['show']]);
-        $this->middleware('is_authorized:sop,adm', ['only' => ['edit']]);
+        $this->middleware('is_authorized:sop,admin', ['only' => ['create']]);
+        $this->middleware('is_authorized:sop,admin', ['only' => ['admin']]);
+        $this->middleware('is_authorized:sop,admin', ['only' => ['showAdmin']]);
+        $this->middleware('is_authorized:sop,admin', ['only' => ['show']]);
+        $this->middleware('is_authorized:sop,admin', ['only' => ['edit']]);
     }
 
     // SE ENCARGA DE MOSTRAR LAS NOTICIAS EN LA PARTE PRINCIPAL DE LA PAGINA
@@ -94,16 +95,19 @@ class NoticiaController extends Controller
         $ext_img= substr($name_img, -4);
         $name_img = str_replace($ext_img ,'', $name_img);
 
-        $url_imagen = str_replace('public','storage',$imagen) ;
+        $url_imagen = str_replace('public','storage',$imagen);
+
+        $usuario = auth()->user()->idUser;
         
         Noticia::create([
 
-            'title' => $titulo,
+            'titulo' => $titulo,
             'url' => $url,
             'resumen' => $resumen,
-            'description' => $descripcion,
+            'texto' => $descripcion,
             'url_img' => $url_imagen,
-            'name_img' => $name_img
+            'name_img' => $name_img,
+            'idUser' => $usuario
 
         ]);
 
@@ -167,9 +171,9 @@ class NoticiaController extends Controller
             $url_imagen = str_replace('public','storage',$imagen);
             // return [$noticia->url_img, $url_imagen = str_replace('public','storage',$imagen)];
             $noticia->update([
-                'title' => $titulo,
+                'titulo' => $titulo,
                 'url' => $url,
-                'description' => $descripcion,
+                'texto' => $descripcion,
                 'resumen' => $resumen,
                 'url_img' => $url_imagen,
                 'name_img' => $name_img,
@@ -189,9 +193,9 @@ class NoticiaController extends Controller
 
 
             $noticia->update([
-                'title' => $titulo,
+                'titulo' => $titulo,
                 'url' => $url,
-                'description' => $descripcion,
+                'texto' => $descripcion,
                 'resumen' => $resumen,
                 'importancia' => $request->importancia
             ]);

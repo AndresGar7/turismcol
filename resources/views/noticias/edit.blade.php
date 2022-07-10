@@ -19,10 +19,10 @@
                         <div class="col-lg-6 col-md-6 col-sm-12 pt-4 px-4">
                             <div class="mb-3">
                                 <label for="titulo">Titulo de la Noticia</label>
-                                <input class="form-control mb-4" type="text" name="titulo" id="titulo" value="{{ old('titulo', $noticia->title) }}">
+                                <input class="form-control mb-4" type="text" name="titulo" id="titulo" value="{{ old('titulo', $noticia->titulo) }}">
                                 {!! $errors->first('titulo', '<small>:message</small>') !!} 
                                 <label for="descripcion">Descripcion de la Noticia</label>
-                                <textarea class="form-control" name="descripcion" cols="70" rows="10" id="descripcion">{{ old('descripcion', $noticia->description) }}</textarea>
+                                <textarea class="form-control" name="descripcion" cols="70" rows="10" id="descripcion">{{ old('descripcion', $noticia->texto) }}</textarea>
                                 {!! $errors->first('descripcion', '<small>:message</small>') !!}
                             </div>
                         </div>

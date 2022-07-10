@@ -12,7 +12,7 @@
         <div class="col-lg-12 col-md-12">
             <div class="card shadow-sm">
                 <div class="card-header bg-secondary">
-                    <h2 class="card-title text-light fw-bold mt-2 fs-3">{{ $noticia->title }}</h2>
+                    <h2 class="card-title text-light fw-bold mt-2 fs-3">{{ $noticia->titulo }}</h2>
                 </div>
                 <div class="card-body">
                     <div class="row">
@@ -20,7 +20,7 @@
                             <h3 class="fw-bold fs-4">Resumen:</h3>
                             <p class="fw-normal fs-5">{{ $noticia->resumen }}</p>
                             <h3 class="fw-bold fs-4 ">Descripción:</h3>
-                            <p class="fw-normal fs-5">{{ $noticia->description }}</p>
+                            <p class="fw-normal fs-5">{{ $noticia->texto }}</p>
                         </div>
                         <div class="col-lg-6 col-md-6 col-sm-12">
                             <div class="cont-img mx-auto">

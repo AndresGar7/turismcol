@@ -4,7 +4,7 @@
 @section('title', 'Administrador')
 
 @section('content_header')
-    @if ($usuario->rango == 'cli')
+    @if ($usuario->rol == 'user')
     <div class="row mb-2">
         <div class="col-12">
             <h1 class="fs-1 fw-bold">Mi Panel</h1>
@@ -20,7 +20,7 @@
 @stop
 
 @section('content')
-    @if (!$usuario->direccion)
+    @if (!$masDatos->direccion)
         <section class="content">
             <div class="container-fluid">
                 <div class="row mt-5">
@@ -307,8 +307,11 @@
 @stop
 
 @section('css')
-    <link rel="stylesheet" href="/css/admin_custom.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs5/dt-1.12.1/r-2.3.0/datatables.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 @stop
+
 
 @section('js')
     

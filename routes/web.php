@@ -55,3 +55,14 @@ Route::patch('/perfil/{usuario}', [App\Http\Controllers\PerfilController    ::cl
 // RUTAS PARA LA ACTUALIZACION DE LA CONTRASEÑA DEL USUARIO
 Route::get('/perfil/CambioContrasena', [\App\Http\Controllers\PerfilController::class, 'changePassword'])->name('perfil.changePassword');
 Route::patch('/perfil/CambioContrasena/{usuario}', [\App\Http\Controllers\PerfilController::class, 'updaPassword'])->name('perfil.updatePassword');
+
+
+// Route::group(['middleware' => ['auth']], function(){
+    // RUTAS PARA EL MANEJO DE LOS PROYECTOS DE LOS USUARIOS
+    Route::get('/citas/admin', [App\Http\Controllers\CitaController::class, 'admin'])->name('citas.admin');
+    Route::get('/citas/mostrar', [App\Http\Controllers\CitaController::class, 'show'])->name('citas.show');
+    Route::post('/citas/crear', [App\Http\Controllers\CitaController::class, 'store']);
+    Route::post('/citas/editar/{id}', [App\Http\Controllers\CitaController::class, 'edit'])->name('citas.edit');
+    Route::post('/citas/actualizar/{cita}', [App\Http\Controllers\CitaController::class, 'update'])->name('citas.update');
+    Route::post('/citas/borrar/{id}', [App\Http\Controllers\CitaController::class, 'destroy'])->name('citas.destroy');
+// });  

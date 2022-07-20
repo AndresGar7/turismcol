@@ -26,18 +26,19 @@
                                     <div class="col-md-6 mx-auto">
                                         <div class="form-group">
                                             <label class="form-label" for="password">Contraseña Actual</label>
-                                            <input class="form-control form-control-lg @error('password') is-invalid @enderror"" type="text" name="password" id="password" placeholder="Contraseña Actual">
+                                            <input class="form-control form-control-lg @error('password') is-invalid @enderror"" type="password" name="password" id="password" placeholder="Contraseña Actual">
                                         </div>
                                         @error('password')
                                             <div class="alert alert-danger">{!! $errors->first('password', '<small>:message</small>') !!}</div>
                                         @enderror
                                     </div>
                                 </div>
+                                <hr>
                                 <div class="row mt-2">
                                     <div class="col-md-6 mx-auto">
                                         <div class="form-group">
                                             <label class="form-label" for="password_new">Contraseña Nueva</label>
-                                            <input class="form-control form-control-lg @error('password_new') is-invalid @enderror" type="text" name="password_new" id="password_new" placeholder="Contraseña Nueva">
+                                            <input class="form-control form-control-lg @error('password_new') is-invalid @enderror" type="password" name="password_new" id="password_new" placeholder="Contraseña Nueva">
                                         </div>
                                         @error('password_new')
                                             <div class="alert alert-danger">{!! $errors->first('password_new', '<small>:message</small>') !!}</div>
@@ -48,7 +49,7 @@
                                     <div class="col-md-6 mx-auto">
                                         <div class="form-group">
                                             <label class="form-label" for="password_new_confirmation">Confirmar Contraseña</label>
-                                            <input class="form-control form-control-lg @error('password_new') is-invalid @enderror" type="text" name="password_new_confirmation" id="password_new_confirmation" placeholder="Confirmar Contraseña">
+                                            <input class="form-control form-control-lg @error('password_new') is-invalid @enderror" type="password" name="password_new_confirmation" id="password_new_confirmation" placeholder="Confirmar Contraseña">
                                         </div>
                                         @error('password_new_confirmation')
                                             <div class="alert alert-danger">{!! $errors->first('password_new_confirmation', '<small>:message</small>') !!}</div>

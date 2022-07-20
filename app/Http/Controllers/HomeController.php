@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Cliente;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -24,9 +25,10 @@ class HomeController extends Controller
      */
     public function admin()
     {   
-        $usuario = Cliente::where('email','=', auth()->user()->email)->first();
+        $usuario = User::where('email','=', auth()->user()->email)->first();
+        $masDatos = Cliente::where('email','=', auth()->user()->email)->first();
         
-        return view('home', compact('usuario'));
+        return view('home', compact('usuario','masDatos'));
     }
 
     public function index()

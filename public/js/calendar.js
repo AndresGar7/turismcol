@@ -1,0 +1,178 @@
+document.addEventListener('DOMContentLoaded', function() {
+
+    let formulario = document.querySelector('#formulario');
+
+    $('#alertTitle').hide();
+    $('#alertDescripcion').hide();
+
+    var calendarEl = document.getElementById('calendar');
+    var calendar = new FullCalendar.Calendar(calendarEl, {
+        timeZone: 'UTC',
+        displayEventTime:false,
+        initialView: 'dayGridMonth',
+        contentHeight: 420,
+        locale: "es",
+        headerToolbar: {
+            left: 'prev,next today',
+            center: 'title',    
+            right: 'dayGridMonth,listYear'
+        },
+        events:'/citas/mostrar',
+        dateClick:function(info) {
+            formulario.reset();
+            formulario.start.value=info.dateStr;
+            formulario.end.value=formulario.start.value;
+            $('#cita').modal({
+                show: true,
+                backdrop: 'static',
+                keyboard: false
+            });
+            $("#btnGuardar").show();
+            $("#btnActualizar").hide();
+            $("#btnEliminar").hide();
+            $('#alertDescripcion').hide();
+            $('#alertTitle').hide();
+            $('#title').removeClass('is-invalid');
+            $('#descripcion').removeClass('is-invalid');
+        },
+        eventClick:function(info){
+            var evento = info.event;
+            $('#alertDescripcion').hide();
+            $('#alertTitle').hide();
+            $('#title').removeClass('is-invalid');
+            $('#descripcion').removeClass('is-invalid');                
+
+            axios.post('/citas/editar/'+evento.extendedProps.idCita).then((respuesta) => {
+                    
+                    formulario.idUser.value = respuesta.data.idUser;
+                    formulario.idCita.value = respuesta.data.idCita;
+                    formulario.descripcion.value = respuesta.data.motivo_cita;
+                    formulario.title.value = respuesta.data.titulo;
+                    formulario.start.value = respuesta.data.start;
+                    formulario.end.value = respuesta.data.end;
+
+                    $('#cita').modal({
+                        show: true,
+                        backdrop: 'static',
+                        keyboard: false
+                    });
+                    $("#btnGuardar").hide();
+                    $("#btnEliminar").show();
+                    $("#btnActualizar").show();
+                    
+                }).catch(error => {
+                    if(error.response){
+                        console.log(error.response.data);
+                    } 
+                });
+        }
+    });
+    calendar.render();
+
+    document.getElementById('btnGuardar').addEventListener("click", function(){
+        const datos = new FormData(formulario);
+
+        axios.post('/citas/crear', datos).then((respuesta) => {
+            Swal.fire({
+                title: "Excelente",
+                text: "La cita se creó correctamente.",
+                icon: "success",
+                confirmButtonColor: "#3085d6",
+                confirmButtonText: "Aceptar!",
+                allowOutsideClick: false
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    calendar.refetchEvents();
+                    $('#cita').modal('hide'); 
+                }
+            });
+        }).catch(error => {
+            if(error.response){
+                if(error.response.data.errors.title){
+                    $('#title').addClass('is-invalid');
+                    $('#alertTitle').append('<small>El campo titulo es obligatorio.</small>');
+                    $('#alertTitle').show();
+                }else{
+                    $('#alertTitle').hide();
+                    $('#title').removeClass('is-invalid');
+                }
+                
+                if(error.response.data.errors.descripcion){
+                    $('#descripcion').addClass('is-invalid');
+                    $('#alertDescripcion').append('<small>'+error.response.data.errors.descripcion+'</small>');
+                    $('#alertDescripcion').show();
+                }else{
+                    $('#alertDescripcion').hide();
+                    $('#descripcion').removeClass('is-invalid');
+                }
+            }
+        });
+    });
+
+    document.getElementById('btnActualizar').addEventListener("click", function(){
+        const datos = new FormData(formulario);
+        
+        axios.post('/citas/actualizar/'+formulario.idCita.value, datos).then((respuesta) => {
+            Swal.fire({ 
+                title: "Excelente",
+                text: "La cita se ha actualizado correctamente.",
+                icon: "success",
+                confirmButtonColor: "#3085d6",
+                confirmButtonText: "Aceptar!",
+                allowOutsideClick: false
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    calendar.refetchEvents();
+                    $('#cita').modal('hide'); 
+                }
+            });
+        }).catch(error => {
+            if(error.response){
+                if(error.response){
+                    if(error.response.data.errors.title){
+                        $('#title').addClass('is-invalid');
+                        $('#alertTitle').append('<small>El campo titulo es obligatorio.</small>');
+                        $('#alertTitle').show();
+                    }else{
+                        $('#alertTitle').hide();
+                        $('#title').removeClass('is-invalid');
+                    }
+                    
+                    if(error.response.data.errors.descripcion){
+                        $('#descripcion').addClass('is-invalid');
+                        $('#alertDescripcion').append('<small>'+error.response.data.errors.descripcion+'</small>');
+                        $('#alertDescripcion').show();
+                    }else{
+                        $('#alertDescripcion').hide();
+                        $('#descripcion').removeClass('is-invalid');
+                    }
+                }
+            }
+        });
+    });
+    
+    document.getElementById('btnEliminar').addEventListener("click", function(){
+        const datos = new FormData(formulario);
+        
+        axios.post('/citas/borrar/'+formulario.idCita.value, datos).then((respuesta) => {
+            Swal.fire({
+                title: "Excelente",
+                text: "La cita se ha borrado satisfactoriamente.",
+                icon: "success",
+                confirmButtonColor: "#3085d6",
+                confirmButtonText: "Aceptar!",
+                allowOutsideClick: false
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    calendar.refetchEvents();
+                    $('#cita').modal('hide'); 
+                }
+            });
+        }).catch(error => {
+            if(error.response){
+                console.log(error.response.data);
+            }
+        });
+    });
+
+});

@@ -287,38 +287,33 @@ return [
                 ],
             ]
         ],
+        // [
+        //     'text' => 'Mis Proyectos',
+        //     // 'url' => 'admin/settings',
+        //     'icon' => 'fas fa-fw fa-folder-open',
+        //     'submenu' => [
+        //         [
+        //             'text' => 'Creación Proyecto',
+        //             'url' => '#',
+        //             'icon' => 'fas fa-fw fa-file'
+        //         ],
+        //         [
+        //             'text' => 'Admin. Proyectos',
+        //             'url' => '#',
+        //             'icon' => 'fas fa-fw fa-toolbox'
+        //         ]
+        //     ]
+        // ],
         [
-            'text' => 'Mis Proyectos',
-            // 'url' => 'admin/settings',
-            'icon' => 'fas fa-fw fa-folder-open',
-            'submenu' => [
-                [
-                    'text' => 'Creación Proyecto',
-                    'url' => '#',
-                    'icon' => 'fas fa-fw fa-file'
-                ],
-                [
-                    'text' => 'Admin. Proyectos',
-                    'url' => '#',
-                    'icon' => 'fas fa-fw fa-toolbox'
-                ]
-            ]
-        ],
-        [
-            'text' => 'Mis Citas',
-            // 'url' => 'admin/settings',
+            'text' => 'Mis Citaciones',
             'icon' => 'fas fa-fw fa-calendar',
-            // <i class="fa-solid fa-calendar-range"></i>
             'submenu' => [
                 [
-                    'text' => 'Creación Cita',
-                    'url' => '#',
-                    'icon' => 'fas fa-fw fa-file'
-                ],
-                [
-                    'text' => 'Admin. Citas',
-                    'url' => '#',
-                    'icon' => 'fas fa-fw fa-toolbox'
+                    'text' => 'Administración Citas',
+                    'route' => 'citas.admin',
+                    'icon' => 'fas fa-fw fa-toolbox',
+                    'active' => ['citas*'],
+                    // 'can' => 'admin-noticias'
                 ]
             ]
         ],

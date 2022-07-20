@@ -4,14 +4,15 @@
 
 @section('plugins.Datatables', true)
 
+@section('content_header')
+<div class="row mb-2">
+    <div class="col-12">
+        <h1 class="fs-1 fw-bold">Noticias</h1>
+    </div>
+</div>
+@stop
+
 @section('content')
-    <section class="content-header">
-            <div class="row mb-2">
-                <div class="col-12">
-                    <h1 class="fs-1 fw-bold">Noticias</h1>
-                </div>
-            </div>
-    </section>
     <section class="content">
         <div class="container-fluid">
             <div class="row">

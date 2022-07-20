@@ -14,8 +14,6 @@ use App\Http\Requests\PasswordPerfilRequest;
 
 class PerfilController extends Controller
 {
-    
-    public $paso;
 
     public function admin(){
 

@@ -45,7 +45,7 @@ class NoticiaController extends Controller
 
         ]);
 
-    }
+    } 
 
     // SE ENCARGA DE MOSTRAR LAS NOTICIAS EN LA PAGINA DE ADMINISTRACION
     public function admin()

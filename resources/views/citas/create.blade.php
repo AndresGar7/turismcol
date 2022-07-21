@@ -15,15 +15,18 @@
 
 @section('content')
 <section class="content">
-    <div id="calendar"></div>
-    {{-- <div class="container-fluid">
-        <div class="row">
-            <div class="col-12 mx-auto">
-                <div class="container">
-                </div>
-            </div>
-        </div>
-    </div> --}}
+    <div id="validar">
+        {{ $hoy }}
+        <br><br>
+        {{ $cita }}
+        <br><br>
+        @foreach ($eventos as $evento)
+            {{$evento}}
+            <br>
+            <br>
+        @endforeach
+        {{-- {{ $eventos  }} --}}
+    </div>
 </section>
 @stop
 
@@ -38,14 +41,4 @@
 @section('js')
     <script src="{{ asset('js/main.min.js') }}" defer></script>
     {{-- <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.0/main.min.js"></script> --}}
-    <script>
-    document.addEventListener('DOMContentLoaded', function() {
-        var calendarEl = document.getElementById('calendar');
-        var calendar = new FullCalendar.Calendar(calendarEl, {
-        initialView: 'dayGridMonth'
-        });
-        calendar.render();
-    });
-
-    </script>
 @stop

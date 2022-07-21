@@ -1,5 +1,7 @@
 document.addEventListener('DOMContentLoaded', function() {
 
+    const diaActual = new Date();
+    let hoy = diaActual.toISOString().split('T')[0]; // Dia Actual
     let formulario = document.querySelector('#formulario');
 
     $('#alertTitle').hide();
@@ -17,23 +19,43 @@ document.addEventListener('DOMContentLoaded', function() {
             center: 'title',    
             right: 'dayGridMonth,listYear'
         },
-        events:'/citas/mostrar',
+        // events:'/citas/mostrar',
+        events:{
+            url:'/citas/mostrar'
+        },
         dateClick:function(info) {
-            formulario.reset();
-            formulario.start.value=info.dateStr;
-            formulario.end.value=formulario.start.value;
-            $('#cita').modal({
-                show: true,
-                backdrop: 'static',
-                keyboard: false
-            });
-            $("#btnGuardar").show();
-            $("#btnActualizar").hide();
-            $("#btnEliminar").hide();
-            $('#alertDescripcion').hide();
-            $('#alertTitle').hide();
-            $('#title').removeClass('is-invalid');
-            $('#descripcion').removeClass('is-invalid');
+
+            if(hoy <= info.dateStr){
+                formulario.reset();
+                formulario.start.value=info.dateStr;
+                formulario.end.value=formulario.start.value;
+                $('#cita').modal({
+                    show: true,
+                    backdrop: 'static',
+                    keyboard: false
+                });
+                $("#btnGuardar").show();
+                $("#btnActualizar").hide();
+                $("#btnEliminar").hide();
+                $('#alertDescripcion').hide();
+                $('#alertTitle').hide();
+                $('#title').removeClass('is-invalid');
+                $('#descripcion').removeClass('is-invalid');
+                $('#title').prop('disabled', false);
+                $('#descripcion').prop('disabled', false);
+                $('#fechaVencida').hide();
+                $('#start').prop('disabled',false);
+
+            }else{
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: 'No se pueden agregar citas de fechas anteriores a la actual.',
+                    confirmButtonColor: "#3085d6",
+                    confirmButtonText: "Aceptar!",
+                    allowOutsideClick: false
+                });
+            }
         },
         eventClick:function(info){
             var evento = info.event;
@@ -51,14 +73,29 @@ document.addEventListener('DOMContentLoaded', function() {
                     formulario.start.value = respuesta.data.start;
                     formulario.end.value = respuesta.data.end;
 
+                    console.log(respuesta);
+
                     $('#cita').modal({
                         show: true,
                         backdrop: 'static',
                         keyboard: false
                     });
                     $("#btnGuardar").hide();
-                    $("#btnEliminar").show();
-                    $("#btnActualizar").show();
+                    if(hoy <= respuesta.data.start){
+                        $("#btnEliminar").show();
+                        $("#btnActualizar").show();
+                        $('#title').prop('disabled', false);
+                        $('#descripcion').prop('disabled', false);
+                        $('#start').prop('disabled',false);
+                        $('#fechaVencida').hide();
+                    }else{
+                        $("#btnActualizar").hide();
+                        $("#btnEliminar").hide();
+                        $('#title').prop('disabled', true);
+                        $('#descripcion').prop('disabled', true);
+                        $('#start').prop('disabled',true);
+                        $('#fechaVencida').show();
+                    }
                     
                 }).catch(error => {
                     if(error.response){
@@ -111,44 +148,57 @@ document.addEventListener('DOMContentLoaded', function() {
 
     document.getElementById('btnActualizar').addEventListener("click", function(){
         const datos = new FormData(formulario);
-        
-        axios.post('/citas/actualizar/'+formulario.idCita.value, datos).then((respuesta) => {
-            Swal.fire({ 
-                title: "Excelente",
-                text: "La cita se ha actualizado correctamente.",
-                icon: "success",
+        console.log(formulario.start.value);
+
+        if(hoy <= formulario.start.value){
+
+            axios.post('/citas/actualizar/'+formulario.idCita.value, datos).then((respuesta) => {
+                Swal.fire({ 
+                    title: "Excelente",
+                    text: "La cita se ha actualizado correctamente.",
+                    icon: "success",
+                    confirmButtonColor: "#3085d6",
+                    confirmButtonText: "Aceptar!",
+                    allowOutsideClick: false
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        calendar.refetchEvents();
+                        $('#cita').modal('hide'); 
+                    }
+                });
+            }).catch(error => {
+                if(error.response){
+                    if(error.response){
+                        if(error.response.data.errors.title){
+                            $('#title').addClass('is-invalid');
+                            $('#alertTitle').append('<small>El campo titulo es obligatorio.</small>');
+                            $('#alertTitle').show();
+                        }else{
+                            $('#alertTitle').hide();
+                            $('#title').removeClass('is-invalid');
+                        }
+                        
+                        if(error.response.data.errors.descripcion){
+                            $('#descripcion').addClass('is-invalid');
+                            $('#alertDescripcion').append('<small>'+error.response.data.errors.descripcion+'</small>');
+                            $('#alertDescripcion').show();
+                        }else{
+                            $('#alertDescripcion').hide();
+                            $('#descripcion').removeClass('is-invalid');
+                        }
+                    }
+                }
+            });
+        }else{
+            Swal.fire({
+                icon: 'error',
+                title: 'Error',
+                text: 'No se pueden agregar citas de fechas anteriores a la actual.',
                 confirmButtonColor: "#3085d6",
                 confirmButtonText: "Aceptar!",
                 allowOutsideClick: false
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    calendar.refetchEvents();
-                    $('#cita').modal('hide'); 
-                }
             });
-        }).catch(error => {
-            if(error.response){
-                if(error.response){
-                    if(error.response.data.errors.title){
-                        $('#title').addClass('is-invalid');
-                        $('#alertTitle').append('<small>El campo titulo es obligatorio.</small>');
-                        $('#alertTitle').show();
-                    }else{
-                        $('#alertTitle').hide();
-                        $('#title').removeClass('is-invalid');
-                    }
-                    
-                    if(error.response.data.errors.descripcion){
-                        $('#descripcion').addClass('is-invalid');
-                        $('#alertDescripcion').append('<small>'+error.response.data.errors.descripcion+'</small>');
-                        $('#alertDescripcion').show();
-                    }else{
-                        $('#alertDescripcion').hide();
-                        $('#descripcion').removeClass('is-invalid');
-                    }
-                }
-            }
-        });
+        }
     });
     
     document.getElementById('btnEliminar').addEventListener("click", function(){

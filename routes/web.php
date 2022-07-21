@@ -59,6 +59,7 @@ Route::patch('/perfil/CambioContrasena/{usuario}', [\App\Http\Controllers\Perfil
 
 // Route::group(['middleware' => ['auth']], function(){
     // RUTAS PARA EL MANEJO DE LOS PROYECTOS DE LOS USUARIOS
+    Route::get('/citas/validar', [App\Http\Controllers\CitaController::class, 'validar'])->name('citas.validar');
     Route::get('/citas/admin', [App\Http\Controllers\CitaController::class, 'admin'])->name('citas.admin');
     Route::get('/citas/mostrar', [App\Http\Controllers\CitaController::class, 'show'])->name('citas.show');
     Route::post('/citas/crear', [App\Http\Controllers\CitaController::class, 'store']);

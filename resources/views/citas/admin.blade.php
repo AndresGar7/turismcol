@@ -65,11 +65,13 @@
                                 <div class="alert alert-danger pt-2" id="alertDescripcion"></div>
                             </div>
                             <div class="form-group">
-                                <input type="date" class="form-control" name="start" id="start" aria-describedby="helpId"  hidden>
+                                <label for="start">Fecha</label>
+                                <input type="date" class="form-control" name="start" id="start" aria-describedby="helpId" min=@php $hoy=date("Y-m-d"); echo $hoy; @endphp >
                             </div>
                             <div class="form-group">
                                 <input type="date" class="form-control" name="end" id="end" aria-describedby="helpId" hidden>
                             </div>
+                            <div class="alert alert-danger" id="fechaVencida"><small>La cita seleccionada se encuentra vencida.</small></div>
                         </form>
                     </div>
                     <div class="modal-footer">
@@ -85,7 +87,7 @@
 @endsection
 
 @section('css')
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs5/dt-1.12.1/r-2.3.0/datatables.min.css"/>
+    {{-- <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs5/dt-1.12.1/r-2.3.0/datatables.min.css"/> --}}
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.0/main.css">
     <link href="{{ asset('css/main.css') }}" rel="stylesheet">

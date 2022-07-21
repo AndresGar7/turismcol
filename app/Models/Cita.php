@@ -21,18 +21,4 @@ class Cita extends Model
         'start',
         'end'
     ];
-
-    // public static $rules = [
-    //     'title' => 'required',
-    //     'descripcion' => 'required',
-    //     'start' => 'required',
-    //     'end' =>'required'
-    // ];
-
-    // public function messages(){
-
-    //     return [
-    //         'title.required' => 'El campo titulo es obligatorio'
-    //     ];
-    // }
 }

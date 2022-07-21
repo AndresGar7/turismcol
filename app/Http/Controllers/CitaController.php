@@ -10,6 +10,25 @@ use Illuminate\Support\Carbon;
 
 class CitaController extends Controller
 {
+
+    public function validar(){
+
+        $eventos = Cita::all();
+        $hoy = strtotime(date("Y-m-d H:i:00",time()));
+
+        foreach($eventos as $evento){
+            $cita = strtotime($evento->start);
+            if($hoy >= $cita){
+                $evento[0] = 'rojo';
+            }else{
+                $evento[0] = 'verde';
+            }
+            // array_push($evento,'hoy');
+        }
+
+        return view('citas.create', compact('hoy','eventos','cita'));
+    }
+
     public function admin()
     {   
         if(Auth::check()){
@@ -45,17 +64,23 @@ class CitaController extends Controller
     public function  show(Cita $cita){
         
         $eventos = Cita::all();
-
+        $hoy = strtotime(date("Y-m-d 00:00:00"));
+        
         foreach($eventos as $evento){
-            $evento->display = "#000000";
+
+            $evento->display = true;
             $title = $evento->titulo;
             $evento->title = $title;
             $id = $evento->idCita;
             $evento->id = $id;
-            $evento->color= '#12B886';
+
+            $fechaCita = strtotime($evento->start);
+            if($hoy <= $fechaCita){
+                $evento->color= '#12B886';
+            }else{
+                $evento->color = '#DE3131';
+            }
             $evento->textColor='black';
-            // $evento->display = 'green';
-            // $evento->eventColor= '#12B886';
         }
 
         return response()->json($eventos);

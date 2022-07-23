@@ -26,7 +26,7 @@ class CreateUsersDataTable extends Migration
             $table->string('pais')->nullable();
             $table->string('url_img')->nullable();
             $table->string('name_img')->nullable();
-            $table->enum('sexo',['N','F','M'])->nullable();   
+            $table->enum('sexo',['N','F','M']);   
             $table->timestamps();
         });
     }

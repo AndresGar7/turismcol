@@ -1,13 +1,14 @@
 @extends('adminlte::page')
 
-@section('title','Citas')
+@section('title', 'Crear Cita')
 
-@section('plugins.Datatables', true)
+
+{{-- @section('plugins.Sweetalert2', true) --}}
 
 @section('content_header')
     <div class="row mb-2">
         <div class="col-12">
-            <h1 class="fs-1 fw-bold">Citas</h1>
+            <h1 class="fs-1 fw-bold">Administración de Citas</h1>
         </div>
     </div>
 @stop
@@ -49,13 +50,16 @@
                         <form action="" id="formulario">
                             @csrf
                             <div class="form-group">
-                                <select name="usuario" id="usuario" hidden>
-                                    <option value=""></option>
+                                <label for="usuario">Usuario</label>
+                                <select class="form-control" name="idUser" id="idUser">
+                                    @foreach ($usuarios as $usuario)
+                                        <option value="{{ $usuario->idUser }}">{{ $usuario->usuario }}</option>
+                                    @endforeach
                                 </select>
                             </div>
-                            <div class="form-group">
+                            {{-- <div class="form-group">
                                 <input type="text" class="form-control" name="idUser" id="idUser" value="{{ Auth::user()->idUser }}" hidden>
-                            </div>
+                            </div> --}}
                             <div class="form-group">
                                 <input type="text" class="form-control" name="idCita" id="idCita" hidden>
                             </div>

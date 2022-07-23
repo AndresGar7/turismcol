@@ -50,8 +50,7 @@ Route::get('/contacto',[App\Http\Controllers\ContactoController::class, 'index']
 
 // RUTAS CREADAS PARA LA ADMINISTRACION DEL PERFIL REGISTRADO
 Route::get('/perfil/admin', [App\Http\Controllers\PerfilController::class, 'admin'])->name('perfil.admin');
-Route::patch('/perfil/{usuario}', [App\Http\Controllers\PerfilController    ::class, 'update'])->name('perfil.update');
-
+Route::patch('/perfil/{usuario}', [App\Http\Controllers\PerfilController::class, 'update'])->name('perfil.update');
 // RUTAS PARA LA ACTUALIZACION DE LA CONTRASEÑA DEL USUARIO
 Route::get('/perfil/CambioContrasena', [\App\Http\Controllers\PerfilController::class, 'changePassword'])->name('perfil.changePassword');
 Route::patch('/perfil/CambioContrasena/{usuario}', [\App\Http\Controllers\PerfilController::class, 'updaPassword'])->name('perfil.updatePassword');
@@ -59,9 +58,9 @@ Route::patch('/perfil/CambioContrasena/{usuario}', [\App\Http\Controllers\Perfil
 
 // Route::group(['middleware' => ['auth']], function(){
     // RUTAS PARA EL MANEJO DE LOS PROYECTOS DE LOS USUARIOS
-    Route::get('/citas/validar', [App\Http\Controllers\CitaController::class, 'validar'])->name('citas.validar');
-    Route::get('/citas/admin', [App\Http\Controllers\CitaController::class, 'admin'])->name('citas.admin');
-    Route::get('/citas/mostrar', [App\Http\Controllers\CitaController::class, 'show'])->name('citas.show');
+    Route::get('/citas/administrar', [App\Http\Controllers\CitaController::class, 'administrar'])->name('citas.administrar');
+    Route::get('/citas', [App\Http\Controllers\CitaController::class, 'admin'])->name('citas.admin');
+    Route::get('/citas/mostrar/{idUser}', [App\Http\Controllers\CitaController::class, 'show'])->name('citas.show');
     Route::post('/citas/crear', [App\Http\Controllers\CitaController::class, 'store']);
     Route::post('/citas/editar/{id}', [App\Http\Controllers\CitaController::class, 'edit'])->name('citas.edit');
     Route::post('/citas/actualizar/{cita}', [App\Http\Controllers\CitaController::class, 'update'])->name('citas.update');

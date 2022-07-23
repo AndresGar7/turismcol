@@ -22,6 +22,7 @@ class CreateCitasTable extends Migration
             $table->string('motivo_cita');
             $table->dateTime('start');
             $table->dateTime('end');
+            $table->string('color');
             $table->timestamps();
         });
     }

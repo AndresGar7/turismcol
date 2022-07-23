@@ -1,8 +1,20 @@
 document.addEventListener('DOMContentLoaded', function() {
 
     const diaActual = new Date();
+    const rol = document.getElementById('rol');
+    const num_user = document.getElementById('num_user');
     let hoy = diaActual.toISOString().split('T')[0]; // Dia Actual
     let formulario = document.querySelector('#formulario');
+    let movimiento = '';
+
+    if (rol.value == 'admin') {
+        movimiento = '/citas/mostrar/admin';
+    } else {
+        movimiento = '/citas/mostrar/'+num_user.value;
+    }
+
+    console.log(movimiento);
+
 
     $('#alertTitle').hide();
     $('#alertDescripcion').hide();
@@ -21,7 +33,7 @@ document.addEventListener('DOMContentLoaded', function() {
         },
         // events:'/citas/mostrar',
         events:{
-            url:'/citas/mostrar'
+            url:movimiento,
         },
         dateClick:function(info) {
 
@@ -73,7 +85,14 @@ document.addEventListener('DOMContentLoaded', function() {
                     formulario.start.value = respuesta.data.start;
                     formulario.end.value = respuesta.data.end;
 
-                    console.log(respuesta);
+                    if (rol.value == 'admin') {
+                        formulario.idUser.value = respuesta.data.idUser;
+                        formulario.idUser.display = respuesta.data.usuario;
+                    }else{
+
+                        console.log(rol.value);
+                    }
+
 
                     $('#cita').modal({
                         show: true,

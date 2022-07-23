@@ -78,11 +78,11 @@
                                     @enderror
                                 </div>
                                 <div class="col-md-6 mt-2">
-                                    @if ($cliente !== 0)
+                                    @if ($cliente->sexo == 'N')
                                         <div class="form-group">
                                             <label class="form-label" for="sexo">Sexo</label>
                                             <select class="form-control" name="sexo" id="sexo">
-                                                <option selected value="{{ $cliente->sexo }}">{{ $cliente->sexo  == 'F' ? 'Femenino': 'Masculino' }}</option>
+                                                <option selected value="N">Escoger Sexo</option>
                                                 <option value="F">Femenino</option>
                                                 <option value="M">Masculino</option>
                                             </select>
@@ -94,11 +94,20 @@
                                         <div class="form-group">
                                             <label class="form-label" for="sexo">Sexo</label>
                                             <select class="form-control" name="sexo" id="sexo">
+                                                <option selected value="{{ $cliente->sexo }}">{{ $cliente->sexo == 'F' ? 'Femenino' : 'Masculino' }}</option>
                                                 <option value="F">Femenino</option>
                                                 <option value="M">Masculino</option>
                                             </select>
                                         </div>
                                     @endif
+                                </div>
+                            </div>
+                            <div class="row mt-4">
+                                <div class="col-md-6 mt-2">
+                                    <div class="form-group">
+                                        <label class="form-label" for="fec_nacimiento">Fecha Nacimiento</label>
+                                        <input type="date" class="form-control" id="fec_nacimiento" name="fec_nacimiento" value="{{ $cliente->fec_nac == '0001-01-01' ? null : $cliente->fec_nac}}">
+                                    </div>
                                 </div>
                             </div>
                             <hr>

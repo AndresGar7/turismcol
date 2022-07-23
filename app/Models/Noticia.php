@@ -21,6 +21,8 @@ class Noticia extends Model
         'url',
         'url_img',
         'name_img',
+        'fecha',
+        'imagen',
         'importancia',
         'idUser'
     ];

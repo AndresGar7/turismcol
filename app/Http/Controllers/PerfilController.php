@@ -30,6 +30,8 @@ class PerfilController extends Controller
                 // $funcion = 'perfil.store';
             }
             $funcion = 'perfil.update';
+
+            // dd($cliente);
         
             return view('perfil.admin', compact('usuario','cliente','funcion'));
 
@@ -70,6 +72,7 @@ class PerfilController extends Controller
                     'telefono' => $request->telefono,
                     'pais' => $request->pais,
                     'url_img' => $url_imagen,
+                    'fec_nac' => $request->fec_nacimiento,
                     'name_img' => $name_img,
                     'sexo' => $request->sexo
                 ]);
@@ -106,7 +109,8 @@ class PerfilController extends Controller
                     'pais' => $request->pais,
                     'url_img' => $url_imagen,
                     'name_img' => $name_img,
-                    'sexo' => $request->sexo
+                    'sexo' => $request->sexo,
+                    'fec_nac' => $request->fec_nacimiento
                 ]);
                 //!-----------------------------------------------------------------------------
                 // Esto se utiliza para optimizar el tamaño de las imagenes que se van a mostrar de las noticias.
@@ -135,7 +139,8 @@ class PerfilController extends Controller
                 'ciudad' => $request->ciudad,
                 'telefono' => $request->telefono,
                 'pais' => $request->pais,
-                'sexo' => $request->sexo
+                'sexo' => $request->sexo,
+                'fec_nac' => $request->fec_nacimiento,
             ]);
         }
         

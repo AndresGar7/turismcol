@@ -21,6 +21,8 @@
                                 <p class="fw-normal fs-5">{{ $noticia->resumen }}</p>
                                 <h3 class="fw-bold fs-4 ">Descripción:</h3>
                                 <p class="fw-normal fs-5">{{ $noticia->texto }}</p>
+                                <h3 class="fw-bold fs-4 ">Creado Por:</h3>
+                                <p class="fw-normal fs-5">{{ $usuario->usuario }}</p>
                             </div>
                             <div class="col-lg-6 col-md-6 col-sm-12">
                                 <div class="cont-img mx-auto">

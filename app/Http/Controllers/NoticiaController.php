@@ -2,14 +2,16 @@
 
 namespace App\Http\Controllers;
 
+use Carbon\Carbon;
+use App\Models\User;
 use App\Models\Noticia;
 use Illuminate\Http\Request;
-use Illuminate\Auth\Events\Validated;
-use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Auth\Events\Validated;
+use Intervention\Image\Facades\Image;
+use Illuminate\Support\Facades\Storage;
 use App\Http\Requests\CreateProjectRequest;
 use App\Http\Requests\UpdateProjectRequest;
-use Intervention\Image\Facades\Image;
 
 class NoticiaController extends Controller
 {   
@@ -62,10 +64,12 @@ class NoticiaController extends Controller
     {
 
         // $noticia = Noticia::findOrFail($id); // FINDORFAIL --> SE ENCARGA DE TRAER EL ARCHIVO CON EL QUE TIENE EL NOMBRE LA VARIABLE AL IGUAL QUE EN LA DB
+        $usuario = User::where('idUser', '=', $noticia->idUser)->first();
 
         return view('noticias.showAdmin', [
 
-            'noticia' => $noticia
+            'noticia' => $noticia,
+            'usuario' => $usuario
 
         ]);
 
@@ -98,6 +102,7 @@ class NoticiaController extends Controller
         $url_imagen = str_replace('public','storage',$imagen);
 
         $usuario = auth()->user()->idUser;
+        $fecha = Carbon::now();
         
         Noticia::create([
 
@@ -106,7 +111,9 @@ class NoticiaController extends Controller
             'resumen' => $resumen,
             'texto' => $descripcion,
             'url_img' => $url_imagen,
-            'name_img' => $name_img,
+            'imagen' => $name_img . '.jpg',
+            'name_img' => $name_img ,
+            'fecha' => $fecha,
             'idUser' => $usuario
 
         ]);

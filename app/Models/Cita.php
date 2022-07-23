@@ -18,6 +18,7 @@ class Cita extends Model
         'titulo',
         'fecha_cita',
         'motivo_cita',
+        'color',
         'start',
         'end'
     ];

@@ -29,5 +29,13 @@ class AuthServiceProvider extends ServiceProvider
         Gate::define('admin-noticias',function(User $usuario){
             return $usuario->rol !== 'user';
         });
+
+        Gate::define('admin-citas', function(User $usuario){
+            return $usuario->rol !== 'user';
+        });
+
+        Gate::define('citas', function(User $usuario){
+            return $usuario->rol == 'user';
+        });
     }
 }

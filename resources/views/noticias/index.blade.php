@@ -72,8 +72,8 @@
                                     <img src="{{ asset($noticia->url_img) }}" style="width: auto; heigth: 25vw;" class="car-img-top" alt="">
                                     <div class="card-body">
                                         <h5 class="card-title text-dark fw-bold">{{ $noticia->title }}</h5>
-                                        <p class="card-text text-dark">{{ $noticia->resumen }} </p>
-                                        <span>Creado hace: {{ $noticia->updated_at->diffForHumans() }}</span>
+                                        <p class="card-text text-dark">{{ $noticia->resumen }}...</p>
+                                        <span>Fecha publicación: {{ $noticia->created_at->format('d-m-Y') }}</span>
                                     </div>
                                 </div>
                             </a>

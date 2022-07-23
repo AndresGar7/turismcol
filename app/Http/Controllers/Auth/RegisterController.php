@@ -9,6 +9,7 @@ use App\Models\Cliente;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use phpDocumentor\Reflection\Types\Null_;
 
 class RegisterController extends Controller
 {
@@ -91,7 +92,7 @@ class RegisterController extends Controller
             'apellidos' => $data['lastName'],
             'email' => $data['email'],
             'telefono' => $data['phone'],
-            'fec_nac' => Now(),
+            'fec_nac' => '0001-01-01',
             'url_img' => 'storage/img/perfiles/sin_imagen.jpg'
         ]);
 

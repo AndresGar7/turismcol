@@ -271,7 +271,6 @@ return [
         ['header' => 'account_settings'],
         [
             'text' => 'Mi Información',
-            // 'url'  => 'admin/settings',
             'icon' => 'fas fa-fw fa-user',
             'active' => ['perfil*'],
             'submenu' => [
@@ -307,13 +306,14 @@ return [
         [
             'text' => 'Mis Citaciones',
             'icon' => 'fas fa-fw fa-calendar',
+            'can' => 'citas',
             'submenu' => [
                 [
                     'text' => 'Administración Citas',
                     'route' => 'citas.admin',
                     'icon' => 'fas fa-fw fa-toolbox',
-                    'active' => ['citas*'],
-                    // 'can' => 'admin-noticias'
+                    'active' => ['citas/admin'],
+                    
                 ]
             ]
         ],
@@ -326,7 +326,20 @@ return [
             'icon' => 'fas fa-fw fa-newspaper',
             'active' => ['noticias*'],
             'can' => 'admin-noticias'
-        ]
+        ],
+        [
+            'text' => 'Administracion Citas',
+            'route' => 'citas.administrar',
+            'icon' => 'fas fa-fw fa-newspaper',
+            'active' => ['citas/administrar'],
+            'can' => 'admin-citas'
+        ],
+        // [
+        //     'text' => 'Administracion Usuarios',
+        //     'route' => 'usuaris.admin',
+        //     'icon' => 'fas fa-fw fa-newspaper',
+        //     'active' => ['usuarios*'],
+        // ],
         // [
         //     'text'    => 'multilevel',
         //     'icon'    => 'fas fa-fw fa-share',

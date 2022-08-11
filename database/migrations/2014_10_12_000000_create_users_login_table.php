@@ -18,11 +18,10 @@ class CreateUsersLoginTable extends Migration
             $table->unsignedBigInteger('idUser');
             $table->foreign('idUser')->references('idUser')->on('users_data');
             $table->string('usuario')->unique();
-            // $table->string('name');
-            // $table->string('username')->unique();
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
-            $table->enum('rol',['user','sop','admin'])->default('user'); 
+            // $table->enum('rol',['user','sop','admin']); 
+            $table->string('rol');
             $table->string('password');
             $table->rememberToken();
             $table->timestamps();

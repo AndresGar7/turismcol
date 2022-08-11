@@ -80,6 +80,7 @@
 @stop
 
 @section('js')
+    {{-- <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.24/dist/sweetalert2.all.min.js" defer></script> --}}
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="{{ asset('js/sweetalert2.all.min.js') }}"></script>
     <script>

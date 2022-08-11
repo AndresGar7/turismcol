@@ -67,7 +67,7 @@ class RegisterController extends Controller
             'lastName.min'      => 'El campo apellido no debe ser menor que 3 caracteres.',
             'phone.required' => 'El campo telefono es obligatorio.',
             'phone.max'      => 'El campo telefono no debe ser mayor que 13 numeros.',
-            'phone.min'      => 'El campo apellido no debe ser menor que 9 numeros.',
+            'phone.min'      => 'El campo telefono no debe ser menor que 9 numeros.',
             'email.required' => 'El campo email es obligatorio.',
             'email.email'   => 'El campo email no es un correo valido.',
             'email.unique' => 'El campo email ya se encuentra registrado.',

@@ -39,8 +39,6 @@ class NoticiaController extends Controller
     public function show(Noticia $noticia)
     {
 
-        // $noticia = Noticia::findOrFail($id); // FINDORFAIL --> SE ENCARGA DE TRAER EL ARCHIVO CON EL QUE TIENE EL NOMBRE LA VARIABLE AL IGUAL QUE EN LA DB
-
         return view('noticias.show', [
 
             'noticia' => $noticia

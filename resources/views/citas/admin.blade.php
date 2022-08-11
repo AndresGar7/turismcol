@@ -102,12 +102,12 @@
 @stop
 
 @section('js')
-{{-- <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.0/main.js"></script> --}}
-{{-- <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.0/locales-all.js"></script> --}}
-{{-- <script src="https://unpkg.com/axios/dist/axios.min.js"></script> --}}
-{{-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script> --}}
-<script src="{{ asset('js/sweetalert2.all.min.js') }}"></script>
-<script src="{{ asset('js/axios.min.js') }}" defer></script>
+    {{-- <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.0/main.js"></script> --}}
+    {{-- <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.0/locales-all.js"></script> --}}
+    {{-- <script src="https://unpkg.com/axios/dist/axios.min.js"></script> --}}
+    {{-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script> --}}
+    <script src="{{ asset('js/sweetalert2.all.min.js') }}"></script>
+    <script src="{{ asset('js/axios.min.js') }}" defer></script>
     <script src="{{ asset('js/main.js') }}" defer></script>
     <script src="{{ asset('js/locales-all.js') }}" defer></script>
     <script src="{{ asset('js/calendar.js') }}"></script>

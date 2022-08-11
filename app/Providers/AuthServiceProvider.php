@@ -26,6 +26,10 @@ class AuthServiceProvider extends ServiceProvider
     {
         $this->registerPolicies();
 // 
+        Gate::define('citas', function(User $usuario){
+            return $usuario->rol == 'user';
+        });
+
         Gate::define('admin-noticias',function(User $usuario){
             return $usuario->rol !== 'user';
         });
@@ -34,8 +38,8 @@ class AuthServiceProvider extends ServiceProvider
             return $usuario->rol !== 'user';
         });
 
-        Gate::define('citas', function(User $usuario){
-            return $usuario->rol == 'user';
+        Gate::define('admin-usuarios', function(User $usuario){
+            return $usuario->rol == 'admin';
         });
     }
 }

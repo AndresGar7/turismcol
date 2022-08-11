@@ -31,6 +31,13 @@ Route::get('/galeria', [App\Http\Controllers\GaleriaController::class, 'index'])
 // Route::get('/noticias', [App\Http\Controllers\NoticiaController::class, 'index'])->name('noticias.index')->middleware('is_authorized:cli');
 Route::get('/noticias', [App\Http\Controllers\NoticiaController::class, 'index'])->name('noticias.index');
 
+//RUTAS PARA EL MANEJO DE LOS USUARIOS
+Route::get('/usuarios/crear', [App\Http\Controllers\UsuarioController::class, 'create'])->name('usuarios.create');
+Route::get('/usuarios/admin', [App\Http\Controllers\UsuarioController::class, 'admin'])->name('usuarios.admin');
+Route::get('/usuarios/admin/{usuario}', [App\Http\Controllers\UsuarioController::class, 'show'])->name('usuarios.show');
+Route::patch('/usuarios/{usuario}', [App\Http\Controllers\NoticiaController::class, 'update'])->name('noticias.update');
+Route::post('/usuarios/actualizar', [\App\Http\Controllers\UsuarioController::class, 'store'])->name('usuarios.store');
+
 // RUTAS CREADAS PARA LA ADMINISTRACION DE LAS NOTICIAS
 Route::get('/noticias/admin', [App\Http\Controllers\NoticiaController::class, 'admin'])->name('noticias.admin');
 Route::get('/noticias/crear', [App\Http\Controllers\NoticiaController::class, 'create'])->name('noticias.create');
@@ -55,14 +62,12 @@ Route::patch('/perfil/{usuario}', [App\Http\Controllers\PerfilController::class,
 Route::get('/perfil/CambioContrasena', [\App\Http\Controllers\PerfilController::class, 'changePassword'])->name('perfil.changePassword');
 Route::patch('/perfil/CambioContrasena/{usuario}', [\App\Http\Controllers\PerfilController::class, 'updaPassword'])->name('perfil.updatePassword');
 
+// RUTAS PARA EL MANEJO DE LAS CITAS 
+Route::get('/citas/administrar', [App\Http\Controllers\CitaController::class, 'administrar'])->name('citas.administrar');
+Route::get('/citas', [App\Http\Controllers\CitaController::class, 'admin'])->name('citas.admin');
+Route::get('/citas/mostrar/{idUser}', [App\Http\Controllers\CitaController::class, 'show'])->name('citas.show');
+Route::post('/citas/crear', [App\Http\Controllers\CitaController::class, 'store']);
+Route::post('/citas/editar/{id}', [App\Http\Controllers\CitaController::class, 'edit'])->name('citas.edit');
+Route::post('/citas/actualizar/{cita}', [App\Http\Controllers\CitaController::class, 'update'])->name('citas.update');
+Route::post('/citas/borrar/{id}', [App\Http\Controllers\CitaController::class, 'destroy'])->name('citas.destroy');
 
-// Route::group(['middleware' => ['auth']], function(){
-    // RUTAS PARA EL MANEJO DE LOS PROYECTOS DE LOS USUARIOS
-    Route::get('/citas/administrar', [App\Http\Controllers\CitaController::class, 'administrar'])->name('citas.administrar');
-    Route::get('/citas', [App\Http\Controllers\CitaController::class, 'admin'])->name('citas.admin');
-    Route::get('/citas/mostrar/{idUser}', [App\Http\Controllers\CitaController::class, 'show'])->name('citas.show');
-    Route::post('/citas/crear', [App\Http\Controllers\CitaController::class, 'store']);
-    Route::post('/citas/editar/{id}', [App\Http\Controllers\CitaController::class, 'edit'])->name('citas.edit');
-    Route::post('/citas/actualizar/{cita}', [App\Http\Controllers\CitaController::class, 'update'])->name('citas.update');
-    Route::post('/citas/borrar/{id}', [App\Http\Controllers\CitaController::class, 'destroy'])->name('citas.destroy');
-// });  

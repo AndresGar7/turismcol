@@ -334,12 +334,13 @@ return [
             'active' => ['citas/administrar'],
             'can' => 'admin-citas'
         ],
-        // [
-        //     'text' => 'Administracion Usuarios',
-        //     'route' => 'usuaris.admin',
-        //     'icon' => 'fas fa-fw fa-newspaper',
-        //     'active' => ['usuarios*'],
-        // ],
+        [
+            'text' => 'Administracion Usuarios',
+            'route' => 'usuarios.admin',
+            'icon' => 'fas fa-fw fa-newspaper',
+            'active' => ['usuarios*'],
+            'can' => 'admin-usuarios'
+        ],
         // [
         //     'text'    => 'multilevel',
         //     'icon'    => 'fas fa-fw fa-share',

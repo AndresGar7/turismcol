@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', function() {
     let formulario = document.querySelector('#formulario');
     let movimiento = '';
 
-    if (rol.value == 'admin') {
+    if (rol.value !== 'user') {
         movimiento = '/citas/mostrar/admin';
     } else {
         movimiento = '/citas/mostrar/'+num_user.value;
@@ -37,7 +37,9 @@ document.addEventListener('DOMContentLoaded', function() {
         },
         dateClick:function(info) {
 
-            if(hoy <= info.dateStr){
+            console.log(rol.value);
+
+            if((hoy <= info.dateStr && rol.value == 'user' ) || rol.value !== 'user'){
                 formulario.reset();
                 formulario.start.value=info.dateStr;
                 formulario.end.value=formulario.start.value;
@@ -100,7 +102,7 @@ document.addEventListener('DOMContentLoaded', function() {
                         keyboard: false
                     });
                     $("#btnGuardar").hide();
-                    if(hoy <= respuesta.data.start){
+                    if((hoy <= respuesta.data.start && rol.value == 'user') || rol.value !== 'user'){
                         $("#btnEliminar").show();
                         $("#btnActualizar").show();
                         $('#title').prop('disabled', false);
@@ -169,7 +171,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const datos = new FormData(formulario);
         console.log(formulario.start.value);
 
-        if(hoy <= formulario.start.value){
+        if((hoy <= formulario.start.value && rol.value == 'user')|| rol.value !== 'user'){
 
             axios.post('/citas/actualizar/'+formulario.idCita.value, datos).then((respuesta) => {
                 Swal.fire({ 

@@ -13,9 +13,6 @@ document.addEventListener('DOMContentLoaded', function() {
         movimiento = '/citas/mostrar/'+num_user.value;
     }
 
-    console.log(movimiento);
-
-
     $('#alertTitle').hide();
     $('#alertDescripcion').hide();
 
@@ -31,13 +28,11 @@ document.addEventListener('DOMContentLoaded', function() {
             center: 'title',    
             right: 'dayGridMonth,listYear'
         },
-        // events:'/citas/mostrar',
+
         events:{
             url:movimiento,
         },
         dateClick:function(info) {
-
-            console.log(rol.value);
 
             if((hoy <= info.dateStr && rol.value == 'user' ) || rol.value !== 'user'){
                 formulario.reset();

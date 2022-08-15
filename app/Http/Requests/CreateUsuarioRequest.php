@@ -23,15 +23,38 @@ class CreateUsuarioRequest extends FormRequest
      */
     public function rules()
     {
-        $rules = [
-            'email' => 'required|email|unique:users_login,email',
-            'nombre' => 'required|min:3',
-            'apellidos' => 'required',
-            'password_new' => 'required|confirmed|min:8',
-            'password_new_confirmation' => 'required|min:8',
-            'telefono' => 'required|min:9',
-            'rol' => 'required'
-        ];
+
+
+        if(request()->accion == 'usuarios.update' ){
+            if(!empty(request()->password_new)){
+                $rules = [
+                    'nombre' => 'required|min:3',
+                    'apellidos' => 'required',
+                    'password_new' => 'required|confirmed|min:8',
+                    'password_new_confirmation' => 'required|min:8',
+                    'telefono' => 'required|min:9',
+                    'rol' => 'required'
+                ];
+            }else{
+                $rules = [
+                    'nombre' => 'required|min:3',
+                    'apellidos' => 'required',
+                    'telefono' => 'required|min:9',
+                    'rol' => 'required'
+                ];
+            }
+        }else{
+            $rules = [
+                'email' => 'required|email|unique:users_login,email',
+                'nombre' => 'required|min:3',
+                'apellidos' => 'required',
+                'password_new' => 'required|confirmed|min:8',
+                'password_new_confirmation' => 'required|min:8',
+                'telefono' => 'required|min:9',
+                'rol' => 'required'
+            ];
+        }
+
 
         return $rules;
     }

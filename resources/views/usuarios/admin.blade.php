@@ -54,7 +54,9 @@
                                                 <td class="text-center">{{ $usuario->updated_at }}</td>
                                                 <td class="text-center">{{ $usuario->rol }}</td>
                                                 <td class="text-center">
+                                                    @if ($usuario->rol !== 'admin')
                                                     <a class="btn btn-outline-dark btn-lg align-center" href="{{ route('usuarios.show', $usuario->idUser) }}">Ver</a>
+                                                    @endif
                                                 </td>
                                             </tr>
                                             @endforeach

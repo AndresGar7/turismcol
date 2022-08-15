@@ -35,8 +35,9 @@ Route::get('/noticias', [App\Http\Controllers\NoticiaController::class, 'index']
 Route::get('/usuarios/crear', [App\Http\Controllers\UsuarioController::class, 'create'])->name('usuarios.create');
 Route::get('/usuarios/admin', [App\Http\Controllers\UsuarioController::class, 'admin'])->name('usuarios.admin');
 Route::get('/usuarios/admin/{usuario}', [App\Http\Controllers\UsuarioController::class, 'show'])->name('usuarios.show');
-Route::patch('/usuarios/{usuario}', [App\Http\Controllers\NoticiaController::class, 'update'])->name('noticias.update');
+Route::patch('/usuarios/{usuario}/{cliente}', [App\Http\Controllers\UsuarioController::class, 'update'])->name('usuarios.update');
 Route::post('/usuarios/actualizar', [\App\Http\Controllers\UsuarioController::class, 'store'])->name('usuarios.store');
+Route::get('usuarioss/{usuario}/{cliente}', [App\Http\Controllers\UsuarioController::class, 'destroy'])->name('usuarios.destroy');
 
 // RUTAS CREADAS PARA LA ADMINISTRACION DE LAS NOTICIAS
 Route::get('/noticias/admin', [App\Http\Controllers\NoticiaController::class, 'admin'])->name('noticias.admin');

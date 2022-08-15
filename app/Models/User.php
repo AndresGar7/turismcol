@@ -62,10 +62,10 @@ class User extends Authenticatable
 
         switch ($this->user->rol) {
             case 'admin':
-                $rango = "Administrador";
+                $rango = "Master";
                 break;
             case 'sop':
-                $rango = "Soporte";
+                $rango = "Administrador";
                 break;
             case 'user':
                 $rango = "Usuario";

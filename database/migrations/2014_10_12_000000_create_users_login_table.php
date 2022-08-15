@@ -1,8 +1,10 @@
 <?php
 
-use Illuminate\Database\Migrations\Migration;
-use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Database\Migrations\Migration;
 
 class CreateUsersLoginTable extends Migration
 {
@@ -26,6 +28,28 @@ class CreateUsersLoginTable extends Migration
             $table->rememberToken();
             $table->timestamps();
         });
+
+
+        $cliente = DB::table("users_data")
+            ->insert([
+                [
+                    "nombre" => "Administrador",
+                    "apellidos" => "Supremo",
+                    "email" => "admin@admin",
+                    "telefono" => "000000000",
+                    'fec_nac' => '0001-01-01',
+                    'url_img' => 'storage/img/perfiles/sin_imagen.jpg'
+                ]
+            ]);
+
+            DB::table("users_login")
+            ->insert([
+                'idUser' => 1,
+                'email' => 'admin@admin',
+                'usuario' => 'admin@admin',
+                'rol' => 'admin',
+                'password' => Hash::make('andres000'),
+            ]);
     }
 
     /**

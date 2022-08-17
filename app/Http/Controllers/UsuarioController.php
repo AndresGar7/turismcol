@@ -19,6 +19,7 @@ class UsuarioController extends Controller
         $this->middleware('auth');
     }
     
+    
     public function admin(){
 
         $usuarios = DB::table('users_login')

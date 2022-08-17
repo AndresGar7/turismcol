@@ -29,7 +29,9 @@ class CreatePerfilRequest extends FormRequest
             'imagen' => 'image',
             'usuario' => 'required',
             'telefono' => 'required|max:13|min:9',
-            'apellidos' => 'required|max:50|min:3'
+            'apellidos' => 'required|max:50|min:3',
+            'fec_nacimiento' => 'required',
+            'sexo' => 'required'
         ];
         
         if(request()->modo == 'perfil.update'){
@@ -44,6 +46,8 @@ class CreatePerfilRequest extends FormRequest
     public function messages()
     {
         return [
+            'sexo.required' => 'El campo de sexo es obligatorio.',
+            'fec_nacimiento.required' => 'El campo de fecha de nocimiento es obligatorio.',
             'nombre.required' => 'El campo del nombre es obligatorio',
             'nombre.max' => 'El nombre completo no puede superar los 70 caracteres',
             'usuario.unique' => 'Este usuario ya se encuentra creado',

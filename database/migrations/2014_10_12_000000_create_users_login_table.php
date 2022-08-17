@@ -34,21 +34,25 @@ class CreateUsersLoginTable extends Migration
             ->insert([
                 [
                     "nombre" => "Administrador",
-                    "apellidos" => "Supremo",
+                    "apellidos" => "Master",
                     "email" => "admin@admin",
                     "telefono" => "000000000",
                     'fec_nac' => '0001-01-01',
-                    'url_img' => 'storage/img/perfiles/sin_imagen.jpg'
+                    'url_img' => 'storage/img/perfiles/sin_imagen.jpg',
+                    'created_at' => Now(),
+                    'updated_at' => Now()
                 ]
             ]);
 
             DB::table("users_login")
             ->insert([
-                'idUser' => 1,
+                'idUser' => $cliente,
                 'email' => 'admin@admin',
                 'usuario' => 'admin@admin',
                 'rol' => 'admin',
-                'password' => Hash::make('andres000'),
+                'password' => Hash::make('admin1234'),
+                'created_at' => Now(),
+                'updated_at' => Now()
             ]);
     }
 

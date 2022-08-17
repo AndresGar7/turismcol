@@ -77,36 +77,28 @@
                                 @enderror
                             </div>
                             <div class="col-md-6 mt-2">
-                                @if ($cliente->sexo == 'N')
-                                    <div class="form-group">
-                                        <label class="form-label" for="sexo">Sexo</label>
-                                        <select class="form-control" name="sexo" id="sexo">
-                                            <option selected value="N">Escoger Sexo</option>
-                                            <option value="F">Femenino</option>
-                                            <option value="M">Masculino</option>
-                                        </select>
-                                    </div>
-                                    @error('sexo')
-                                        <div class="alert alert-danger">{!! $errors->first('sexo', '<small>:message</small>') !!}</div>
-                                    @enderror
-                                @else
-                                    <div class="form-group">
-                                        <label class="form-label" for="sexo">Sexo</label>
-                                        <select class="form-control" name="sexo" id="sexo">
-                                            <option selected value="{{ $cliente->sexo }}">{{ $cliente->sexo == 'F' ? 'Femenino' : 'Masculino' }}</option>
-                                            <option value="F">Femenino</option>
-                                            <option value="M">Masculino</option>
-                                        </select>
-                                    </div>
-                                @endif
+                                <div class="form-group">
+                                    <label class="form-label" for="sexo">Sexo</label>
+                                    <select class="form-control @error('sexo') is-invalid @enderror" name="sexo" id="sexo">
+                                        <option value="{{ $cliente->sexo }}">{{ $cliente->sexo == 'N' ? 'Escoger Sexo' : ($cliente->sexo != 'M' ? 'Femenino' : 'Masculino')}}</option>
+                                        <option value="F">Femenino</option>
+                                        <option value="M">Masculino</option>
+                                    </select>
+                                </div>
+                                @error('sexo')
+                                    <div class="alert alert-danger">{!! $errors->first('sexo', '<small>:message</small>') !!}</div>
+                                @enderror
                             </div>
                         </div>
                         <div class="row mt-4">
                             <div class="col-md-6 mt-2">
                                 <div class="form-group">
                                     <label class="form-label" for="fec_nacimiento">Fecha Nacimiento</label>
-                                    <input type="date" class="form-control" id="fec_nacimiento" name="fec_nacimiento" value="{{ $cliente->fec_nac == '0001-01-01' ? null : $cliente->fec_nac}}">
+                                    <input type="date" class="form-control @error('fec_nacimiento') is-invalid @enderror" id="fec_nacimiento" name="fec_nacimiento" value="{{ $cliente->fec_nac == '0001-01-01' ? null : $cliente->fec_nac}}">
                                 </div>
+                                @error('fec_nacimiento')
+                                    <div class="alert alert-danger">{!! $errors->first('fec_nacimiento', '<small>:message</small>') !!}</div>
+                                @enderror
                             </div>
                         </div>
                         <hr>
@@ -141,7 +133,7 @@
                     </div>
                     <div class="card-footer">
                         <div class="d-flex justify-content-center">
-                            <button class="btn btn-primary btn-lg mx-3">Guardar</button>
+                            <button class="btn btn-primary btn-lg mx-3">Actualizar</button>
                             <button type="button" onclick="cancelar()" class="btn btn-secondary btn-lg mx-3">Cancelar</button>
                         </div>
                     </div>

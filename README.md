@@ -15,5 +15,5 @@ con usuario= root y constraseña= (vacia). O configurar el .env segun la configu
 
 ## Como loguearse en la aplicacion
 
-usuario: admin@admin
-contraseñ: admin1234
+Usuario: admin@admin   //
+Contraseña: admin1234

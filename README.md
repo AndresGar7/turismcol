@@ -11,7 +11,8 @@
 9. php artisan key:generate
 10. Se debe de abrir la base datos en el panel de laragon y crear una DB con el nombre de turismcol, 
 con usuario= root y constraseña= (vacia). O configurar el .env segun la configuracion que se tenga en mysql
-11. Escribir en el navegador http://turismcol.test
+11. php artisan migrate  -> para crear las tablas del proyecto en la DB
+12. Escribir en el navegador http://turismcol.test
 
 ## Como loguearse en la aplicacion
 

@@ -208,8 +208,26 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-6">
-
+                                <div class="col-6 mx-auto">
+                                    <div class="container-carrusel" id="foto">
+                                        <div class="fotorama" data-allowfullscreen="true" data-nav="thumbs" data-transition="crossfade" data-loop="true" data-autoplay="1900" data-stopautoplayontouch="false">
+                                            <img src="../img/slider/1.jpg" data-caption="CABO DE LA VELA Y PUNTA GALLINAS" alt="CABO DE LA VELA Y PUNTA GALLINAS">
+                                            <img src="../img/slider/2.jpg" data-caption="ISLA GRANDE DESDE CARTAGENA" alt="ISLA GRANDE DESDE CARTAGENA">
+                                            <img src="../img/slider/3.jpg" data-caption="ASCENSO AL NEVADO DEL COCUY" alt="ASCENSO AL NEVADO DEL COCUY">
+                                            <img src="../img/slider/4.jpg" data-caption="RÍO LA MIEL" alt="RÍO LA MIEL">
+                                            <img src="../img/slider/5.jpg" data-caption="DESIERTO DE LA TATACOA" alt="DESIERTO DE LA TATACOA">
+                                            <img src="../img/slider/6.jpg" data-caption="TERMALES DE LA CABAÑA" alt="TERMALES DE LA CABAÑA">
+                                            <img src="../img/slider/7.jpg" data-caption="NUQUÍ EN TEMPORADA DE BALLENAS" alt="NUQUÍ EN TEMPORADA DE BALLENAS">
+                                            <img src="../img/slider/8.jpg" data-caption="SAN JOSÉ DEL GUAVIARE" alt="SAN JOSÉ DEL GUAVIARE">
+                                            <img src="../img/slider/9.jpg" data-caption="RAFTING EN EL CAÑÓN DEL RÍO GÜEJAR" alt="RAFTING EN EL CAÑÓN DEL RÍO GÜEJAR">
+                                            <img src="../img/slider/10.jpg" data-caption="CASCADA FIN DEL MUNDO Y CAÑÓN DEL MANDIYACO" alt="CASCADA FIN DEL MUNDO Y CAÑÓN DEL MANDIYACO">
+                                            <img src="../img/slider/11.jpg" data-caption="CERROS DE MAVICURE Y ESTRELLA FLUVIAL DE INÍRIDA" alt="CERROS DE MAVICURE Y ESTRELLA FLUVIAL DE INÍRIDA">
+                                            <img src="../img/slider/12.jpg" data-caption="VALLE DEL COCORA, FILANDIA Y TOCHE" alt="VALLE DEL COCORA, FILANDIA Y TOCHE">
+                                            <img src="../img/slider/13.jpg" data-caption="BARICHARA" alt="BARICHARA">
+                                            <img src="../img/slider/14.jpg" data-caption="MANGLARES Y CASCADAS" alt="MANGLARES Y CASCADAS">
+                                            <img src="../img/slider/15.jpg" data-caption="MOCAGUA, VISTA ALEGRE Y PUERTO NARIÑO" alt="MOCAGUA, VISTA ALEGRE Y PUERTO NARIÑO">
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -223,10 +241,12 @@
 @section('css')
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs5/dt-1.12.1/r-2.3.0/datatables.min.css"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    {{-- <link href="{{ asset('css/app.css') }}" rel="stylesheet"> --}}
+    <link href="{{ asset('css/fotorama.css') }}" rel="stylesheet">
 @stop
 
 
 @section('js')
-    
+<script src="{{ asset('js/fotorama.js') }}" defer></script>
+{{-- <script src="{{ asset('js/myScripts.js') }}" defer></script> --}}
 @stop

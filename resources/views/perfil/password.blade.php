@@ -76,43 +76,43 @@
 @stop
 
 @section('js')
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-<script src="{{ asset('js/sweetalert2.all.min.js') }}"></script>
-<script>
-    function cancelar(){
-        Swal.fire({
-                title: 'Esta seguro?',
-                text: "Los cambios realizados se perderan!",
-                icon: 'question',
-                showCancelButton: true,
-                cancelButtonText: 'Cancelar',
-                cancelButtonAriaLabel: 'Cancelar',
-                cancelButtonColor: '#d33',  
-                confirmButtonColor: '#3085d6',
-                confirmButtonText: 'Si, deseo salir!',
-                allowOutsideClick: false
-            }).then((result) => {
-            if (result.isConfirmed) {
-                Swal.fire({
-                    title: 'Realizado!',
-                    text: 'No se guardo esta noticia.',
-                    icon: 'success'
-                }).then(function(){
-                    window.location = '/home' 
-                });       
-            }
-        })
-    }
-
-    @if (session('actualizo'))
-        Swal.fire({
-                    title: "Excelente",
-                    text: "La contraseña se actulizo correctamente.",
-                    icon: "success",
-                    confirmButtonColor: "#3085d6",
-                    confirmButtonText: "Aceptar!",
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="{{ asset('js/sweetalert2.all.min.js') }}"></script>
+    <script>
+        function cancelar(){
+            Swal.fire({
+                    title: 'Esta seguro?',
+                    text: "Los cambios realizados se perderan!",
+                    icon: 'question',
+                    showCancelButton: true,
+                    cancelButtonText: 'Cancelar',
+                    cancelButtonAriaLabel: 'Cancelar',
+                    cancelButtonColor: '#d33',  
+                    confirmButtonColor: '#3085d6',
+                    confirmButtonText: 'Si, deseo salir!',
                     allowOutsideClick: false
-                })
-    @endif
-</script>
+                }).then((result) => {
+                if (result.isConfirmed) {
+                    Swal.fire({
+                        title: 'Realizado!',
+                        text: 'No se guardo esta noticia.',
+                        icon: 'success'
+                    }).then(function(){
+                        window.location = '/home' 
+                    });       
+                }
+            })
+        }
+
+        @if (session('actualizo'))
+            Swal.fire({
+                        title: "Excelente",
+                        text: "La contraseña se actulizo correctamente.",
+                        icon: "success",
+                        confirmButtonColor: "#3085d6",
+                        confirmButtonText: "Aceptar!",
+                        allowOutsideClick: false
+                    })
+        @endif
+    </script>
 @stop

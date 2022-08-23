@@ -74,49 +74,45 @@
                                         <div class="col-lg-6 col-6">
                                             <div class="small-box bg-info">
                                                 <div class="inner">
-                                                    <h3>150</h3>
-                                                    <p>New Orders</p>
+                                                    <h3>{{ !empty($citasRealizar) ? $citasRealizar : '0' }}</h3>
+                                                    <p>Citas Futuras</p>
                                                 </div>
                                                 <div class="icon">
                                                     <i class="ion ion-bag"></i>
                                                 </div>
-                                                <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
                                             </div>
                                         </div>
                                         <div class="col-lg-6 col-6">
                                             <div class="small-box bg-success">
                                                 <div class="inner">
-                                                    <h3>53<sup style="font-size: 20px">%</sup></h3>
-                                                    <p>Bounce Rate</p>
+                                                    <h3>{{ $masDatos[0]->created_at->diffForHumans() }}</h3>
+                                                    <p>Me Registre</p>
                                                 </div>
                                                 <div class="icon">
                                                     <i class="ion ion-stats-bars"></i>
                                                 </div>
-                                                <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
                                             </div>
                                         </div>
                                         <div class="col-lg-6 col-6">
                                             <div class="small-box bg-warning">
                                                 <div class="inner">
-                                                    <h3>44</h3>
-                                                    <p>User Registrations</p>
+                                                    <h3>{{ !empty($citasHoy) ? $citasHoy : '0' }}</h3>
+                                                    <p>Citas Hoy</p>
                                                 </div>
                                                 <div class="icon">
                                                     <i class="ion ion-person-add"></i>
                                                 </div>
-                                                <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
                                             </div>
                                         </div>
                                         <div class="col-lg-6 col-6">
                                             <div class="small-box bg-danger">
                                                 <div class="inner">
-                                                    <h3>65</h3>
-                                                    <p>Unique Visitors</p>
+                                                    <h3>{{!empty($citasVencidas) ? $citasVencidas : '0'}}</h3>
+                                                    <p>Citas Vencidas</p>
                                                 </div>
                                                 <div class="icon">
                                                     <i class="ion ion-pie-graph"></i>
                                                 </div>
-                                                <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
                                             </div>
                                         </div>
                                     </div>
@@ -138,49 +134,49 @@
                                 <div class="col-lg-3 col-6">
                                     <div class="small-box bg-info">
                                         <div class="inner">
-                                            <h3>150</h3>
-                                            <p>New Orders</p>
+                                            <h3>{{ !empty($noticias) ? $noticias : '0' }}</h3>
+                                            <p>Noticias Creadas</p>
                                         </div>
                                         <div class="icon">
-                                            <i class="fas fa-shopping-cart"></i>
+                                            <i class="fas fa-solid fa-newspaper"></i>
                                         </div>
-                                        <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                                        <a href="{{ route('noticias.admin') }}" class="small-box-footer">Más información<i class="fas fa-arrow-circle-right"></i></a>
                                     </div>
                                 </div>
                                 <div class="col-lg-3 col-6">
                                     <div class="small-box bg-success">
                                         <div class="inner">
-                                            <h3>53<sup style="font-size: 20px">%</sup></h3>
-                                            <p>Bounce Rate</p>
+                                            <h3>{{ !empty($citas) ? $citas : '0' }}</h3>
+                                            <p>Citas Creadas</p>
                                         </div>
                                         <div class="icon">
-                                            <i class="ion ion-stats-bars"></i>
+                                            <i class="fas fa-light fa-calendar"></i>
                                         </div>
-                                        <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                                        <a href="{{ route('citas.admin') }}" class="small-box-footer">Más información <i class="fas fa-arrow-circle-right"></i></a>
                                     </div>
                                 </div>
                                 <div class="col-lg-3 col-6">
                                     <div class="small-box bg-warning">
                                         <div class="inner">
-                                            <h3>44</h3>
-                                            <p>User Registrations</p>
+                                            <h3>{{ !empty($clientes) ? $clientes : '0' }}</h3>
+                                            <p>Clientes Registrados</p>
                                         </div>
                                         <div class="icon">
                                             <i class="fas fa-user-plus"></i>
                                         </div>
-                                        <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                                        <a href="{{ route('usuarios.admin') }}" class="small-box-footer">Más información <i class="fas fa-arrow-circle-right"></i></a>
                                     </div>
                                 </div>
                                 <div class="col-lg-3 col-6">
                                     <div class="small-box bg-danger">
                                         <div class="inner">
-                                            <h3>65</h3>
-                                            <p>Unique Visitors</p>
+                                            <h3>{{ !empty($clienUsuario) ? $clienUsuario : '0' }}</h3>
+                                            <p>Usuarios Creados</p>
                                         </div>
                                         <div class="icon">
-                                            <i class="fas fa-chart-pie"></i>
+                                            <i class="fas fa-solid fa-helmet-safety"></i>
                                         </div>
-                                        <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                                        <a href="{{ route('usuarios.admin') }}" class="small-box-footer">Más información <i class="fas fa-arrow-circle-right"></i></a>
                                     </div>
                                 </div>
                             </div>
@@ -209,7 +205,7 @@
                                     </div>
                                 </div>
                                 <div class="col-6 mx-auto">
-                                    <div class="container-carrusel" id="foto">
+                                    <div class="container-carrusel2" id="foto">
                                         <div class="fotorama" data-allowfullscreen="true" data-nav="thumbs" data-transition="crossfade" data-loop="true" data-autoplay="1900" data-stopautoplayontouch="false">
                                             <img src="../img/slider/1.jpg" data-caption="CABO DE LA VELA Y PUNTA GALLINAS" alt="CABO DE LA VELA Y PUNTA GALLINAS">
                                             <img src="../img/slider/2.jpg" data-caption="ISLA GRANDE DESDE CARTAGENA" alt="ISLA GRANDE DESDE CARTAGENA">
@@ -241,7 +237,7 @@
 @section('css')
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs5/dt-1.12.1/r-2.3.0/datatables.min.css"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
-    {{-- <link href="{{ asset('css/app.css') }}" rel="stylesheet"> --}}
+    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/fotorama.css') }}" rel="stylesheet">
 @stop
 

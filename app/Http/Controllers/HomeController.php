@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Cliente;
+use Carbon\Carbon;
+use App\Models\Cita;
 use App\Models\User;
+use App\Models\Cliente;
+use App\Models\Noticia;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -36,12 +39,25 @@ class HomeController extends Controller
         }
         
         $masDatos[0]['contador'] = $contador;
-
-        
     
-        // return compact('usuario','masDatos');
+        if ($usuario->rol == 'admin' || $usuario->rol == 'sop') {
+            $noticias = Noticia::count();
+            $citas = Cita::count();
+            $clientes = User::where('rol','=', 'user')->count();
+            $clienUsuario = User::where('rol','=', 'sop')->count();
+
+            return view('home', compact('usuario','masDatos','noticias','citas','clientes','clienUsuario'));
+        }else{
+
+            $citasVencidas = Cita::where('fecha_cita', '=<' , 'CURDATE()')->count();
+            $citasRealizar = Cita::where('fecha_cita','>', 'CURDATE()')->count();
+            $citasHoy = Cita::where('fecha_cita','=', Carbon::now()->format('Y-m-d'))->count();
+
+            // return $masDatos;
+
+            return view('home', compact('usuario','masDatos','citasVencidas','citasRealizar','citasHoy'));
+        }
         
-        return view('home', compact('usuario','masDatos'));
     }
 
     public function index()

@@ -11,13 +11,19 @@ $(document).ready(function(){
             $('.menu').removeClass('shadow-sm');  
         }
     });
+
+    $('#checkPresupuesto').change(function() {
+        if ($('#checkPresupuesto').prop('checked')) {
+            $('#enviarPresupuesto').attr('disabled', false);
+        }else{
+            $('#enviarPresupuesto').attr('disabled', true);
+        }
+    });
 });
 
-$(document).ready(function() {
-} );
 // $('#example').DataTable();
 
-// //FUNCION QUE SE ENCARGA DE CAMBIAR LAS FOTOS  Y NOMBRES DE LA GALERIA SEGUN EL DEPARTAMENTO QUE SE SELECCIONE
+// FUNCION QUE SE ENCARGA DE CAMBIAR LAS FOTOS  Y NOMBRES DE LA GALERIA SEGUN EL DEPARTAMENTO QUE SE SELECCIONE
 
 function traerFotos (dato){
     var nombre = [];

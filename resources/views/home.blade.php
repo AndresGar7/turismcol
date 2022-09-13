@@ -116,6 +116,19 @@
                                             </div>
                                         </div>
                                     </div>
+                                    <div class="row p-3">
+                                        <div class="callout callout-success">
+                                            <div class="row">
+                                                <div class="col-6">
+                                                    <h5>Bienvenido a TurismCol!</h5>
+                                                    <p>El perfil se encuentra actualizado.</p>
+                                                </div>
+                                                <div class="col-6 mx-auto">
+                                                    <a href="{{ route('index') }}" class="float-center" style="color:forestgreen; font-weight:bold;"><h1>Página Web.</h1></a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>

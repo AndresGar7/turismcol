@@ -316,6 +316,95 @@ opacity: 1;
     width: 80%;
 }
 
+    //*! sigue el contenido para la pagina de contactos
+
+    .imgMapa{
+        margin-left: 1vw;
+    }
+
+    .contacto{
+        position: relative;
+        margin-top: -25vw;
+        margin-bottom: 5vw;
+    }
+
+    .title2{
+        color: #fff;
+        font-weight: 700;
+        font-size: 2vw;
+        text-shadow: 2px 2px 4px #000000;
+        width: 100%;
+    }
+
+    .eleccion {
+        background-color: rgba(18, 184, 134,0.5);
+    }
+    
+    .menuAbout {
+        display: flexbox;
+        text-align: center;
+        width: 100%;
+        font-size:1.5vw;
+        font-weight: bold;
+    }
+
+    .menuAbout a {
+        color: #fff;
+        text-shadow: 2px 2px 4px #000000;
+        text-decoration: none;
+        // margin-top: 1vw;
+        padding: 1vw 1vw 1vw; 
+    }
+
+    .contenidoAbout {
+        width: 100%;
+        margin: auto;
+    }
+    .contenidoAbout p {
+        font-weight: 600;
+        text-align: justify;
+        letter-spacing: 2px;
+    }
+    .masDatos {
+        width: 100%;
+        height: auto;
+        background-color: #fff;
+        margin-bottom: 5vw;
+        padding: 0px 0px 20px;
+    }
+    .titleMasDatos { 
+        text-align: center;
+        padding: 20px 0px 20px;
+    }
+    .titleMasDatos h2 {
+        color: #fff;
+        text-shadow: 2px 2px 4px #000000;
+        font-size: 5vw;
+        font-family: Coolvetica;
+        letter-spacing: 3px;
+    }
+    .iconosMasDatos {
+        display: flex;  
+        width: 95%; 
+        margin:auto;
+    }
+    .cajaPor5 {
+        text-align: center;
+        margin: auto;
+    }
+    .cajaPor5 img {
+        width: 5vw;
+        height: 5vw;
+    }
+    .cajaPor5 h2 {
+        font-weight: bold;
+        font-size: 2.5vw;
+        color:#12b886;
+    }
+    .cajaPor5 p {
+        font-size: 2vw;
+    }
+
 @media screen and (max-width: 1440px) {
     .cajaD .spanIzq:after {
         width: 10.5vw;
@@ -886,6 +975,8 @@ opacity: 1;
     .card-secundario{
         width: 80%;
     }
+
+
 }
 
 

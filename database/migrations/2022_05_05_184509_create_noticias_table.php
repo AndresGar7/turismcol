@@ -14,7 +14,7 @@ class CreateNoticiasTable extends Migration
     public function up()
     {
         Schema::create('noticias', function (Blueprint $table) {
-            $table->id('idNoticia');
+            $table->increments('idNoticia');
             $table->unsignedBigInteger('idUser');
             $table->foreign('idUser')->references('idUser')->on('users_data');
             $table->string('titulo')->unique();

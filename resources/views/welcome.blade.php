@@ -12,7 +12,7 @@
             <div class="buscar">
                 <div class="input-group input-group-lg mb-3">
                     <input type="text" class="form-control" placeholder="¿A donde quieres ir?" aria-label="¿A donde quieres ir?" aria-describedby="btn-buscar">
-                    <button class="btn btn-primary btn-md  fs-5 btn-buscar" type="button" id="btn-buscar">Buscar</button>
+                    <button class="btn btn-primary btn-md  fs-5 btn-buscar" type="button" id="btn-buscar" onclick="buscarInicio()">Buscar</button>
                 </div>
             </div>
         </div>
@@ -94,4 +94,4 @@
         </ul>
         <a class="text-decoration-underline fs-4" href="#">Más información</a>
     </div>
-@endsection
+@stop

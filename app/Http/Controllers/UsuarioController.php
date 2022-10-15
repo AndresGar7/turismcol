@@ -33,7 +33,6 @@ class UsuarioController extends Controller
     }
 
     public function create(){
-        // return 'hola mundo';
         return view('usuarios.create');
     }
 

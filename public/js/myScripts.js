@@ -25,7 +25,7 @@ $(document).ready(function(){
 
 // FUNCION QUE SE ENCARGA DE CAMBIAR LAS FOTOS  Y NOMBRES DE LA GALERIA SEGUN EL DEPARTAMENTO QUE SE SELECCIONE
 
-function traerFotos (dato){
+function traerFotos(dato){
     var nombre = [];
     
     document.getElementById(dato).checked = true;
@@ -60,7 +60,7 @@ function traerFotos (dato){
 
 }
 
-// //FUNCION ENCARGADA DE CAMBIAR EL CONTENIDO QUE SE MUESTRA EN LA PARTE DE CONTACTOS SOBRE LA MISION, VISION  Y NOSOTROS.
+//FUNCION ENCARGADA DE CAMBIAR EL CONTENIDO QUE SE MUESTRA EN LA PARTE DE CONTACTOS SOBRE LA MISION, VISION  Y NOSOTROS.
 // function contenido (valor){
 //     if(valor === 'mision'){
 //         document.getElementById("mision").classList.add("eleccion");
@@ -171,24 +171,23 @@ function mostrarDatos(json){
     }
 }
 
-// // AL PONER EL CURSOR DEL MOUSE SOBRE EL BLOQUE DE LA NOTICIA ACTIVARA VARIAS EFECTOS VISUALES 
-// // PARA INDICAR QUE SE ESTA SELECCIONANDO ESE BLOQUE O NOTICIA EN ESPECIFICO
-// function moverTitulo(valor){
-//     //ESTAS SON LOS EFECTOS QUE SE LE DAN A LAS NOTICIAS PRIMARIAS
-//     $("#noticia"+valor).css('background-color','white');    
-//     $("#noticia"+valor).css('box-shadow','0px 0px 10px #000000');
-//     $("#leerMas"+valor).css('font-size','2.5vw');
-//     $("#leerMas"+valor).css('margin-top','-3.3vw');
-//     $("#leerMas"+valor).css('color','green');
-// }
-
-// //REGRESA EL BLOQUE A SU ESTADO INICIAL CON UN POCO DE EFECTO
-// function regresarTitulo(valor){
-//     //ESTAS SON LOS EFECTOS QUE SE LE DAN A LAS NOTICIAS PRIMARIAS
-//     $("#noticia"+valor).css('background-color','transparent');
-//     $("#noticia"+valor).css('box-shadow','0px 0px 0px #000000');
-//     $("#leerMas"+valor).css('font-size','1vw');
-//     $("#leerMas"+valor).css('margin-top','-3.3vw');
-//     $("#leerMas"+valor).css('color','black');
-// }
+//FUNCION ENCARGADA DE CAMBIAR EL CONTENIDO QUE SE MUESTRA EN LA PARTE DE CONTACTOS SOBRE LA MISION, VISION  Y NOSOTROS.
+function contenido(valor){
+    if(valor === 'mision'){
+        document.getElementById("mision").classList.add("eleccion");
+        document.getElementById("vision").classList.remove("eleccion");
+        document.getElementById("nosotros").classList.remove("eleccion");
+        document.getElementById('contenido').innerHTML = "Brindar a nuestros clientes una experiencia unica y maravillosa a medida que conocen nuetro territorio lleno de riquezas en cuanto a la fauna y flora, al igual que nuestros hermosos paisajes.";
+    }else if (valor === 'vision'){
+        document.getElementById("vision").classList.add("eleccion");
+        document.getElementById("mision").classList.remove("eleccion");
+        document.getElementById("nosotros").classList.remove("eleccion");
+        document.getElementById('contenido').innerHTML = "Queremos ser una de las mejores y principales empresas de Colombia en ofrecer turismo a nivel mundial acerca de nuestro territorio nacional, en donde nuestros clientes van a vivir muchas experiencias y querran volver siempre a Colombia.";
+    }else {
+        document.getElementById("nosotros").classList.add("eleccion");
+        document.getElementById("mision").classList.remove("eleccion");
+        document.getElementById("vision").classList.remove("eleccion");
+        document.getElementById('contenido').innerHTML = "Somos una empresa seria y muy responsable con los clientes que quieren utilizar nuestros servicios para poder conocer los grandiosos lugares que ofrecemos dentro de nuestr linda Colombia.";
+    }   
+}
 

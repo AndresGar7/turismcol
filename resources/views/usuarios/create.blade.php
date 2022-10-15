@@ -76,7 +76,7 @@
                                 </div>
                                 <div class="col-md-6 mt-2">
                                     <div class="form-group">
-                                        <label class="form-label" for="rol">Cargo</label>
+                                        <label class="form-label" for="rol">Cargo (*)</label>
                                         <select class="form-control  @error('rol') is-invalid @enderror" name="rol" id="rol">
                                             <option value="">Escoger rol</option>
                                             <option value="user">User</option>
@@ -126,16 +126,15 @@
 @section('css')
     {{-- <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs5/dt-1.12.1/r-2.3.0/datatables.min.css"/> --}}
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
-    <script src="{{ asset('js/sweetalert2.all.min.js') }}"></script>
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 @stop
-
+    
 @section('js')
+    <script src="{{ asset('js/sweetalert2.all.min.js') }}"></script>
     <script>
         $(document).ready(function(){
             $('#email').keyup(function(){
-                var value = $(this).val();
-                $('#usuario').val(value);
+                $('#usuario').val($(this).val());
             });
         });
 

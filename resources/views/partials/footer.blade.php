@@ -30,17 +30,13 @@
             </div>
             <div class="col-lg-3 col-md-6 col-sm-12 py-0">
                 <h2 class="fs-5 py-2 sombra-title text-white"><strong>Boletin Informativo</strong></h2>
-                <form >
-                    <div class="">
-                        <input type="text" class="form-control" placeholder="Ingrese su E-mail">
-                        <br>
-                        <button class="btn btn-secondary form-control position-relative">Enviar</button>
-                    </div>
-                </form>
+                <input type="email" class="form-control" placeholder="Ingrese su E-mail">
+                <br>
+                <button class="btn btn-secondary form-control position-relative" onclick="enviarBoletin()">Enviar</button>
                 <p>!No te preocupes, no hacemos spam¡</p>
             </div>
         </div>
         {{-- <hr> --}}
-        <p class="m-0 py-1 text-center"><strong>{{ config('app.name') }}</strong> | Copyright @ {{ date('Y') }}</p>
+        <p class="m-0 py-1 text-center" style="font-size: 1.3vw;"><strong>{{ config('app.name') }}</strong> | Copyright @ {{ date('Y') }}</p>
     </div>
 </div>

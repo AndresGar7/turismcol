@@ -51,7 +51,7 @@ Route::delete('noticias/{noticia}', [App\Http\Controllers\NoticiaController::cla
 
 // RUTAS CREADA PARA MOSTRAR EL INDEX DEL PRESUPUESTO
 Route::get('/presupuesto',[App\Http\Controllers\PresupuestoController::class, 'index'])->name('presupuesto.index');
-Route::post('/presupuesto', [App\Http\Controllers\PresupuestoController::class, 'store']);
+Route::post('/presupuesto/sendMail', [App\Http\Controllers\PresupuestoController::class, 'sendMail'])->name('presupuesto.sendMail');
 
 // RUTAS CREADA PARA MOSTRAR EL CONTACTO
 Route::get('/contacto',[App\Http\Controllers\ContactoController::class, 'index'])->name('contacto.index');
@@ -71,4 +71,3 @@ Route::post('/citas/crear', [App\Http\Controllers\CitaController::class, 'store'
 Route::post('/citas/editar/{id}', [App\Http\Controllers\CitaController::class, 'edit'])->name('citas.edit');
 Route::post('/citas/actualizar/{cita}', [App\Http\Controllers\CitaController::class, 'update'])->name('citas.update');
 Route::post('/citas/borrar/{id}', [App\Http\Controllers\CitaController::class, 'destroy'])->name('citas.destroy');
-

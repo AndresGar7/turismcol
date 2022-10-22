@@ -54,6 +54,9 @@
                                                     @error('imagen')
                                                             <div class="alert alert-danger">{!! $errors->first('imagen', '<small>:message</small>') !!}</div>
                                                     @enderror
+                                                    <div class="form-group">
+                                                        
+                                                    </div>
                                                 </div>
                                         </div>
                                     </div>

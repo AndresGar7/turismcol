@@ -22,7 +22,6 @@ class NoticiaController extends Controller
         $this->middleware('is_authorized:sop,admin', ['only' => ['create']]);
         $this->middleware('is_authorized:sop,admin', ['only' => ['admin']]);
         $this->middleware('is_authorized:sop,admin', ['only' => ['showAdmin']]);
-        $this->middleware('is_authorized:sop,admin', ['only' => ['show']]);
         $this->middleware('is_authorized:sop,admin', ['only' => ['edit']]);
     }
 

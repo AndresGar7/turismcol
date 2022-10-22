@@ -22,7 +22,7 @@
                     </div>
                     <div class="card-body box-profile">
                         <div class="text-center">
-                            <img class="profile-user-img img-fluid img-circle" id="imgPrevizual"  src="{{  asset($cliente->url_img) }}"  alt="Foto Perfil Usuario">
+                            <img class="profile-user-img img-fluid img-circle img-thumbnail" id="imgPrevizual"   src="{{  asset($cliente->url_img) }}"  alt="Foto Perfil Usuario">
                         </div>
                         <h3 class="profile-username text-center">{{ $cliente->nombre }} {{ $cliente->apellidos }}</h3>
                         <div class="row mt-4">

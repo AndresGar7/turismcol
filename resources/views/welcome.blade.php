@@ -4,16 +4,16 @@
 
 @section('content')
     <div class="fondo">
-        <img src="{{ asset('/img/guatape.jpg') }}" alt="Fondo Guatape" class="d-block" width="100%" height="auto">
-        <div class="container">
-            <div class="bienvenida">
+        <img src="{{ asset('/img/guatape.jpg') }}" alt="Fondo Guatape" class="d-block" width="100%">
+        <div class="bienvenida text-center">
+            <div class="tamanoEspacio mx-auto">
                 <h2 class="display-5 sombra-title msg-bienvenida">Un viaje único hacia los paisajes y culturas más hermosas de Colombia</h2>
             </div>
-            <div class="buscar">
-                <div class="input-group input-group-lg mb-3">
-                    <input type="text" class="form-control" placeholder="¿A donde quieres ir?" aria-label="¿A donde quieres ir?" aria-describedby="btn-buscar">
-                    <button class="btn btn-primary btn-md  fs-5 btn-buscar" type="button" id="btn-buscar" onclick="buscarInicio()">Buscar</button>
-                </div>
+        </div>
+        <div class="buscar">
+            <div class="input-group input-group-lg ms-5 mb-3">
+                <input type="text" class="form-control" placeholder="¿A donde quieres ir?" aria-label="¿A donde quieres ir?" aria-describedby="btn-buscar">
+                <button class="btn btn-primary btn-md  fs-5 btn-buscar" type="button" id="btn-buscar" onclick="buscarInicio()">Buscar</button>
             </div>
         </div>
     </div>
@@ -54,7 +54,7 @@
                         <div class="bajar-cont-card">
                             <h5 class="card-title ps-3 text-light fs-1 fw-bold sombra-title">Escaparse ahora</h5>
                             <p class="card-text ps-3 text-light fs-5 sombra-title">Destinos donde viajar</p>
-                            <a href="#" class="btn btn-outline-primary btn-large ms-3 fs-5 border-2">Descubrir</a>
+                            <a href="#" class="btn btn-outline-primary btn-large ms-3 fs-5 border-2" onclick="descubrirInicio()">Descubrir</a>
                         </div>
                     </div>
                 </div>
@@ -66,7 +66,7 @@
                         <div class="bajar-cont-card px-2">
                             <h5 class="card-title ps-3 text-light fs-1 fw-bold sombra-title">Respiración pura</h5>
                             <p class="card-text ps-3 text-light fs-5 sombra-title">Paisajes verdes con climas estupendos</p>
-                            <a href="#" class="btn btn-outline-primary btn-large ms-3 fs-5 border-2">Descubrir</a>
+                            <a href="#" class="btn btn-outline-primary btn-large ms-3 fs-5 border-2" onclick="descubrirInicio()">Descubrir</a>
                         </div>
                     </div>
                 </div>
@@ -78,7 +78,7 @@
                         <div class="bajar-cont-card">
                             <h5 class="card-title ps-3 text-light fs-1 fw-bold sombra-title">Buenas culturas</h5>
                             <p class="card-text ps-3 text-light fs-5 sombra-title">Conoce nuestra riqueza cultural</p>
-                            <a href="#" class="btn btn-outline-primary btn-large ms-3 fs-5 border-2">Descubrir</a>
+                            <a href="#" class="btn btn-outline-primary btn-large ms-3 fs-5 border-2" onclick="descubrirInicio()">Descubrir</a>
                         </div>
                     </div>
                 </div>

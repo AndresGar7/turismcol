@@ -11,6 +11,10 @@ use App\Http\Requests\CreateCitaRequest;
 
 class CitaController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
 
     public function administrar()
     {

@@ -109,5 +109,21 @@
                 }
             });
         }
+        function descubrirInicio(){
+            Swal.fire({
+                title: "¡AVISO!",
+                text: "Esta función no esta en uso.",
+                icon: "info",
+                confirmButtonColor: "#12b886",
+                confirmButtonText: "Terminar!",
+                allowOutsideClick: false,
+                showClass: {
+                popup: 'animate__animated animate__backInDown'
+                },
+                hideClass: {
+                    popup: 'animate__animated animate__backOutUp'
+                }
+            });
+        }
     </script>
 </html>

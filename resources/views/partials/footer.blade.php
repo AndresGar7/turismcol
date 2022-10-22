@@ -37,6 +37,6 @@
             </div>
         </div>
         {{-- <hr> --}}
-        <p class="m-0 py-1 text-center" style="font-size: 1.3vw;"><strong>{{ config('app.name') }}</strong> | Copyright @ {{ date('Y') }}</p>
+        <p class="m-0 py-1 text-center" style="font-size: 1vw;"><strong>{{ config('app.name') }}</strong> | Copyright @ {{ date('Y') }}</p>
     </div>
 </div>

@@ -5,10 +5,8 @@
 @section('content')
     <div class="fondo">
         <img src="{{ asset('/img/tatacoa.jpg') }}" alt="Fondo Pueblo Guatape" class="d-block" width="100%" height="auto" style="z-index: 1;">
-        <div class="container">
-            <div class="bienvenida">
-                <h2 class="sombra-title msg-bienvenida-noticias text-center">Sobre Nosotros</h2>
-            </div>
+        <div class="bienvenida">
+            <h2 class="sombra-title msg-bienvenida-noticias text-center">Sobre Nosotros</h2>
         </div>
     </div>
     <div class="container contacto">

@@ -11560,6 +11560,7 @@ a {
 
 .contenido-fauna {
   position: absolute;
+  border-radius: 1.5vw;
   width: 70%;
   margin-top: -40vw;
   margin-left: 12vw;

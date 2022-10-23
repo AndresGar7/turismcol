@@ -126,12 +126,6 @@ class PerfilController extends Controller
                 //!-----------------------------------------------------------------------------
             }
 
-            
-            // dd($request);
-
-    
-    
-            
         }else{
 
             // var_dump($request);

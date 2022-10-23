@@ -149,7 +149,7 @@
         <img src="{{ asset('/img/fauna.jpg') }}" alt="Fondo Pueblo Guatape" class="d-block" width="100%" style="z-index: 1;">
         <div class="container-fluid px-5">
             <div class="row mx-auto">
-                <div class="contenido-fauna p">
+                <div class="contenido-fauna">
                     <h2 class="display-6 fw-bolder pt-2 sombra-title-verde text-center">En TurismCol hay muchas maneras de viajar.</h2>
                     <p>Existen muchas maneras de viajar para nuestros paradisiacos destinos.  Solo dinos la forma en que lo quieres hacer y te garantizaremos una gran experiencia en el transcurso del viaje a tu destino final.  Y a medida que vas recorriendo nuestros espectaculares centros turisticos te encontraras y observaras nuestra gran variedad, grandiosa y maravillosa fauna silvestre.  No lo pienses más. y ven a disfrutar de este grandioso pais, que te espera con los brazos abiertos. </p>
                 </div>

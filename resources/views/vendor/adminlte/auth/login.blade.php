@@ -102,3 +102,19 @@
         </p>
     @endif
 @stop
+
+@section('js')
+    <script src="{{ asset('js/sweetalert2.all.min.js') }}"></script>
+    <script>
+        @if (session('creado'))
+            Swal.fire({
+                title: "Excelente",
+                text: "El usuario se registro exitosamente.",
+                icon: "success",
+                confirmButtonColor: "#3085d6",
+                confirmButtonText: "Aceptar!",
+                allowOutsideClick: false
+            })
+        @endif
+    </script>
+@stop

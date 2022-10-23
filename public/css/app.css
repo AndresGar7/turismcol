@@ -11338,7 +11338,6 @@ a {
 }
 
 .fondo {
-  opacity: 1;
   z-index: 1;
 }
 
@@ -11614,9 +11613,29 @@ a {
 }
 
 .tituloDetalleNoticia {
-  width: 90%;
-  margin-top: 3vw;
+  width: 80%;
+  margin-bottom: 3vw;
+}
+
+.textoNoticia {
+  letter-spacing: 0.1vw;
+  line-height: 1.8vw;
+  font-size: 1.8vw;
+  text-align: justify;
+  white-space: pre-line;
+}
+
+.contenidoNoticia {
+  position: relative;
+  margin-top: -20vw;
   margin-bottom: 5vw;
+}
+
+.fondoTexto {
+  background-color: rgba(255, 255, 255, 0.578);
+  font-weight: bold;
+  padding: 1.5vw;
+  border-radius: 1.5vw;
 }
 
 .imgMapa {

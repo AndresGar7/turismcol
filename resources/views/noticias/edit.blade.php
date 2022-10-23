@@ -25,6 +25,18 @@
                                 <textarea class="form-control" name="descripcion" cols="70" rows="10" id="descripcion">{{ old('descripcion', $noticia->texto) }}</textarea>
                                 {!! $errors->first('descripcion', '<small>:message</small>') !!}
                             </div>
+                            <div class="form-group col-lg-7 col-sm-12">
+                                <label class="form-label" for="region">Región de la noticia</label> 
+                                <select class="form-select  @error('region') is-invalid @enderror" name="region" id="region">
+                                    <option value="{{ $noticia->region }}">{{ $noticia->region }}</option>
+                                    @foreach ( $regiones as $region )
+                                        <option value="{{ $region->nombre }}">{{ $region->nombre }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            @error('region')
+                                <div class="alert alert-danger">{!! $errors->first('region', '<small>:message</small>') !!}</div>
+                            @enderror
                         </div>
                         <div class="col-lg-6 col-md-6 col-sm-12 pt-4 px-4">
                             <label for="imagen">Imagen de la noticia</label>

@@ -14,6 +14,7 @@ class AlterTableNoticiasAddImage extends Migration
     public function up()
     {
         Schema::table('noticias', function (Blueprint $table) {
+            $table->string('urlRegion')->after('importancia')->nullable();
             $table->string('region')->after('importancia')->nullable();
         });
     }
@@ -27,7 +28,7 @@ class AlterTableNoticiasAddImage extends Migration
     {
         // Schema::dropIfExists('presupuestos');
         Schema::table('noticas', function($table) {
-            $table->dropColumn(array('region'));
+            $table->dropColumn(array('region','urlRegion'));
         });
     }
 }

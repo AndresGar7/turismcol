@@ -26,19 +26,21 @@ class CreateProjectRequest extends FormRequest
         return [
             'titulo' => 'required|unique:noticias,titulo',
             'descripcion' => 'required|min:70',
-            'imagen' => 'required|image'
+            'imagen' => 'required|image',
+            'region' => 'required'
         ];
     }
 
     public function messages()
     {
         return [
-            'titulo.required' => 'El campo del titulo es obligatorio',
-            'titulo.unique' => 'El campo del titulo no se puede repetir',
-            'descripcion.required' => 'El campo descripcion es obligatorio',
-            'descripcion.min' => 'Debe ingresar como minimo 70 caracteres acerca de la noticia' ,
-            'imagen.required' => 'La noticia debe de contener una imagen',
-            'imagen.image' => 'El archivo debe de ser JPG o PNG'
+            'titulo.required' => 'El campo del titulo es obligatorio.',
+            'titulo.unique' => 'El campo del titulo no se puede repetir.',
+            'descripcion.required' => 'El campo descripcion es obligatorio.',
+            'descripcion.min' => 'Debe ingresar como minimo 70 caracteres acerca de la noticia.',
+            'imagen.required' => 'La noticia debe de contener una imagen.',
+            'imagen.image' => 'El archivo debe de ser JPG o PNG.',
+            'region.required' => 'El campo región es obligatorio.'
         ];
     }
 }

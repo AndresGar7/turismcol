@@ -34,7 +34,7 @@
                                             @enderror
                                                 <div class="form-group">
                                                     <label class="form-label" for="descripcion">Descripcion de la Noticia </label>
-                                                    <textarea class="form-control form-control-lg @error('descripcion') is-invalid @enderror" style="line-height: 1.08vw"  rows="13" cols="50" name="descripcion" id="descripcion">{{ old('descripcion') }}</textarea>
+                                                    <textarea class="form-control form-control-lg @error('descripcion') is-invalid @enderror" style="line-height: 1.08vw"  rows="23" cols="50" name="descripcion" id="descripcion">{{ old('descripcion') }}</textarea>
                                                 </div> 
                                             @error('descripcion')
                                                 <div class="alert alert-danger">{!! $errors->first('descripcion', '<small>:message</small>') !!}</div>
@@ -54,9 +54,18 @@
                                                     @error('imagen')
                                                             <div class="alert alert-danger">{!! $errors->first('imagen', '<small>:message</small>') !!}</div>
                                                     @enderror
-                                                    <div class="form-group">
-                                                        
+                                                    <div class="form-group col-lg-7 col-sm-12">
+                                                        <label class="form-label" for="region">Región de la noticia</label> 
+                                                        <select class="form-select form-control-lg @error('region') is-invalid @enderror" name="region" id="region">
+                                                            <option value="">Escoge una Región</option>
+                                                            @foreach ( $regiones as $region )
+                                                                <option value="{{ $region->nombre }}">{{ $region->nombre }}</option>
+                                                            @endforeach
+                                                        </select>
                                                     </div>
+                                                    @error('region')
+                                                        <div class="alert alert-danger">{!! $errors->first('region', '<small>:message</small>') !!}</div>
+                                                    @enderror
                                                 </div>
                                         </div>
                                     </div>

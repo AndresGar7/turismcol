@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Carbon\Carbon;
 use App\Models\User;
+use App\Models\Region;
 use App\Models\Noticia;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -75,8 +76,9 @@ class NoticiaController extends Controller
     // SE ENCARGA DE MOSTRAR LA PAGINA PARA CREAR LAS NOTICIAS
     public function create()
     {
-
-        return view('noticias.create');
+        $regiones = Region::all();
+        // dd($regiones);
+        return view('noticias.create', compact('regiones'));
 
     }
 
@@ -86,8 +88,38 @@ class NoticiaController extends Controller
 
         $titulo = trim(request('titulo')); // QUITA LOS ESPACIOS DE UNA CADENA DE TEXTO
         $url = str_replace(' ','-',$titulo);
-        $descripcion = trim(request('descripcion'));
+        $descripcion = request('descripcion');
         $resumen = substr($descripcion, 0, 70);
+
+        $region = request('region');
+
+        switch ($region) {
+            case 'Antioquia':
+                $urlRegion = 'img/region/Antioquia.jpg';
+                break;
+            case 'San Andres':
+                $urlRegion = 'img/region/San_Andres.jpg';
+                break;
+                    break;
+            case 'Bolivar':
+                $urlRegion = 'img/region/Bolivar.jpg';
+                break;
+            case 'Quindio':
+                $urlRegion = 'img/region/Qundio.jpg';
+                break;
+            case 'Cundinamarca':
+                $urlRegion = 'img/region/Cundinamarca.jpg';
+                break;
+            case 'Magdalena':
+                $urlRegion = 'img/region/Magdalena.jpg';
+                break;
+            case 'Guajira':
+                $urlRegion = 'img/region/Guajira.jpg';                
+                break;
+            case 'Choco':
+                $urlRegion = 'img/region/Choco.jpg';
+                break;
+        }
 
         $imagen = request()->file('imagen')->store('public/img/noticias');
 
@@ -111,8 +143,9 @@ class NoticiaController extends Controller
             'imagen' => $name_img . '.jpg',
             'name_img' => $name_img ,
             'fecha' => $fecha,
-            'idUser' => $usuario
-
+            'idUser' => $usuario,
+            'urlRegion' => $urlRegion,
+            'region' => $region
         ]);
 
          //!-----------------------------------------------------------------------------
@@ -137,11 +170,13 @@ class NoticiaController extends Controller
     {   
 
         $cantidad = Noticia::where('importancia','=', 'pri')->count();
+        $regiones = Region::all();
 
         return view('noticias.edit', [
 
             'noticia' => $noticia,
             'cantidad' => $cantidad,
+            'regiones' => $regiones
 
         ]);
 
@@ -153,10 +188,38 @@ class NoticiaController extends Controller
 
         $titulo = trim(request('titulo'));
         $url = str_replace(' ','-',$titulo);
-        $descripcion = trim(request('descripcion')) ;
+        $descripcion = request('descripcion') ;
         $resumen = substr($descripcion, 0, 70);
 
-        
+        $region = request('region');
+
+        switch ($region) {
+            case 'Antioquia':
+                $urlRegion = 'img/region/Antioquia.jpg';
+                break;
+            case 'San Andres':
+                $urlRegion = 'img/region/San_Andres.jpg';
+                break;
+                    break;
+            case 'Bolivar':
+                $urlRegion = 'img/region/Bolivar.jpg';
+                break;
+            case 'Quindio':
+                $urlRegion = 'img/region/Qundio.jpg';
+                break;
+            case 'Cundinamarca':
+                $urlRegion = 'img/region/Cundinamarca.jpg';
+                break;
+            case 'Magdalena':
+                $urlRegion = 'img/region/Magdalena.jpg';
+                break;
+            case 'Guajira':
+                $urlRegion = 'img/region/Guajira.jpg';                
+                break;
+            case 'Choco':
+                $urlRegion = 'img/region/Choco.jpg';
+                break;
+        }
 
         if(request()->file('imagen')){
 
@@ -181,7 +244,9 @@ class NoticiaController extends Controller
                 'resumen' => $resumen,
                 'url_img' => $url_imagen,
                 'name_img' => $name_img,
-                'importancia' => $request->importancia
+                'importancia' => $request->importancia,
+                'urlRegion' => $urlRegion,
+                'region' => $region
             ]);
 
              //!-----------------------------------------------------------------------------
@@ -195,13 +260,14 @@ class NoticiaController extends Controller
 
         }else{
 
-
             $noticia->update([
                 'titulo' => $titulo,
                 'url' => $url,
                 'texto' => $descripcion,
                 'resumen' => $resumen,
-                'importancia' => $request->importancia
+                'importancia' => $request->importancia,
+                'urlRegion' => $urlRegion,
+                'region' => $region
             ]);
         }
 

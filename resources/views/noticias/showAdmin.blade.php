@@ -1,6 +1,6 @@
 @extends('adminlte::page')
 
-@section('title', $noticia->title . " | Noticias" )
+@section('title', $noticia->titulo . " | Noticias" )
 
 @section('content_header')
     <h1 class="fw-bold fs-1">Noticia</h1>
@@ -20,9 +20,9 @@
                                 <h3 class="fw-bold fs-4">Resumen:</h3>
                                 <p class="fw-normal fs-5">{{ $noticia->resumen }}</p>
                                 <h3 class="fw-bold fs-4 ">Descripción:</h3>
-                                <p class="fw-normal fs-5">{{ $noticia->texto }}</p>
-                                <h3 class="fw-bold fs-4 ">Creado Por:</h3>
-                                <p class="fw-normal fs-5">{{ $usuario->usuario }}</p>
+                                <p class="fw-normal fs-5" style="text-align: justify; white-space: pre-line;">{{ $noticia->texto }}</p>
+                                <h3 class="fw-bold fs-4 mt-5">Creado Por:</h3>
+                                <p class="fw-normal fs-5">{{ $noticia->user->nombre }} {{ $noticia->user->apellidos }}</p>
                             </div>
                             <div class="col-lg-6 col-md-6 col-sm-12">
                                 <div class="cont-img mx-auto">
@@ -32,6 +32,10 @@
                                 </div>
                                 <div class="row">
                                     <p class="mt-2"><small><strong>Creado hace: </strong>{{ $noticia->updated_at->diffForHumans() }}</small></p>
+                                </div>
+                                <div class="row mt-5">
+                                    <h3 class="fw-bold fs-4">Región:</h3>
+                                    <p class="fw-normal fs-1">{{ $noticia->region }}</p>
                                 </div>
                             </div>
                         </div>

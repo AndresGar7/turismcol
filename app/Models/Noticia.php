@@ -24,7 +24,9 @@ class Noticia extends Model
         'fecha',
         'imagen',
         'importancia',
-        'idUser'
+        'idUser',
+        'urlRegion',
+        'region'
     ];
     
     // MANERA DE PASAR Y ACEPTAR TODOS LAS VARIABLES QUE PASA EL CONTROLADOR PARA GUARDAR EN LA DB
@@ -35,5 +37,7 @@ class Noticia extends Model
         return 'url';
     }
 
-    
+    public function user(){
+        return $this->hasOne(Cliente::class, 'idUser','idUser');
+    }
 }

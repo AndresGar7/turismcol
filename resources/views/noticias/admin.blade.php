@@ -5,11 +5,11 @@
 @section('plugins.Datatables', true)
 
 @section('content_header')
-<div class="row mb-2">
-    <div class="col-12">
-        <h1 class="fs-1 fw-bold">Noticias</h1>
+    <div class="row mb-2">
+        <div class="col-12">
+            <h1 class="fs-1 fw-bold">Noticias</h1>
+        </div>
     </div>
-</div>
 @stop
 
 @section('content')

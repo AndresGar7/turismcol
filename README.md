@@ -1,9 +1,10 @@
 ## Inicialización del proyecto
 
-1. Instalar Laragon para  mas facilidad
-2. Crear carpeta nueva turismcol en la ruta C:/laragon/www/
-3. Descargar o clonar este repositorio en C:/laragon/www/turismcol
-4. Abrir el terminal del Panel de Laragon
+1. Instalar Laragon para iniciar con mas facilidad esta pagina web
+2. Abrir una terminal en la ruta C:/laragon/www/ 
+3. Descargar o clonar este repositorio en C:/laragon/www/turismcol con el siguiente comando:
+git clone https://github.com/AndresGar7/turismcol.git
+4. Abrir el terminal que ofrece el Panel de Laragon
 5. En el terminal ingresar a la ruta del proyecto descargado con cd
 6. Al estar dentro de la carpeta del proyecto, se deben de lanzar los siguientes comandos
 7. composer install

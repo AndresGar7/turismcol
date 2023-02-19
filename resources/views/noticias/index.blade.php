@@ -6,59 +6,61 @@
     <div class="fondo">
         <img src="{{ asset('/img/tayronaFondo.jpg') }}" alt="Fondo Pueblo Guatape" class="d-block" width="100%" height="auto" style="z-index: 1;">
         <div class="bienvenida">
-            <div class="row">
-                <div class="col-12">
+            {{-- <div class="row">
+                <div class="col-12"> --}}
                     <h2 class="sombra-title msg-bienvenida-noticias">TurismCol News</h2>
                     <h2 class="fs-3 mt-3 sombra-title msg-bienvenida-noticias">Descubre las Noticias y novedades de TurismCol</h2>
-                </div>
-            </div>
+                {{-- </div> --}}
+            {{-- </div> --}}
         </div>
         @php
             $contador = 0   
         @endphp
         <div class="noticias_principales">
-            <div class="row">
-                @forelse ($noticiasPri as $itemNoticia)   
-                    @if ($contador == 0)
-                        <div class="col-lg-6 col-md-6 col-sm-12">
-                            <a href="{{ route('noticias.show', $itemNoticia) }}" >
-                                <div class="card card-principal shadow mx-auto card-principal-up border-0">
-                                    <img src="{{ asset($itemNoticia->url_img) }}" style="width: auto;" class="card-img-top" alt="{{ $itemNoticia->name_img }}">
-                                    <div class="card-body">
-                                        <h5 class="card-title text-dark fw-bold fs-4">{{ $itemNoticia->titulo }}</h5>
-                                        <p class="card-text fs-6 text-dark">{{ $itemNoticia->resumen }}..... </p>
-                                        <span>Creado el/ {{ $itemNoticia->updated_at->format('d-m-Y') }}</span>
+            <div class="container">
+                <div class="row mover">
+                    @forelse ($noticiasPri as $itemNoticia)   
+                        @if ($contador == 0)
+                            <div class="col-lg-6 col-md-6 col-sm-12">
+                                <a href="{{ route('noticias.show', $itemNoticia) }}" >
+                                    <div class="card card-principal shadow mx-auto card-principal-up border-0">
+                                        <img src="{{ asset($itemNoticia->url_img) }}" style="width: auto;" class="card-img-top" alt="{{ $itemNoticia->name_img }}">
+                                        <div class="card-body">
+                                            <h5 class="card-title text-dark fw-bold fs-4">{{ $itemNoticia->titulo }}</h5>
+                                            <p class="card-text fs-6 text-dark">{{ $itemNoticia->resumen }}..... </p>
+                                            <span>Creado el/ {{ $itemNoticia->updated_at->format('d-m-Y') }}</span>
+                                        </div>
                                     </div>
-                                </div>
-                            </a>
-                        </div>
-                    @else 
-                        <div class="col-lg-6 col-md-6 col-sm-12">
-                            <a href="{{ route('noticias.show', $itemNoticia) }}">
-                                <div class="card card-principal shadow mx-auto card-principal-down border-0">
-                                    <img src="{{ asset($itemNoticia->url_img) }}" style="width: auto;" class="card-img-top" alt="{{ $itemNoticia->name_img }}">
-                                    <div class="card-body">
-                                        <h5 class="card-title text-dark fw-bold fs-4">{{ $itemNoticia->titulo }}</h5>
-                                        <p class="card-text text-dark">{{ $itemNoticia->resumen }}..... </p>
-                                        <span>Creado el/ {{ $itemNoticia->updated_at->format('d-m-Y') }}</span>
+                                </a>
+                            </div>
+                        @else 
+                            <div class="col-lg-6 col-md-6 col-sm-12">
+                                <a href="{{ route('noticias.show', $itemNoticia) }}">
+                                    <div class="card card-principal shadow mx-auto card-principal-down border-0">
+                                        <img src="{{ asset($itemNoticia->url_img) }}" style="width: auto;" class="card-img-top" alt="{{ $itemNoticia->name_img }}">
+                                        <div class="card-body">
+                                            <h5 class="card-title text-dark fw-bold fs-4">{{ $itemNoticia->titulo }}</h5>
+                                            <p class="card-text text-dark">{{ $itemNoticia->resumen }}..... </p>
+                                            <span>Creado el/ {{ $itemNoticia->updated_at->format('d-m-Y') }}</span>
+                                        </div>
                                     </div>
-                                </div>
-                            </a>
-                        </div>
-                    @endif
-                    @php
-                    $contador++ 
-                    @endphp
-                @empty
-                <div class="container">
+                                </a>
+                            </div>
+                        @endif
+                        @php
+                        $contador++ 
+                        @endphp
+                    @empty
                     <div class="container">
-                        <div class="alert alert-info shadow-lg">
-                            <h5><i class="icon fas fa-info"></i> Noticias Principales!</h5> No se encuentra creada ninguna noticia principal.
+                        <div class="container">
+                            <div class="alert alert-info shadow-lg">
+                                <h5><i class="icon fas fa-info"></i> Noticias Principales!</h5> No se encuentra creada ninguna noticia principal.
+                            </div>
                         </div>
                     </div>
+                    @endforelse
+                    <div class="decoracion"></div>
                 </div>
-                @endforelse
-                <div class="decoracion"></div>
             </div>
         </div>
     </div>

@@ -48,37 +48,35 @@
         </div>
     </div> 
     <div class="containter-fluid">
-        <div class="row">
-            <div class="masDatos shadow-lg">
-                <div class="titleMasDatos">
-                    <h2>Cifras clave de TurismCol</h2>
+        <div class="masDatos shadow-lg">
+            <div class="titleMasDatos">
+                <h2>Cifras clave de TurismCol</h2>
+            </div>
+            <div class="iconosMasDatos">
+                <div class="cajaPor5">
+                    <img src="../img/ubicacion.png" alt="lugares">
+                    <h2>130</h2>
+                    <p>Destinos</p>
                 </div>
-                <div class="iconosMasDatos">
-                    <div class="cajaPor5">
-                        <img src="../img/ubicacion.png" alt="lugares">
-                        <h2>130</h2>
-                        <p>Destinos</p>
-                    </div>
-                    <div class="cajaPor5">
-                        <img src="../img/insignia.png" alt="primer lugar">
-                        <h2>250 Agencias</h2>
-                        <p>Locales</p>
-                    </div>
-                    <div class="cajaPor5">
-                        <img src="../img/aeroplano.png" alt="avion">
-                        <h2>350 Ideas</h2>
-                        <p>De viajes</p>
-                    </div>
-                    <div class="cajaPor5">
-                        <img src="../img/todo_bien.png" alt="todo bien">
-                        <h2>7.000 Viajeros </h2>
-                        <p>Que han confiado en nosotros</p>
-                    </div>
-                    <div class="cajaPor5">
-                        <img src="../img/comunidad.png" alt="comunidad">
-                        <h2>15.000 Miembros</h2>
-                        <p>De la comunidad TurismCol</p>
-                    </div>
+                <div class="cajaPor5">
+                    <img src="../img/insignia.png" alt="primer lugar">
+                    <h2>250 Agencias</h2>
+                    <p>Locales</p>
+                </div>
+                <div class="cajaPor5">
+                    <img src="../img/aeroplano.png" alt="avion">
+                    <h2>350 Ideas</h2>
+                    <p>De viajes</p>
+                </div>
+                <div class="cajaPor5">
+                    <img src="../img/todo_bien.png" alt="todo bien">
+                    <h2>7.000 Viajeros </h2>
+                    <p>Que han confiado en nosotros</p>
+                </div>
+                <div class="cajaPor5">
+                    <img src="../img/comunidad.png" alt="comunidad">
+                    <h2>15.000 Miembros</h2>
+                    <p>De la comunidad TurismCol</p>
                 </div>
             </div>
         </div>

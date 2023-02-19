@@ -9,25 +9,25 @@
 @section('content')
     <div class="fondo">
         <img src="{{ asset($noticia->urlRegion) }}" alt="Fondo Pueblo Guatape" class="d-block" width="100%" style="z-index: 1;">
-        <div class="bienvenida">
-            <div class="row">
-                <div class="col-12">
-                    <div class="tituloDetalleNoticia mx-auto">
-                        <h1 class="title text-center sombra-title" style="font-size: 4.2vw;">{{ $noticia->titulo }}</h1>
-                    </div>
+        <div class="bienvenida text-center">
+            <div class="col-12">
+                <div class="tituloDetalleNoticia">
+                    <h1 class="title text-center sombra-title" style="font-size: 4.2vw;">{{ $noticia->titulo }}</h1>
                 </div>
             </div>
         </div>
     </div>
     <div class="container contenidoNoticia">
         <div class="fondoTexto shadow-lg">
-            <div class="row">
-                <div class="col-lg-12 col-md-12 col-sm-12">
-                    <p class="textoNoticia">{{ $noticia->texto }}</p>        
+            <div class="container-fluid px-5">
+                <div class="row mx-auto<">
+                    <div class="col-lg-12 col-md-12 col-sm-12" style="overflow-wrap: break-word;">
+                        <p class="textoNoticia">{{ $noticia->texto }}</p>     
+                    </div>
                 </div>
             </div>
             <div class="row">
-                <div class="col-6 mx-auto mt-5 mb-1">
+                <div class="col-6 mx-auto mt-5 mb-5">
                     <img class="img-fluid" width="100%" src="{{ asset($noticia->url_img) }}" alt="{{ $noticia->url_img }}">
                     <div class="row">
                         <div class="col-12">

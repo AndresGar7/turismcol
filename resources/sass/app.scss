@@ -308,14 +308,36 @@ opacity: 1;
 .decoracion{
     position: absolute;
     z-index: 1;
-    margin-top: 7vw;
-    margin-left: 30vw;
+    margin-top: 6%;
+    margin-left: 20vw;
     width: 40vw;
     height: 40vw;
-    background-color: #08ba85;
     opacity: 0.4;
     border-radius: 2vw;
+    animation: colorRamdon;
+    animation-duration: 4s;
+    animation-iteration-count: infinite;
 }
+
+@keyframes colorRamdon {
+    0% {
+        background: linear-gradient(-10deg, #23A6D5, #23D5AB);
+    }
+    25% {
+        background: linear-gradient(-10deg, #23D5AB, #EE7752);
+    }
+    50% {
+        background: linear-gradient(-10deg, #EE7752, #E73C7E);
+    }
+    75% {
+        background: linear-gradient(-10deg, #23D5AB, #EE7752);
+    }
+    100% {
+        background: linear-gradient(-10deg, #23A6D5, #23D5AB);
+    }
+}
+    
+
 .noticias_secundarias{
     margin-top: 40vw;
 }
@@ -460,11 +482,11 @@ opacity: 1;
     z-index: 1;
     margin-top: 7vw;
     margin-left: 25vw;
-    width: 650px;
-    height: 650px;
-    background-color: #18b586;
+    width: 65vw;
+    height: 65vw;
     opacity: 0.4;
 }
+
 }
 
 @media screen and (max-width: 1025px) {
@@ -629,11 +651,10 @@ opacity: 1;
 .decoracion{
     position: absolute;
     z-index: 1;
-    margin-top: 7vw;
+    margin-top: 8vw;
     margin-left: 23vw;
-    width: 500px;
-    height: 500px;
-    background-color: #18b586;
+    width: 50vw;
+    height: 50vw;
     opacity: 0.4;
 }
 
@@ -647,7 +668,7 @@ opacity: 1;
     width: 40vw;
 }
 .bienvenida{
-    // margin-top: -35vw;
+    margin-top: -35vw;
     margin-left: 10%;
     width: 70vw;
 }
@@ -807,9 +828,8 @@ opacity: 1;
     z-index: 1;
     margin-top: 7.5vw;
     margin-left: 20vw;
-    width: 400px;
-    height: 400px;
-    background-color: #18b586;
+    width: 100%;
+    height: 110vw;
     opacity: 0.4;
 }
 
@@ -977,8 +997,8 @@ opacity: 1;
 
 .noticias_principales{
     position: absolute;
-    margin-top: -10vw;
-    width: 94%;
+    margin-top: -5vw;
+    width: 100%;
     margin-bottom: 4vw;
 }
 
@@ -995,16 +1015,14 @@ opacity: 1;
 .decoracion{
     position: absolute;
     z-index: 1;
-    margin-top: 85vw;
-    margin-left: 27vw;
-    width: 200px;
-    height: 200px;
-    background-color: #18b586;
+    margin-top: 60vw;
+    margin-left: 0vw;
+    width: 100%;
+    height: 100vw;
     opacity: 0.4;
 }
 .noticias_secundarias{
-    margin-top: 220vw;
-    // width: 94%;
+    margin-top: 225vw;
 }
 .card-secundario{
     width: 80%;

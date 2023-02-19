@@ -33,7 +33,7 @@
                                     <table id="noticias" class="table table-bordered table-hover shadow display nowrap" style="width:100%">
                                         <thead class="bg-success text-center">
                                             <tr>
-                                                <th class="text-dark">Usuario#</th>
+                                                <th class="text-dark">#Usuario</th>
                                                 <th>Usuario</th>
                                                 <th>Nombre</th>
                                                 <th>Rango</th>
@@ -63,7 +63,7 @@
                                         </tbody>
                                         <tfoot class="bg-success text-center">
                                             <tr>
-                                                <th class="text-dark">Usuario#</th>
+                                                <th class="text-dark">#Usuario</th>
                                                 <th>Usuario</th>
                                                 <th>Nombre</th>
                                                 <th>Rango</th>
@@ -96,9 +96,10 @@
     <script>
         $(document).ready(function () {
             $('#noticias').DataTable({
-                "lengthMenu": [[5,10,50,-1],[5,10,20,"All"]],
-                responsive: true,
-                language: {
+                "dom": '<""f>rt<""pl>',
+                "lengthMenu": [[5,10,50,-1],[5,10,50,"All"]],
+                "responsive": true,
+                "language": {
                     "lengthMenu": 'Mostrar _MENU_  registros por página',
                     "zeroRecords": 'Nada Encontrado - perdón',
                     "info": 'Mostrando página _PAGE_ de _PAGES_',

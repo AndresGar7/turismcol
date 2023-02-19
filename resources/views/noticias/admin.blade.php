@@ -100,9 +100,10 @@
     <script>
         $(document).ready(function () {
             $('#noticias').DataTable({
-                "lengthMenu": [[5,10,50,-1],[5,10,20,"All"]],
-                responsive: true,
-                language: {
+                "dom": '<""f>rt<""pl>',
+                "lengthMenu": [[5,10,50,-1],[5,10,50,"All"]],
+                "responsive": true,
+                "language": {
                     "lengthMenu": 'Mostrar _MENU_  registros por página',
                     "zeroRecords": 'Nada Encontrado - perdón',
                     "info": 'Mostrando página _PAGE_ de _PAGES_',

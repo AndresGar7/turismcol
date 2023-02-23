@@ -16,7 +16,7 @@
         @endphp
         <div class="noticias_principales">
             <div class="container">
-                <div class="row mover" style="background-color: red;">
+                <div class="row mover">
                     @forelse ($noticiasPri as $itemNoticia)   
                         @if ($contador == 0)
                             <div class="col-lg-6 col-md-6 col-sm-12">

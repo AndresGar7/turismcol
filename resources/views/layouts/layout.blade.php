@@ -18,7 +18,7 @@
         <script src="{{ asset('js/app.js') }}" defer></script>
         <script src="{{ asset('js/myScripts.js') }}" defer></script>
         <script src="{{ asset('js/fotorama.js') }}" defer></script>
-        <script src="{{ asset('js/sweetalert2.all.min.js') }}"></script>
+        {{-- <script src="{{ asset('js/sweetalert2.all.min.js') }}" defer></script> --}}
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
         <title>@yield('title')</title>
@@ -40,27 +40,60 @@
             </footer>
         </div>
     </body>
+    <style>
+        .placeholderred::-webkit-input-placeholder {
+            color: red;
+        }  
+    </style>
     <script>
-        @if (session('sendMail'))
-            Swal.fire({
-                title: "Excelente",
-                text: "Los datos se enviaron correctamente.",
-                icon: "success",
-                confirmButtonColor: "#12b886",
-                confirmButtonText: "Aceptar!",
-                allowOutsideClick: false,
-                showClass: {
-                    popup: 'animate__animated animate__backInDown'
-                },
-                hideClass: {
-                    popup: 'animate__animated animate__backOutUp'
-                }
-            }).then(function(){
 
+        function mensajeEnviado() {
+
+            Swal.fire({
+                    title: "Excelente",
+                    text: "Los datos se enviaron correctamente.",
+                    icon: "success",
+                    confirmButtonColor: "#12b886",
+                    confirmButtonText: "Aceptar!",
+                    allowOutsideClick: false,
+                    showClass: {
+                        popup: 'animate__animated animate__backInDown'
+                    },
+                    hideClass: {
+                        popup: 'animate__animated animate__backOutUp'
+                    }
+                }).then(function(){
+    
+                    Swal.fire({
+                        title: "Advertencia",
+                        text: "Este formulario no enviara ningún correo electrónico. Solo es un ejemplo.",
+                        icon: "error",
+                        confirmButtonColor: "#12b886",
+                        confirmButtonText: "Terminar!",
+                        allowOutsideClick: false,
+                        showClass: {
+                        popup: 'animate__animated animate__backInDown'
+                        },
+                        hideClass: {
+                            popup: 'animate__animated animate__backOutUp'
+                        }
+                    }).then(function(){
+                        window.location = 'presupuesto' 
+                    });
+                    
+                });
+        }
+
+        function enviarBoletin(){
+
+            let correo = $('#email_boletin').val();
+
+            console.log(correo);
+            if (correo != '') {                     
                 Swal.fire({
-                    title: "Advertencia",
-                    text: "Este formulario no enviara ningún correo electrónico. Solo es un ejemplo.",
-                    icon: "error",
+                    title: "¡AVISO!",
+                    text: "No se enviara ningún correo electrónico. Esta función no esta en uso.",
+                    icon: "info",
                     confirmButtonColor: "#12b886",
                     confirmButtonText: "Terminar!",
                     allowOutsideClick: false,
@@ -70,27 +103,10 @@
                     hideClass: {
                         popup: 'animate__animated animate__backOutUp'
                     }
-                }).then(function(){
-                    window.location = 'presupuesto' 
                 });
-            });
-        @endif
-
-        function enviarBoletin(){
-            Swal.fire({
-                title: "¡AVISO!",
-                text: "No se enviara ningún correo electrónico. Esta función no esta en uso.",
-                icon: "info",
-                confirmButtonColor: "#12b886",
-                confirmButtonText: "Terminar!",
-                allowOutsideClick: false,
-                showClass: {
-                popup: 'animate__animated animate__backInDown'
-                },
-                hideClass: {
-                    popup: 'animate__animated animate__backOutUp'
-                }
-            });
+            }else{
+                $('#email_boletin').addClass('is-invalid').removeClass('is-valid').css('color', 'red').addClass('placeholderred');
+            }
         }
 
         function buscarInicio(){
@@ -125,5 +141,35 @@
                 }
             });
         }
+        
+        @if (session('sendMail'))
+
+            $(document).ready(function(){
+                
+                mensajeEnviado();
+            
+            });
+
+        @endif
+
+        $(document).ready(function(){
+
+            $('#email_boletin').change( () => {
+
+                let correo = $('#email_boletin').val();
+
+                if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,4})+$/.test(correo)) {
+                    $('#email_boletin').removeClass('is-invalid').addClass('is-valid').css('color', 'green');
+                    $('#enviar_boletin').prop('disabled',false);
+                }else{
+                    $('#email_boletin').addClass('is-invalid').removeClass('is-valid').css('color', 'red');
+                    $('#enviar_boletin').prop('disabled',true);
+                }
+            });
+
+        });
+
     </script>
+
+<script src="{{ asset('js/sweetalert2.all.min.js') }}" defer></script>
 </html>

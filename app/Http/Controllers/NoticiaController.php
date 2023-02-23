@@ -68,8 +68,9 @@ class NoticiaController extends Controller
 
             'noticia' => $noticia,
             'usuario' => $usuario
+            
 
-        ]);
+        ])->with('actualizado', true);
 
     }
 
@@ -272,11 +273,11 @@ class NoticiaController extends Controller
         }
 
 
-        return redirect()->route('noticias.showAdmin', $noticia);
+        return redirect()->route('noticias.showAdmin', $noticia)->with('status','Noticia Actualizada satisfactoriamente');
 
     }
 
-    //SE ENCARGA DE ELIMINAR LAS NOTICIAS CREADAS
+    //SE ENCARGA DE ELIMINAR LAS NOTICIAS CREADAS Y TAMBIEN LAS IMAGENES QUE SE ENCUENTRAN GUARDADAS ES STORAGE
     public function destroy(Noticia $noticia)
     {
         $img_publica = str_replace('storage','public',$noticia->url_img);

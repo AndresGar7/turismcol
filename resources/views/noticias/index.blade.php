@@ -6,19 +6,17 @@
     <div class="fondo">
         <img src="{{ asset('/img/tayronaFondo.jpg') }}" alt="Fondo Pueblo Guatape" class="d-block" width="100%" height="auto" style="z-index: 1;">
         <div class="bienvenida">
-            {{-- <div class="row">
-                <div class="col-12"> --}}
-                    <h2 class="sombra-title msg-bienvenida-noticias">TurismCol News</h2>
-                    <h2 class="fs-3 mt-3 sombra-title msg-bienvenida-noticias">Descubre las Noticias y novedades de TurismCol</h2>
-                {{-- </div> --}}
-            {{-- </div> --}}
+            <div class="col-12">
+                <h2 class="sombra-title msg-bienvenida-noticias">TurismCol News</h2>
+                <h2 class="fs-3 mt-3 sombra-title msg-bienvenida-noticias">Descubre las Noticias y novedades de TurismCol</h2>
+            </div>
         </div>
         @php
             $contador = 0   
         @endphp
         <div class="noticias_principales">
             <div class="container">
-                <div class="row mover">
+                <div class="row mover" style="background-color: red;">
                     @forelse ($noticiasPri as $itemNoticia)   
                         @if ($contador == 0)
                             <div class="col-lg-6 col-md-6 col-sm-12">

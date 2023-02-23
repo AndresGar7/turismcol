@@ -47,7 +47,7 @@
                             </div>
                             <div class="card-body">
                                 <div class="form-group">
-                                    <input class="form-control btn-primary pt-2 @error('imagen') is-invalid @enderror" type="file" onchange="vista_priliminar(event)" name="imagen" id="imagen" accept="image/*" value="{{ old('imagen') }}">
+                                    <input class="form-control btn-primary pt-2 @error('imagen') is-invalid @enderror" type="file" onchange="vista_preliminar(event)" name="imagen" id="imagen" accept="image/*" value="{{ old('imagen') }}">
                                 </div>
                                 @error('imagen')
                                         <div class="alert alert-danger">{!! $errors->first('imagen', '<small>:message</small>') !!}</div>
@@ -83,13 +83,12 @@
 @endsection
 
 @section('css')
-<link href="{{ asset('css/app.css') }}" rel="stylesheet">
-{{-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"> --}}
+    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 @stop
 
 @section('js')
 <script>
-    let vista_priliminar = (event) =>{
+    let vista_preliminar = (event) =>{
         let leer_img = new FileReader();
         let id_img  = document.getElementById('imgPrevizual');
 

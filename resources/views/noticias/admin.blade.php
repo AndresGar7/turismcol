@@ -33,7 +33,7 @@
                                         <table id="noticias" class="table table-bordered table-hover shadow display nowrap" style="width:100%">
                                             <thead class="bg-success text-center">
                                                 <tr>
-                                                    <th class="text-dark">Noticia#</th>
+                                                    <th class="text-dark">#Noticia</th>
                                                     <th>Titulo Noticia</th>
                                                     <th>Resumen</th>
                                                     <th>Fecha Creación</th>
@@ -68,7 +68,7 @@
                                             </tbody>
                                             <tfoot class="bg-success text-center">
                                                 <tr>
-                                                    <th class="text-dark">Noticia#</th>
+                                                    <th class="text-dark">#Noticia</th>
                                                     <th>Titulo Noticia</th>
                                                     <th>Resumen</th>
                                                     <th>Fecha Creación</th>
@@ -90,13 +90,11 @@
 @endsection
 
 @section('css')
-    {{-- <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs5/dt-1.12.1/r-2.3.0/datatables.min.css"/> --}}
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 @stop
 
 @section('js')
-    {{-- <script type="text/javascript" src="https://cdn.datatables.net/v/bs5/dt-1.12.1/r-2.3.0/datatables.min.js"></script> --}}
     <script>
         $(document).ready(function () {
             $('#noticias').DataTable({

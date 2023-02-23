@@ -4,7 +4,7 @@
             <div class="col-lg-3 col-md-6 col-sm-12 py-0">
                 <h2 class="fs-5 py-2 sombra-title text-white"><strong>Nuesta Oficina Central</strong></h2>
                 <ul class="list-unstyled">
-                    <li class="d-flex correr-r-md"><i class="fa-solid fa-location-dot my-1 mx-1"></i><p>C. Carreteria, 22 / Málaga</p></li>
+                    <li class="d-flex correr-r-md"><i class="fa-solid fa-location-dot my-1 mx-1"></i><p>C. Carreteria, #XX / Málaga</p></li>
                     <li class="d-flex correr-r-md"><i class="fa-solid fa-phone my-1 mx-1"></i><p>+34 604168308</p></li>
                     <li class="d-flex correr-r-md"><i class="fa-solid fa-envelope my-1 mx-1"></i><p>eddy_gc07@hotmail.com</p></li>
                     <li class="d-flex correr-r-md"></li>
@@ -30,13 +30,13 @@
             </div>
             <div class="col-lg-3 col-md-6 col-sm-12 py-0">
                 <h2 class="fs-5 py-2 sombra-title text-white"><strong>Boletin Informativo</strong></h2>
-                <input type="email" class="form-control" placeholder="Ingrese su E-mail">
+                <input type="email" class="form-control" id="email_boletin" placeholder="Ingrese su E-mail">
                 <br>
-                <button class="btn btn-secondary form-control position-relative" onclick="enviarBoletin()">Enviar</button>
+                <button class="btn btn-secondary form-control position-relative" id="enviar_boletin" onclick="enviarBoletin()">Enviar</button>
                 <p>!No te preocupes, no hacemos spam¡</p>
             </div>
         </div>
-        {{-- <hr> --}}
         <p class="m-0 py-1 text-center" style="font-size: 1vw;"><strong>{{ config('app.name') }}</strong> | Copyright @ {{ date('Y') }}</p>
+        <br>
     </div>
 </div>

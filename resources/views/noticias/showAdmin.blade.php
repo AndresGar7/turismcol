@@ -9,6 +9,9 @@
 @section('content')
     <div class="container">
         <div class="row">
+           
+        </div>
+        <div class="row">
             <div class="col-lg-12 col-md-12">
                 <div class="card shadow-sm">
                     <div class="card-header bg-secondary">
@@ -43,10 +46,10 @@
                     <div class="card-footer">
                         <div class="d-flex justify-content-center">
                             <a class="btn btn-primary d-flex justify-content-between mx-2" href="{{ route('noticias.edit', $noticia) }}">Editar</a>
-                            <form method="POST" action="{{ route('noticias.destroy' , $noticia) }}">
+                            <form id="borrar" method="POST" action="{{ route('noticias.destroy' , $noticia) }}">
                                 @csrf @method('DELETE')
-                                <button  class="btn btn-danger d-flex justify-content-between mx-2">Eliminar</button>
                             </form>
+                            <button onclick="borrar_noticia()" class="btn btn-danger d-flex justify-content-between mx-2">Eliminar</button>
                             <a class="btn btn-warning d-flex justify-content-between mx-2" href="{{ route('noticias.admin') }}">Regresar</a>
                         </div>
                     </div>
@@ -58,4 +61,64 @@
 
 @section('css')
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+@stop
+
+@section('js')
+
+<script>
+    function borrar_noticia() {
+
+        Swal.fire({
+            title: "Advertencia",
+            text: "¿Esta seguro que desea borrar esta noticia?.",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: '#12b886',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Si, Borrar!',
+            cancelButtonText: 'Cancelar',
+            showClass: {
+            popup: 'animate__animated animate__backInDown'
+            },
+            hideClass: {
+                popup: 'animate__animated animate__backOutUp'
+            }
+        }).then((result) => {
+            if (result.isConfirmed) {
+                let form = document.getElementById('borrar');
+                form.submit();
+            }
+        });
+
+    }
+
+    function actualizado() {
+        Swal.fire({
+            title: "¡AVISO!",
+            text: "Actualizado satisfactoriamente..!!",
+            icon: "success",
+            confirmButtonColor: "#12b886",
+            confirmButtonText: "Terminar!",
+            allowOutsideClick: false,
+            showClass: {
+            popup: 'animate__animated animate__backInDown'
+            },
+            hideClass: {
+                popup: 'animate__animated animate__backOutUp'
+            }
+        }).then((result) => {
+            if (result.isConfirmed) {
+                
+            }
+        });
+    }
+
+    @if (session('status'))
+        actualizado();
+    @endif
+
+
+</script>
+
+<script src="{{ asset('js/sweetalert2.all.min.js') }}" defer></script>
 @stop

@@ -256,6 +256,5 @@
 
 
 @section('js')
-<script src="{{ asset('js/fotorama.js') }}" defer></script>
-{{-- <script src="{{ asset('js/myScripts.js') }}" defer></script> --}}
+    <script src="{{ asset('js/fotorama.js') }}" defer></script>
 @stop

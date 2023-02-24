@@ -28,7 +28,7 @@ class PasswordPerfilRequest extends FormRequest
         $rules = [
             'password' => 'required|current_password',
             'password_new' => 'required|confirmed|min:8',
-            'password_new_confirmation' => 'required|min:8'
+            'password_new_confirmation' => 'required|min:8|different:password'
         ];
 
         return $rules;
@@ -37,6 +37,7 @@ class PasswordPerfilRequest extends FormRequest
     public function messages()
     {
         return [
+            'password_new_confirmation.different' => 'El Contraseña nueva no puede ser igual a la anterior.',
             'password.required' => 'El campo Contraseña Actual es obligatorio.',
             'password.current_password' => 'El campos Contraseña Actual no coincide.',
             'password_new.required' => 'El campo Contraseña Nueva es obligatorio.',

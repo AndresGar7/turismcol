@@ -54,9 +54,6 @@
                                     @endforeach
                                 </select>
                             </div>
-                            {{-- <div class="form-group">
-                                <input type="text" class="form-control" name="idUser" id="idUser" value="{{ Auth::user()->idUser }}" hidden>
-                            </div> --}}
                             <div class="form-group">
                                 <input type="text" class="form-control" name="idCita" id="idCita" hidden>
                             </div>
@@ -95,7 +92,6 @@
 @endsection
 
 @section('css')
-    {{-- <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs5/dt-1.12.1/r-2.3.0/datatables.min.css"/> --}}
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.0/main.css">
     <link href="{{ asset('css/main.css') }}" rel="stylesheet">
@@ -103,11 +99,6 @@
 @stop
 
 @section('js')
-    {{-- <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.0/main.js"></script> --}}
-    {{-- <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.0/locales-all.js"></script> --}}
-    {{-- <script src="https://unpkg.com/axios/dist/axios.min.js"></script> --}}
-    {{-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script> --}}
-    <script src="{{ asset('js/sweetalert2.all.min.js') }}"></script>
     <script src="{{ asset('js/axios.min.js') }}" defer></script>
     <script src="{{ asset('js/main.js') }}" defer></script>
     <script src="{{ asset('js/locales-all.js') }}" defer></script>

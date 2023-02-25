@@ -14,7 +14,7 @@ git clone https://github.com/AndresGar7/turismcol.git
 11. Se debe de abrir la base datos en el panel de laragon y crear una DB con el nombre de turismcol, 
 con usuario= root y constraseña= (vacia). O configurar el .env segun la configuracion que se tenga en mysql
 12. Luego se debe de ejecutar en el terminal de laragon el siguiente comando:
-php artisan migrate  --> para crear las tablas del proyecto en la DB
+php artisan migrate:fresh --seed  --> para crear las tablas del proyecto e insertar algunos datos de pruebas en la DB.
 13. Escribir en el navegador http://turismcol.test
 
 ## Como loguearse en la aplicacion

@@ -88,7 +88,10 @@ class NoticiaController extends Controller
     {
 
         $titulo = trim(request('titulo')); // QUITA LOS ESPACIOS DE UNA CADENA DE TEXTO
-        $url = str_replace(' ','-',$titulo);
+        $url = str_replace('/','-',$titulo);
+        $url = str_replace(':','-',$url);
+        $url = str_replace(',','-',$url);
+        $url = str_replace(' ','-',$url);
         $descripcion = request('descripcion');
         $resumen = substr($descripcion, 0, 70);
 
@@ -106,7 +109,7 @@ class NoticiaController extends Controller
                 $urlRegion = 'img/region/Bolivar.jpg';
                 break;
             case 'Quindio':
-                $urlRegion = 'img/region/Qundio.jpg';
+                $urlRegion = 'img/region/Quindio.jpg';
                 break;
             case 'Cundinamarca':
                 $urlRegion = 'img/region/Cundinamarca.jpg';

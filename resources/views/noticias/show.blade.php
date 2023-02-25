@@ -11,7 +11,7 @@
         <img src="{{ asset($noticia->urlRegion) }}" alt="Fondo Pueblo Guatape" class="d-block" width="100%" style="z-index: 1;">
         <div class="bienvenida text-center">
             <div class="col-12">
-                <div class="tituloDetalleNoticia">
+                <div class="tituloDetalleNoticia mx-auto">
                     <h1 class="title text-center sombra-title" style="font-size: 4.2vw;">{{ $noticia->titulo }}</h1>
                 </div>
             </div>

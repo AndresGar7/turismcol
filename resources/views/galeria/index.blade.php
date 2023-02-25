@@ -104,7 +104,7 @@
     <div class="container px-5 mb-5">
         <div class="row g-4">
             <div class="col-lg-3 col-md-4 col-sm-12">
-                <a href="#">
+                <a onclick="buscarInicio()">
                     <div class="card border-0 tocado w-100">
                         <img src="{{ asset('/img/Antioquia1.jpg')}}" class="card-img-top img-fluid" style="height: 15rem;"  alt="Piedra del Peñol" id="foto1">
                         <div class="card-body">
@@ -114,7 +114,7 @@
                 </a>
             </div>
             <div class="col-lg-3 col-md-4 col-sm-12">
-                <a href="#">
+                <a onclick="buscarInicio()">
                     <div class="card border-0 tocado w-100">
                         <img src="{{ asset('/img/Antioquia2.jpg')}}" class="card-img-top img-fluid" style="height: 15rem;" alt="Bosko Guatape" id="foto2">
                         <div class="card-body">
@@ -124,7 +124,7 @@
                 </a>
             </div>
             <div class="col-lg-3 col-md-4 col-sm-12">
-                <a href="#">
+                <a onclick="buscarInicio()">
                     <div class="card border-0 tocado w-100">
                         <img src="{{ asset('/img/Antioquia3.jpg')}}" class="card-img-top" style="height: 15rem;" alt="Medellin en metroCable" id="foto3">
                         <div class="card-body">
@@ -134,7 +134,7 @@
                 </a>
             </div>
             <div class="col-lg-3 col-md-4 col-sm-12">
-                <a href="#">
+                <a onclick="buscarInicio()">
                     <div class="card border-0 tocado w-100">
                         <img src="{{ asset('/img/Antioquia4.jpg')}}" class="card-img-top" style="height: 15rem;" alt="Hacienda Napoles" id="foto4">
                         <div class="card-body">
@@ -160,7 +160,7 @@
         <h2 class="fw-bold display-5 text-center pb-5">Otras opciones de viaje</h2>
         <div class="row g-4">
             <div class="col-lg-3 col-md-4 col-sm-12">
-                <a href="#">
+                <a onclick="buscarInicio()">
                     <div class="card border-0 tocado w-100">
                         <img src="{{ asset('/img/termales.jpg') }}" class="card-img-top img-fluid" style="height: 15rem;" alt="Termales Santa Rosa">
                         <div class="card-body">
@@ -170,7 +170,7 @@
                 </a>
             </div>
             <div class="col-lg-3 col-md-4 col-sm-12">
-                <a href="#">
+                <a onclick="buscarInicio()">
                     <div class="card border-0 tocado w-100">
                         <img src="{{ asset('/img/calima.jpg') }}" class="card-img-top img-fluid" style="height: 15rem;" alt="">
                         <div class="card-body">
@@ -180,7 +180,7 @@
                 </a>
             </div>
             <div class="col-lg-3 col-md-4 col-sm-12">
-                <a href="#">
+                <a onclick="buscarInicio()">
                     <div class="card border-0 tocado w-100">
                         <img src="{{ asset('/img/san_cipriano.jpg') }}" class="card-img-top img-fluid" style="height: 15rem;" alt="">
                         <div class="card-body">
@@ -190,7 +190,7 @@
                 </a>
             </div>
             <div class="col-lg-3 col-md-4 col-sm-12">
-                <a href="#">
+                <a onclick="buscarInicio()">
                     <div class="card border-0 tocado w-100">
                         <img src="{{ asset('/img/nevado.jpg') }}" class="card-img-top img-fluid" style="height: 15rem;" alt="">
                         <div class="card-body">

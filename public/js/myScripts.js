@@ -21,8 +21,6 @@ $(document).ready(function(){
     });
 });
 
-// $('#example').DataTable();
-
 // FUNCION QUE SE ENCARGA DE CAMBIAR LAS FOTOS  Y NOMBRES DE LA GALERIA SEGUN EL DEPARTAMENTO QUE SE SELECCIONE
 
 function traerFotos(dato){
@@ -54,31 +52,11 @@ function traerFotos(dato){
         nombre = ['La Coquerita','Capurgana','Bahía el Aguacate','Playa el Almejal'];
     }
 
-    for (i = 0; i<=4; i++){
+    for (i = 0; i <= 3; i++){
         document.getElementById('nombre' + i).innerHTML=nombre[i];
     }
 
 }
-
-//FUNCION ENCARGADA DE CAMBIAR EL CONTENIDO QUE SE MUESTRA EN LA PARTE DE CONTACTOS SOBRE LA MISION, VISION  Y NOSOTROS.
-// function contenido (valor){
-//     if(valor === 'mision'){
-//         document.getElementById("mision").classList.add("eleccion");
-//         document.getElementById("vision").classList.remove("eleccion");
-//         document.getElementById("nosotros").classList.remove("eleccion");
-//         document.getElementById('contenido').innerHTML = "Brindar a nuestros clientes una experiencia unica y maravillosa a medida que conocen nuetro territorio lleno de riquezas en cuanto a la fauna y flora, al igual que nuestros hermosos paisajes.";
-//     }else if (valor === 'vision'){
-//         document.getElementById("vision").classList.add("eleccion");
-//         document.getElementById("mision").classList.remove("eleccion");
-//         document.getElementById("nosotros").classList.remove("eleccion");
-//         document.getElementById('contenido').innerHTML = "Queremos ser una de las mejores y principales empresas de Colombia en ofrecer turismo a nivel mundial acerca de nuestro territorio nacional, en donde nuestros clientes van a vivir muchas experiencias y querran volver siempre a Colombia.";
-//     }else {
-//         document.getElementById("nosotros").classList.add("eleccion");
-//         document.getElementById("mision").classList.remove("eleccion");
-//         document.getElementById("vision").classList.remove("eleccion");
-//         document.getElementById('contenido').innerHTML = "Somos una empresa seria y muy responsable con los clientes que quieren utilizar nuestros servicios para poder conocer los grandiosos lugares que ofrecemos dentro de nuestr linda Colombia.";
-//     }   
-// }
 
 //FUNCION ENCARGADA DE REALIZAR LA CONEXION  CON EL ARCHIVO JSON QUE CONTIENE LAS NOTICIAS
 function traerDatos(){

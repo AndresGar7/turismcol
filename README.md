@@ -19,5 +19,9 @@ php artisan migrate:fresh --seed  --> para crear las tablas del proyecto e inser
 
 ## Como loguearse en la aplicacion
 
-Usuario: admin@admin   //
+Se puede registrar en la pagina como un nuevo usuario, en el apartado de registrarse.
+
+O si quiere tener el control total de la pagina se debe de loguear con el siguiente usuario que es el Master:
+
+Usuario: admin@admin  
 Contraseña: admin1234
